@@ -1,29 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/IController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/imageInfo/IPixel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/imageInfo/Pixel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/IModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/IView.java" afterDir="false" />
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Koala.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/images/Koala.ppm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/koala-blue-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-blue-greyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/koala-brighter-by-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-brighter-by-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/koala-green-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-green-greyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/koala-horizontal-vertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-horizontal-vertical.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/koala-horizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-horizontal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/koala-intensity-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-intensity-greyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/koala-luma-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-luma-greyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/koala-red-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-red-greyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/koala-value-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-value-greyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/koala-vertical-horizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-vertical-horizontal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/koala-vertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-vertical.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +34,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -72,8 +52,23 @@
       <option name="presentableId" value="Default" />
       <updated>1667334424469</updated>
       <workItem from="1667334429430" duration="1000" />
-      <workItem from="1667336156401" duration="12474000" />
+      <workItem from="1667336156401" duration="13511000" />
     </task>
+    <task id="LOCAL-00001" summary="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.">
+      <created>1667369821089</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667369821089</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.">
+      <created>1667409714613</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667409714613</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,5 +90,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image." />
   </component>
 </project>

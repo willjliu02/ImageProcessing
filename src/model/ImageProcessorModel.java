@@ -26,7 +26,7 @@ public class ImageProcessorModel implements IModel {
   }
 
   // TRIED THIS W ONLY RED COMPONENT, WOULD HAVE TO UPDATE W OTHER ONES BUT WASN'T
-  // SURE IF PROCESS WAS RIGHT HAHA
+  // SURE IF PROCESS WAS RIGHT HAHA WE CAN UPDATE
   @Override
   public void focusComponent(String component, String imageName, String destImageName) {
     ImageUtil currentImage = images.get(imageName);
