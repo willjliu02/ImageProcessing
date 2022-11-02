@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="" />
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/IController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/imageInfo/IPixel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/imageInfo/Pixel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/IModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/IView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Koala.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/images/Koala.ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/koala-blue-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-blue-greyscale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/koala-brighter-by-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-brighter-by-50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/koala-green-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-green-greyscale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/koala-horizontal-vertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-horizontal-vertical.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/koala-horizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-horizontal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/koala-intensity-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-intensity-greyscale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/koala-luma-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-luma-greyscale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/koala-red-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-red-greyscale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/koala-value-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-value-greyscale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/koala-vertical-horizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-vertical-horizontal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/koala-vertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/koala-vertical.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2GxdxkRGmNBbrNSgGv2lFGSRTia" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -20,9 +54,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -32,15 +72,25 @@
       <option name="presentableId" value="Default" />
       <updated>1667334424469</updated>
       <workItem from="1667334429430" duration="1000" />
+      <workItem from="1667336156401" duration="12474000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

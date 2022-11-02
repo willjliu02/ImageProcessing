@@ -1,13 +1,34 @@
+package imageInfo;
+
+import java.awt.*;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileInputStream;
-
 
 /**
  * This class contains utility methods to read a PPM image from file and simply print its contents. Feel free to change this method 
  *  as required.
  */
 public class ImageUtil {
+
+  private static int width;
+  private static int height;
+  private static int maxValue;
+  private static Pixel[][] imagePixels;
+
+  // tried to set this up to read info from a given file (first constructor) or set the info
+  // from a file we made (second constructor) ??
+
+  public ImageUtil(String fileName) {
+    this.readPPM(fileName);
+  }
+
+  public ImageUtil(int width, int height, int maxValue, Pixel[][] imagePixels) {
+    this.width = width;
+    this.height = height;
+    this.maxValue = maxValue;
+    this.imagePixels = imagePixels;
+  }
 
   /**
    * Read an image file in the PPM format and print the colors.
@@ -43,10 +64,14 @@ public class ImageUtil {
         System.out.println("Invalid PPM file: plain RAW file should begin with P3");
     }
     int width = sc.nextInt();
+    ImageUtil.width = width;
     System.out.println("Width of image: "+width);
     int height = sc.nextInt();
+    ImageUtil.height = height;
+    ImageUtil.imagePixels = new Pixel[width][height];
     System.out.println("Height of image: "+height);
     int maxValue = sc.nextInt();
+    ImageUtil.maxValue = maxValue;
     System.out.println("Maximum value of a color in this file (usually 255): "+maxValue);
     
     for (int i=0;i<height;i++) {
@@ -54,9 +79,50 @@ public class ImageUtil {
             int r = sc.nextInt();
             int g = sc.nextInt();
             int b = sc.nextInt();
+            imagePixels[i][j] = new Pixel(r, g, b);
             System.out.println("Color of pixel ("+j+","+i+"): "+ r+","+g+","+b);
         }
     }
+  }
+
+  /**
+   * Returns a copy of the current pixels in the array.
+   * @return pixel array of the pixels in the image
+   */
+  public Pixel[][] getPixels() {
+    Pixel[][] returnArray = new Pixel[width][height];
+    Pixel reference = new Pixel(0, 0, 0);
+    for(int i = 0; i < imagePixels.length; i++) {
+      for(int j = 0; i < imagePixels[i].length; i++) {
+        reference = imagePixels[i][j];
+        returnArray[i][j] = new Pixel(reference.getR(), reference.getG(), reference.getB());
+      }
+    }
+    return returnArray;
+  }
+
+  /**
+   * Returns the width of the image.
+   * @return image width
+   */
+  public int getWidth() {
+    return width;
+  }
+
+  /**
+   * Returns the height of the image.
+   * @return image width
+   */
+  public int getHeight() {
+    return width;
+  }
+
+  /**
+   * Returns the width of the image.
+   * @return image width
+   */
+  public int getMaxValue() {
+    return maxValue;
   }
 
   //demo main
