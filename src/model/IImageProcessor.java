@@ -20,4 +20,14 @@ public interface IImageProcessor extends IImageProcessorState {
    * @param imageName name to save the image as
    */
   void saveImagePathAndName(String imagePath, String imageName);
+
+  /**
+   * Applies the command onto the desired IImage and saves it under the newImageName in the map.
+   * @param imageName the desired IImage nap
+   * @param command the desired command
+   * @param newImageName the newImageName
+   * @throws IllegalArgumentException the IllegalArgumentException
+   */
+  public void applyCommand(String imageName, ImageCommand command, String newImageName)
+          throws IllegalArgumentException;
 }

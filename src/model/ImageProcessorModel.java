@@ -41,11 +41,6 @@ public class ImageProcessorModel implements IImageProcessor {
   }
 
   @Override
-  public void brightenImage(int increment, String imageName, String destImageName) {
-
-  }
-
-  @Override
   public IImage getImage(String imageName) {
     return new BasicImage(this.images.get(imageName));
   }
