@@ -5,7 +5,7 @@ import model.ImageCommand;
 /**
  * Represents an image.
  */
-public interface IImage extends IImageState {
+public interface  IImage extends IImageState {
   /**
    * Replaces the pixel at row and col with the new Pixel.
    * @param row the to be switched

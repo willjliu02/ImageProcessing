@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Comment updates">
-      <change afterPath="$PROJECT_DIR$/src/model/Brighten.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/LoadImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/TextImageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageInfo/BasicImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/BasicImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/BrightenImage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/FocusComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FocusComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessorState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessorState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IView.java" afterDir="false" />
-    </list>
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Comment updates" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,7 +72,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667409714613</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Comment updates">
+      <created>1667457509881</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667457509881</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,6 +104,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image." />
+    <MESSAGE value="Comment updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comment updates" />
   </component>
 </project>
