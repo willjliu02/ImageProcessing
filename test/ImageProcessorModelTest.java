@@ -38,7 +38,7 @@ public class ImageProcessorModelTest {
     } catch (IllegalArgumentException e) {
       this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
       this.model.applyCommand("twoBytwo",
-              new MockImageCommand(null),
+              new MockImageCommand(new StringBuilder()),
               "random");
       assertEquals(true, this.model.hasImage("twoBytwo"));
     }
@@ -57,7 +57,7 @@ public class ImageProcessorModelTest {
     this.initCond();
     this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
     this.model.applyCommand("twoBytwo",
-            new MockImageCommand(null),
+            null,
             "random");
   }
 
@@ -70,8 +70,8 @@ public class ImageProcessorModelTest {
     String expected = "Width: 2\n"
                     + "Height: 2\n"
                     + "Max Value: 255\n"
-                    + "(0 0 0) (1 1 1)\n"
-                    + "(2 2 2) (3 3 3)\n";
+                    + "(0 0 0) (1 1 1) \n"
+                    + "(2 2 2) (3 3 3) \n";
 
     assertEquals(expected, log.toString());
   }
@@ -86,8 +86,33 @@ public class ImageProcessorModelTest {
     this.initCond();
     this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
 
-    assertEquals(expectedImage, this.model.getImage("twoBytwo"));
+    IImage resultImage = this.model.getImage("twoBytwo");
+
+    assertEquals(expectedImage.getHeight(), resultImage.getHeight());
+    assertEquals(expectedImage.getWidth(), resultImage.getWidth());
+    assertEquals(expectedImage.getMaxValue(), resultImage.getMaxValue());
+    assertEquals(expectedImage.getPixels(), resultImage.getPixels());
   }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void testSaveException() {
+    this.initCond();
+    this.model.saveImage("random", "random/random");
+  }
 
+  @Test
+  public void testSaveSuccessful() {
+    this.initCond();
+    this.model.loadImage("ourImages/twoByTwo.ppm", "twoByTwo");
+    IImage expectedImage = this.model.getImage("twoByTwo");
+    this.model.saveImage("ourImages/newTwoByTwo.ppm", "twoByTwo");
+    this.model.loadImage("ourImages/newTwoByTwo.ppm", "newTwoByTwo");
+
+    IImage resultImage = this.model.getImage("newTwoByTwo");
+
+    assertEquals(expectedImage.getHeight(), resultImage.getHeight());
+    assertEquals(expectedImage.getWidth(), resultImage.getWidth());
+    assertEquals(expectedImage.getMaxValue(), resultImage.getMaxValue());
+    assertEquals(expectedImage.getPixels(), resultImage.getPixels());
+  }
 }

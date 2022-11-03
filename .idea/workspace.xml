@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Comment updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MockImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SaveImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SaveImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/SaveImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/SaveImageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exampleImages/Koala.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,21 +71,22 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SaveImageTest.testImageSaving">
-    <configuration name="BasicImageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ImageProcessing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="BasicImageTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ImageProcessorModelTest.testSaveSuccessful">
     <configuration name="BasicImageTest.testValues" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BasicImageTest" />
       <option name="METHOD_NAME" value="testValues" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageProcessorModelTest.testSaveSuccessful" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessorModelTest" />
+      <option name="METHOD_NAME" value="testSaveSuccessful" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -122,11 +123,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ImageProcessorModelTest.testSaveSuccessful" />
         <item itemvalue="JUnit.SaveImageTest.testImageSaving" />
         <item itemvalue="JUnit.SaveImageTest.testImageSavingExceptions" />
         <item itemvalue="JUnit.SaveImageTest" />
         <item itemvalue="JUnit.BasicImageTest.testValues" />
-        <item itemvalue="JUnit.BasicImageTest" />
       </list>
     </recent_temporary>
   </component>

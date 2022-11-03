@@ -80,10 +80,10 @@ public class ImageUtil {
    * @return pixel array of the pixels in the image
    */
   public IPixel[][] getPixels() {
-    IPixel[][] returnArray = new Pixel[width][height];
+    IPixel[][] returnArray = new Pixel[height][width];
     IPixel reference = new Pixel(0, 0, 0);
     for (int i = 0; i < imagePixels.length; i++) {
-      for (int j = 0; i < imagePixels[i].length; i++) {
+      for (int j = 0; j < imagePixels[i].length; j++) {
         reference = imagePixels[i][j];
         returnArray[i][j] = new Pixel(reference.getR(), reference.getG(), reference.getB());
       }
