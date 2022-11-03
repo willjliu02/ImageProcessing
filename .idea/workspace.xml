@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="I added to strings to the commands. A save and load message to the processor, and tested them with them mock.">
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Made tester classes for everything that has to be tested.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/BasicImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BasicImageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/BrightenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BrightenTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FlipImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FlipImageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/LoadImageTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +19,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Class" />
         <option value="JUnit5 Test Class" />
         <option value="JUnit4 Test Class" />
-        <option value="Class" />
       </list>
     </option>
   </component>
@@ -41,26 +39,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/images" />
@@ -72,62 +70,61 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageProcessorControllerTest">
-    <configuration name="ImageProcessorControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.BasicImageTest">
+    <configuration name="BasicImageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessorControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="BasicImageTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessorControllerTest.testProcessHorizontalFlip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BrightenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessorControllerTest" />
-      <option name="METHOD_NAME" value="testProcessHorizontalFlip" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImageProcessorControllerTest.testProcessLoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ImageProcessing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessorControllerTest" />
-      <option name="METHOD_NAME" value="testProcessLoad" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImageProcessorControllerTest.testProcessSave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ImageProcessing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessorControllerTest" />
-      <option name="METHOD_NAME" value="testProcessSave" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PixelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ImageProcessing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PixelTest" />
+      <option name="MAIN_CLASS_NAME" value="BrightenTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlipImageTest.testCorrectHorizontalApply" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FlipImageTest" />
+      <option name="METHOD_NAME" value="testCorrectHorizontalApply" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FocusComponentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FocusComponentTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FocusComponentTest.testFocusLuma" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FocusComponentTest" />
+      <option name="METHOD_NAME" value="testFocusLuma" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ImageProcessorControllerTest" />
-        <item itemvalue="JUnit.ImageProcessorControllerTest.testProcessLoad" />
-        <item itemvalue="JUnit.ImageProcessorControllerTest.testProcessSave" />
-        <item itemvalue="JUnit.ImageProcessorControllerTest.testProcessHorizontalFlip" />
-        <item itemvalue="JUnit.PixelTest" />
+        <item itemvalue="JUnit.BasicImageTest" />
+        <item itemvalue="JUnit.FocusComponentTest.testFocusLuma" />
+        <item itemvalue="JUnit.FocusComponentTest" />
+        <item itemvalue="JUnit.BrightenTest" />
+        <item itemvalue="JUnit.FlipImageTest.testCorrectHorizontalApply" />
       </list>
     </recent_temporary>
   </component>
@@ -171,35 +168,7 @@
       <option name="project" value="LOCAL" />
       <updated>1667499840776</updated>
     </task>
-    <task id="LOCAL-00005" summary="Updated the FocusComponentTest and am startign the PixelTest">
-      <created>1667502106838</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1667502106838</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Finished writing PixelTest. Also fixed getMax in Pixel">
-      <created>1667502923868</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1667502923868</updated>
-    </task>
-    <task id="LOCAL-00007" summary="I  added load and save as commands to the controller.">
-      <created>1667503060304</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1667503060304</updated>
-    </task>
-    <task id="LOCAL-00008" summary="I added to strings to the commands. A save and load message to the processor, and tested them with them mock.">
-      <created>1667506497735</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1667506497735</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,11 +195,7 @@
     <MESSAGE value="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image." />
     <MESSAGE value="Comment updates" />
     <MESSAGE value="Made tester classes for everything that has to be tested." />
-    <MESSAGE value="Updated the FocusComponentTest and am startign the PixelTest" />
-    <MESSAGE value="Finished writing PixelTest. Also fixed getMax in Pixel" />
-    <MESSAGE value="I  added load and save as commands to the controller." />
-    <MESSAGE value="I added to strings to the commands. A save and load message to the processor, and tested them with them mock." />
-    <option name="LAST_COMMIT_MESSAGE" value="I added to strings to the commands. A save and load message to the processor, and tested them with them mock." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made tester classes for everything that has to be tested." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

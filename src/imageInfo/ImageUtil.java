@@ -37,6 +37,7 @@ public class ImageUtil {
     //read the file line by line, and populate a string. This will throw away any comment lines
     while (sc.hasNextLine()) {
       String s = sc.nextLine();
+      //System.out.println(s);
       if (s.charAt(0) != '#') {
         builder.append(s + System.lineSeparator());
       }
