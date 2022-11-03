@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Hi Pooj">
-      <change afterPath="$PROJECT_DIR$/src/model/BrightenImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/FlipImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/imageInfo/Brighten.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Koala.ppm" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessorState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessorState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BrightenImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +86,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667453985017</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Hi Pooj">
+      <created>1667454725225</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667454725225</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
