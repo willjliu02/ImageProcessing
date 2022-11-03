@@ -5,6 +5,9 @@ import imageInfo.Pixel;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Test that the Pixel class saves data correctly.
+ */
 public class PixelTest {
   @Test(expected = IllegalArgumentException.class)
   public void testConstructExceptionRLow() {

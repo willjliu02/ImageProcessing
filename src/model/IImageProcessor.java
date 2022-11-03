@@ -3,7 +3,7 @@ package model;
 /**
  * Represents an ImageProcessor.
  */
-public interface IImageProcessor extends IImageProcessorState {
+public interface IImageProcessor {
 
   /**
    * Applies the command onto the desired IImage and saves it under the newImageName in the map.

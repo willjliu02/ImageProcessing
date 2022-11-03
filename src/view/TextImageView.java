@@ -2,7 +2,7 @@ package view;
 
 import java.io.IOException;
 
-import model.IImageProcessorState;
+import model.IImageProcessor;
 
 /**
  * This class represents operations that should be offered by
@@ -10,7 +10,7 @@ import model.IImageProcessorState;
  */
 public class TextImageView implements IView {
 
-  protected final IImageProcessorState model;
+  protected final IImageProcessor model;
 
   protected Appendable appendable;
 
@@ -19,7 +19,7 @@ public class TextImageView implements IView {
    *
    * @param model model to make a view of
    */
-  public TextImageView(IImageProcessorState model) {
+  public TextImageView(IImageProcessor model) {
     if (model == null) {
       throw new IllegalArgumentException("Null model provided.");
     }
@@ -33,7 +33,7 @@ public class TextImageView implements IView {
    * @param model      model to make a view of
    * @param appendable appendable to save
    */
-  public TextImageView(IImageProcessorState model, Appendable appendable) {
+  public TextImageView(IImageProcessor model, Appendable appendable) {
     this(model);
     if (appendable == null) {
       throw new IllegalArgumentException("Null appendable provided.");

@@ -11,12 +11,19 @@ import view.TextImageView;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests a controller.
+ */
 public class ImageProcessorControllerTest {
   private IController controller;
   private Readable in;
   private Appendable out;
   private Appendable modelLog;
 
+  /**
+   * Creates a mock model for the controller to test with.
+   * @param commands commands to work with
+   */
   private void initCond(String commands) {
     this.modelLog = new StringBuilder();
     IImageProcessor model = new MockImageProcessor(modelLog);
