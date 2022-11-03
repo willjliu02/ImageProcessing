@@ -14,6 +14,8 @@ import model.FlipImage;
 import model.FocusComponent;
 import model.IImageProcessor;
 import model.ImageCommand;
+import model.LoadImage;
+import model.SaveImage;
 import view.IView;
 
 import static java.util.Objects.nonNull;
@@ -34,15 +36,17 @@ public class ImageProcessorController implements IController {
       throw new IllegalArgumentException("The arguments cannot be null.");
     }
     this.commands = new HashMap<String, Function<String, ImageCommand>>();
+    this.commands.put("load", cmd -> new LoadImage(cmd));
     this.commands.put("brighten", inc -> new Brighten(Integer.parseInt(inc)));
-    this.commands.put("horizontal-flip", flip -> new FlipImage("horizontal-flip"));
-    this.commands.put("vertical-flip", flip -> new FlipImage("vertical-flip"));
-    this.commands.put("luma-component", comp -> new FocusComponent("luma-component"));
-    this.commands.put("intensity-component", comp -> new FocusComponent("intensity-component"));
-    this.commands.put("red-component", comp -> new FocusComponent("red-component"));
-    this.commands.put("green-component", comp -> new FocusComponent("green-component"));
-    this.commands.put("value-component", comp -> new FocusComponent("value-component"));
-    this.commands.put("blue-component", comp -> new FocusComponent("blue-component"));
+    this.commands.put("horizontal-flip", flip -> new FlipImage(flip));
+    this.commands.put("vertical-flip", flip -> new FlipImage(flip));
+    this.commands.put("luma-component", comp -> new FocusComponent(comp));
+    this.commands.put("intensity-component", comp -> new FocusComponent(comp));
+    this.commands.put("red-component", comp -> new FocusComponent(comp));
+    this.commands.put("green-component", comp -> new FocusComponent(comp));
+    this.commands.put("value-component", comp -> new FocusComponent(comp));
+    this.commands.put("blue-component", comp -> new FocusComponent(comp));
+    this.commands.put("save", file -> new SaveImage(file));
   }
 
   private void writeMessage(String message) {
@@ -73,7 +77,7 @@ public class ImageProcessorController implements IController {
         } else {
           imageName = line[1];
           newImageName = line[2];
-          cmd = func.apply("");
+          cmd = func.apply(line[1]);
         }
         this.model.applyCommand(imageName, cmd, newImageName);
       }
