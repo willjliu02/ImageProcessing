@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="bye bye brighten">
-      <change afterPath="$PROJECT_DIR$/test/BasicImageTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/BrightenTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/FlipImageTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/FocusComponentTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ImageProcessorControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/LoadImageTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/PixelTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/SaveImageTest.java" afterDir="false" />
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Made tester classes for everything that has to be tested.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageProcessing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ImageProcessing.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageInfo/BasicImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/BasicImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/imageInfo/Pixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/Pixel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Brighten.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Brighten.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/FlipImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlipImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/FocusComponentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FocusComponentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/PixelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/PixelTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +70,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BrightenTest">
+  <component name="RunManager" selected="JUnit.FocusComponentTest.testFocusLuma">
     <configuration name="BrightenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
@@ -110,8 +99,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FocusComponentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FocusComponentTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FocusComponentTest.testFocusLuma" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FocusComponentTest" />
+      <option name="METHOD_NAME" value="testFocusLuma" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FocusComponentTest.testFocusLuma" />
+        <item itemvalue="JUnit.FocusComponentTest" />
         <item itemvalue="JUnit.BrightenTest" />
         <item itemvalue="JUnit.FlipImageTest.testCorrectHorizontalApply" />
         <item itemvalue="JUnit.FlipImageTest" />
@@ -151,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667457509881</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Made tester classes for everything that has to be tested.">
+      <created>1667499840776</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667499840776</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,6 +194,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image." />
     <MESSAGE value="Comment updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comment updates" />
+    <MESSAGE value="Made tester classes for everything that has to be tested." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made tester classes for everything that has to be tested." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/FocusComponentTest.java</url>
+          <line>141</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

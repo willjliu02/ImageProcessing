@@ -20,13 +20,20 @@ public class Pixel implements IPixel {
    * @param b blue value to assign
    */
   public Pixel(int r, int g, int b) {
+    if (!this.validVal(r) || !this.validVal(g) || !this.validVal(b)) {
+      throw new IllegalArgumentException("Invalid RGB values.");
+    }
     this.r = r;
     this.g = g;
     this.b = b;
 
     this.value = this.getMax(this.r, this.g, this.b);
     this.intensity = (r + g + b) / 3;
-    this.luma = (int) (0.2126 * r + 0.7152 * g + 0.0722 * g);
+    this.luma = (int) (0.2126 * r + 0.7152 * g + 0.0722 * b);
+  }
+
+  private boolean validVal(int value) {
+    return value >= 0 && value <= 255;
   }
 
   /**
