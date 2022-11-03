@@ -31,16 +31,16 @@ We have a class diagram saved as "class diagram.png" to visualize all the classe
     messages.
 
 COMMANDS:
-The following commands should be typed as our program runs:
-load ourImages/cayuga_1.ppm cayuga
-brighten 10 cayuga cayugaBrighter
-horizontal-flip cayuga cayugaHFlip
-vertical-flip cayuga cayugaVFlip
-red-component cayuga cayugaGreyscale
-save ourImages/cayugaGrey cayugaGreyscale
+The following commands should be typed one after another as our program runs:
+ALSO IN OUR SCRIPTS
+load ourImages/imageFound.ppm foundImage
+brighten 10 foundImage brighterImage
+horizontal-flip brighterImage hFlipImage
+vertical-flip hFlipImage vFlipImage
+red-component vFlipImage greyImage
+save ourImages/greyImage greyscaleImage
 
 PPM IMAGE EXAMPLE IS FROM:
-“Images for Assignment 2.” Edited by Dan Huttenlocher, Sample Images for CS 664 - 
-Computer Vision, 2003, www.cs.cornell.edu/courses/cs664/2003fa/images/. 
-- We used the file titled cayuga_1.ppm from the second zip download. 
+It is the first sample ppm file. 
+CS35: Lab 1 - Ppm Image Format, www.cs.swarthmore.edu/~soni/cs35/f13/Labs/extras/01/ppm_info.html. 
 

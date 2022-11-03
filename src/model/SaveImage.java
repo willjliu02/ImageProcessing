@@ -48,7 +48,7 @@ public class SaveImage implements ImageCommand {
         file.append("\n");
       }
       file.close();
-      System.out.println(content);
+      //System.out.println(content);
     } catch (IOException e) {
       throw new IllegalStateException("Unable to write to file.");
     }
