@@ -4,28 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 import imageInfo.BasicImage;
-import imageInfo.IImageState;
-import imageInfo.IPixel;
 import imageInfo.IImage;
-import imageInfo.ImageUtil;
-import imageInfo.Pixel;
 
+/**
+ * Represents an Image Processor.
+ */
 public class ImageProcessorModel implements IImageProcessor {
 
   private Map<String, IImage> images;
 
+  /**
+   * Constructs a new Image Processor model.
+   */
   public ImageProcessorModel() {
     images = new HashMap<String, IImage>();
-  }
-
-  @Override
-  public void loadImagePathAndName(String imagePath, String imageName) {
-    ImageUtil processImage = new ImageUtil(imagePath);
-    IImage image = new BasicImage(processImage.getWidth(),
-                                  processImage.getHeight(),
-                                  processImage.getMaxValue(),
-                                  processImage.getPixels());
-    images.put(imageName, image);
   }
 
   @Override

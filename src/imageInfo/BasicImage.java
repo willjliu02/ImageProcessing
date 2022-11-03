@@ -2,6 +2,9 @@ package imageInfo;
 
 import model.ImageCommand;
 
+/**
+ * Represents an image with basic information.
+ */
 public class BasicImage implements IImage {
   private IPixel[][] pixels;
   private int width;
@@ -9,6 +12,10 @@ public class BasicImage implements IImage {
 
   private int maxVal;
 
+  /**
+   * Creates a basic image based on a provided image
+   * @param image
+   */
   public BasicImage(IImage image) {
     this.width = image.getWidth();
     this.height = image.getHeight();
@@ -23,6 +30,13 @@ public class BasicImage implements IImage {
     }
   }
 
+  /**
+   * Creates a basic image with provided image information
+   * @param width width of the image
+   * @param height height of the image
+   * @param maxValue max value seen in the image
+   * @param pixels pixels that make up the image
+   */
   public BasicImage(int width, int height, int maxValue, IPixel[][] pixels) {
     this.width = width;
     this.height = height;

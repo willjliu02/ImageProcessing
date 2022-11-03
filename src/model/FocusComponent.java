@@ -10,8 +10,13 @@ import imageInfo.Pixel;
  * Creates a greyscale image using one component of the image.
  */
 public class FocusComponent implements ImageCommand {
-  String component;
+  private String component;
 
+  /**
+   * Constructs a command to create a greyscale image based on a certain component
+   * @param component to make the greyscale of
+   * @throws new IllegalArgumentException if the component provided is invalid.
+   */
   public FocusComponent(String component) {
     if(!(component.equals("value-component") || component.equals("luma-component") ||
     component.equals("intensity-component") || component.equals("red-component") ||
