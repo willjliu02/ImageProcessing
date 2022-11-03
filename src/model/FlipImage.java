@@ -19,7 +19,7 @@ public class FlipImage implements ImageCommand {
    */
   public FlipImage(String flip) {
     if (!flip.equalsIgnoreCase("horizontal-flip")
-            || !flip.equalsIgnoreCase("vertical-flip")) {
+            && !flip.equalsIgnoreCase("vertical-flip")) {
       throw new IllegalArgumentException("This is not a valid flip option.");
     }
 

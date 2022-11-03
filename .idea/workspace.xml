@@ -4,28 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Comment updates">
-      <change afterPath="$PROJECT_DIR$/class diagram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ourImages/cayuga_1.ppm" afterDir="false" />
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="bye bye brighten">
+      <change afterPath="$PROJECT_DIR$/test/BasicImageTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/BrightenTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/FlipImageTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/FocusComponentTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/ImageProcessorControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/LoadImageTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/PixelTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/SaveImageTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/koala-blue-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-blue-greyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/koala-brighter-by-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-brighter-by-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/koala-green-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-green-greyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/koala-horizontal-vertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-horizontal-vertical.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/koala-horizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-horizontal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/koala-intensity-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-intensity-greyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/koala-luma-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-luma-greyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/koala-red-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-red-greyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/koala-value-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-value-greyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/koala-vertical-horizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-vertical-horizontal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/koala-vertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-vertical.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageProcessing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ImageProcessing.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/imageInfo/BasicImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/BasicImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageInfo/IImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/IImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageInfo/Pixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/Pixel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Brighten.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Brighten.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FlipImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlipImage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +31,8 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -54,19 +50,73 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/images" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.BrightenTest">
+    <configuration name="BrightenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BrightenTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlipImageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FlipImageTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlipImageTest.testCorrectHorizontalApply" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FlipImageTest" />
+      <option name="METHOD_NAME" value="testCorrectHorizontalApply" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BrightenTest" />
+        <item itemvalue="JUnit.FlipImageTest.testCorrectHorizontalApply" />
+        <item itemvalue="JUnit.FlipImageTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

@@ -76,4 +76,21 @@ public class Pixel implements IPixel {
   public int getB() {
     return this.b;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    }
+
+    if (o instanceof Pixel) {
+      return this.r == ((Pixel) o).r
+              && this.g == ((Pixel) o).g
+              && this.b == ((Pixel) o).b
+              && this.luma == ((Pixel) o).luma
+              && this.value == ((Pixel) o).value
+              && this.intensity == ((Pixel) o).intensity;
+    }
+    return false;
+  }
 }

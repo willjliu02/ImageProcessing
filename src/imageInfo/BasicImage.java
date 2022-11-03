@@ -72,4 +72,31 @@ public class BasicImage implements IImage {
   public int getMaxValue() {
     return this.maxVal;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+
+    if (o instanceof BasicImage) {
+      if (this.width != ((BasicImage) o).width
+      || this.height != ((BasicImage) o).height
+      || this.maxVal != ((BasicImage) o).maxVal) {
+        return false;
+      }
+
+      for (int r = 0; r < this.height; r++) {
+        for (int c = 0; c < this.width; c++) {
+          if (this.pixels[r][c] != ((BasicImage) o).pixels[r][c]) {
+            return false;
+          }
+        }
+      }
+
+      return true;
+    }
+
+    return false;
+  }
 }

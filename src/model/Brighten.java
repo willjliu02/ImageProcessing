@@ -49,9 +49,13 @@ public class Brighten implements ImageCommand {
    * @return updated value
    */
   protected int getValue(int value) {
-    if (!(value + this.increment > 255)) {
-      return value + this.increment;
+    int newValue = value + this.increment;
+    if (newValue > 255) {
+      return 255;
+    } else if (newValue < 0) {
+      return 0;
+    } else {
+      return newValue;
     }
-    return 255;
   }
 }
