@@ -12,6 +12,8 @@ import model.FlipImage;
 import model.FocusComponent;
 import model.IImageProcessor;
 import model.ImageCommand;
+import model.LoadImage;
+import model.SaveImage;
 import view.IView;
 
 public class ImageProcessorController implements IController {
@@ -39,6 +41,8 @@ public class ImageProcessorController implements IController {
     this.commands.put("green-component", comp -> new FocusComponent("green-component"));
     this.commands.put("value-component", comp -> new FocusComponent("value-component"));
     this.commands.put("blue-component", comp -> new FocusComponent("blue-component"));
+    this.commands.put("load",  path -> new LoadImage(path));
+    this.commands.put("save",  path -> new SaveImage(path));
   }
 
   private void writeMessage(String message) {
@@ -69,7 +73,7 @@ public class ImageProcessorController implements IController {
         } else {
           imageName = line[1];
           newImageName = line[2];
-          cmd = func.apply("");
+          cmd = func.apply(line[1]);
         }
         this.model.applyCommand(imageName, cmd, newImageName);
       }
