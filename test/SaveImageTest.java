@@ -17,7 +17,6 @@ import static org.junit.Assert.*;
  * Tests the save image command.
  */
 public class SaveImageTest {
-
   SaveImage save;
   SaveImageMock saveMock;
   IImage basic;
