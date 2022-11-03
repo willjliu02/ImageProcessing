@@ -8,6 +8,9 @@ import model.FocusComponent;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests the process of creating a greyscale with a specific image component.
+ */
 public class FocusComponentTest {
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorException() {

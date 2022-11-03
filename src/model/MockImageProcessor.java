@@ -55,9 +55,4 @@ public class MockImageProcessor implements IImageProcessor {
       throw new IllegalStateException("Unable to append to the file.");
     }
   }
-
-  @Override
-  public IImage getImage(String imageName) {
-    return null;
-  }
 }

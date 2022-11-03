@@ -8,6 +8,9 @@ import model.FlipImage;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests for flipping an image horizontally and vertically.
+ */
 public class FlipImageTest {
 
   @Test(expected = IllegalArgumentException.class)

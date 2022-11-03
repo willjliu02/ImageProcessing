@@ -8,6 +8,9 @@ import model.Brighten;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests for the brighten command.
+ */
 public class BrightenTest {
 
   @Test

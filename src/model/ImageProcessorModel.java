@@ -51,9 +51,4 @@ public class ImageProcessorModel implements IImageProcessor {
     ImageCommand saver = new SaveImage(imagePath);
     saver.apply(this.images.get(imageName));
   }
-
-  @Override
-  public IImage getImage(String imageName) {
-    return new BasicImage(this.images.get(imageName));
-  }
 }
