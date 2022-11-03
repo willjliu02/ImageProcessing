@@ -25,19 +25,18 @@ public class SaveImage implements ImageCommand {
       IPixel[][] pixels = currentImage.getPixels();
 
 
-      file.append("P3 ");
-      file.append("" + width);
-      file.append(' ');
-      file.append("" + height);
-      file.append(' ');
-      file.append("" + currentImage.getMaxValue());
+      file.append("P3\n");
+      file.append(width + " " + height);
+      file.append("\n");
+      file.append(currentImage.getMaxValue() + "\n");
       for (int r = 0; r < height; r++) {
         for (int c = 0; c < width; c++) {
           IPixel pixel = pixels[r][c];
-          file.append(" " + pixel.getR());
-          file.append(" " + pixel.getG());
-          file.append(" " + pixel.getB());
+          file.append(pixel.getR() + " ");
+          file.append(pixel.getG() + " ");
+          file.append(pixel.getB() + " ");
         }
+        file.append("\n");
       }
     } catch (IOException e) {
       throw new IllegalStateException("Unable to write to file.");
