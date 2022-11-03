@@ -101,4 +101,9 @@ public class Pixel implements IPixel {
     }
     return false;
   }
+
+  @Override
+  public String toString() {
+    return "(" + this.r + " " + this.g + " " + this.b + ")";
+  }
 }
