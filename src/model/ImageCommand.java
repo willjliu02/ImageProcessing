@@ -9,7 +9,7 @@ public interface ImageCommand {
 
   /**
    * Applies the action on the image.
-   * @param image  the image that will be acted on.
+   * @param currentImage the image that will be acted on.
    */
-  public IImage apply(IImage image);
+  public IImage apply(IImage currentImage);
 }

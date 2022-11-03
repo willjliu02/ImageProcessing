@@ -22,13 +22,6 @@ public class ImageUtil {
     this.readPPM(fileName);
   }
 
-  public ImageUtil(int width, int height, int maxValue, Pixel[][] imagePixels) {
-    this.width = width;
-    this.height = height;
-    this.maxValue = maxValue;
-    this.imagePixels = imagePixels;
-  }
-
   /**
    * Read an image file in the PPM format and print the colors.
    *
@@ -90,7 +83,7 @@ public class ImageUtil {
    */
   public IPixel[][] getPixels() {
     IPixel[][] returnArray = new Pixel[width][height];
-    IPixel reference = new Pixel(0, 0, 0);
+    IPixel reference = new Pixel( 0, 0, 0);
     for(int i = 0; i < imagePixels.length; i++) {
       for(int j = 0; i < imagePixels[i].length; i++) {
         reference = imagePixels[i][j];

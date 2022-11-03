@@ -5,8 +5,6 @@ package imageInfo;
  */
 public interface IPixel {
 
-  //value, luma, and intensity??
-
   /**
    * Get the maximum of the three components.
    * @return int the maximum of the three components
@@ -14,16 +12,16 @@ public interface IPixel {
   public int getValue();
 
   /**
-   * Get the average of the three components.
-   * @return double returns the average of the three components
-   */
-  public double getLuma();
-
-  /**
    * Gets the weighted sum of the components.
    * @return double the weighted sum
    */
-  public double getIntensity();
+  public int getIntensity();
+
+  /**
+   * Get the average of the three components.
+   * @return double returns the average of the three components
+   */
+  public int getLuma();
 
   /**
    * Get red value of a pixel.
