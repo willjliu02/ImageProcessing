@@ -3,21 +3,28 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
+import imageInfo.BasicImage;
+import imageInfo.IPixel;
+import imageInfo.IImage;
 import imageInfo.ImageUtil;
 import imageInfo.Pixel;
 
-public class ImageProcessorModel implements IModel {
+public class ImageProcessorModel implements IImageProcessor {
 
-  private Map<String, ImageUtil> images;
+  private Map<String, IImage> images;
 
   public ImageProcessorModel() {
-    images = new HashMap<>();
+    images = new HashMap<String, IImage>();
   }
 
   @Override
   public void loadImagePathAndName(String imagePath, String imageName) {
     ImageUtil processImage = new ImageUtil(imagePath);
-    images.put(imageName, processImage);
+    IImage image = new BasicImage(processImage.getWidth(),
+                                  processImage.getHeight(),
+                                  processImage.getMaxValue(),
+                                  processImage.getPixels());
+    images.put(imageName, image);
   }
 
   @Override
@@ -29,10 +36,11 @@ public class ImageProcessorModel implements IModel {
   // SURE IF PROCESS WAS RIGHT HAHA WE CAN UPDATE
   @Override
   public void focusComponent(String component, String imageName, String destImageName) {
-    ImageUtil currentImage = images.get(imageName);
-    Pixel[][] oldPixels = currentImage.getPixels();
-    Pixel[][] newPixels = new Pixel[currentImage.getWidth()][currentImage.getHeight()];
-    Pixel currentPixel = new Pixel(0, 0, 0);
+    IImage currentImage = images.get(imageName);
+    IPixel[][] oldPixels = currentImage.getPixels();
+    IPixel[][] newPixels = new Pixel[currentImage.getWidth()][currentImage.getHeight()];
+    IImage newImage = new BasicImage(currentImage);
+    IPixel currentPixel = new Pixel(0, 0, 0);
     int maxRed = -1;
 
     for(int i = 0; i < oldPixels.length; i++) {

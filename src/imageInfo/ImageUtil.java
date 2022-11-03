@@ -1,6 +1,5 @@
 package imageInfo;
 
-import java.awt.*;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileInputStream;
@@ -14,7 +13,7 @@ public class ImageUtil {
   private static int width;
   private static int height;
   private static int maxValue;
-  private static Pixel[][] imagePixels;
+  private static IPixel[][] imagePixels;
 
   // tried to set this up to read info from a given file (first constructor) or set the info
   // from a file we made (second constructor) ??
@@ -89,9 +88,9 @@ public class ImageUtil {
    * Returns a copy of the current pixels in the array.
    * @return pixel array of the pixels in the image
    */
-  public Pixel[][] getPixels() {
-    Pixel[][] returnArray = new Pixel[width][height];
-    Pixel reference = new Pixel(0, 0, 0);
+  public IPixel[][] getPixels() {
+    IPixel[][] returnArray = new Pixel[width][height];
+    IPixel reference = new Pixel(0, 0, 0);
     for(int i = 0; i < imagePixels.length; i++) {
       for(int j = 0; i < imagePixels[i].length; i++) {
         reference = imagePixels[i][j];

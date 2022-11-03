@@ -8,5 +8,6 @@ public interface IController {
      * @throws IllegalStateException if the controller cannot successfully
      *                               read input or transmit output.
      */
-    void processImage() throws IllegalStateException;
+    public void processImage() throws IllegalStateException;
+
 }

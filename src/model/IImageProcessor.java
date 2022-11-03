@@ -1,9 +1,11 @@
 package model;
 
+import imageInfo.IPixel;
+
 /**
  * Represents an ImageProcessor.
  */
-public interface IModel {
+public interface IImageProcessor extends IImageProcessorState {
 
   /**
    * Loads an image from the path and saves it with the given name.
