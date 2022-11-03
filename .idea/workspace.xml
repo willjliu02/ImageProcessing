@@ -5,8 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Comment updates">
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/IController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageInfo/BasicImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/BasicImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageInfo/IImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/IImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageInfo/IImageState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/IImageState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageInfo/IPixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/IPixel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/ImageUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageInfo/Pixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/Pixel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Brighten.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Brighten.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FlipImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlipImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FocusComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FocusComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/MockImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/MockImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockImageProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/SaveImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SaveImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/BasicImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BasicImageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/BrightenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BrightenTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/FlipImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FlipImageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/FocusComponentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FocusComponentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/PixelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/PixelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/SaveImageMock.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/SaveImageMock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/SaveImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/SaveImageTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +93,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SaveImageTest">
+  <component name="RunManager" selected="JUnit.BasicImageTest.testValues">
     <configuration name="BasicImageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
@@ -121,11 +144,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BasicImageTest.testValues" />
+        <item itemvalue="JUnit.BasicImageTest" />
         <item itemvalue="JUnit.SaveImageTest" />
         <item itemvalue="JUnit.SaveImageTest.testImageSaving" />
         <item itemvalue="JUnit.SaveImageTest.testImageSavingExceptions" />
-        <item itemvalue="JUnit.BasicImageTest.testValues" />
-        <item itemvalue="JUnit.BasicImageTest" />
       </list>
     </recent_temporary>
   </component>

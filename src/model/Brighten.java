@@ -1,9 +1,9 @@
 package model;
 
-import imageInfo.BasicImage;
-import imageInfo.IImage;
-import imageInfo.IPixel;
-import imageInfo.Pixel;
+import imageinfo.BasicImage;
+import imageinfo.IImage;
+import imageinfo.IPixel;
+import imageinfo.Pixel;
 
 /**
  * Process for brightening an image.

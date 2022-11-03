@@ -1,5 +1,10 @@
-package imageInfo;
+package imageinfo;
 
+import java.util.Objects;
+
+/**
+ * Represents a Pixel of an Image.
+ */
 public class Pixel implements IPixel {
 
   private final int r;
@@ -100,6 +105,11 @@ public class Pixel implements IPixel {
               && this.intensity == ((Pixel) o).intensity;
     }
     return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(r, g, b, value, luma, intensity);
   }
 
   @Override

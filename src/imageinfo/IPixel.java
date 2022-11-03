@@ -1,4 +1,4 @@
-package imageInfo;
+package imageinfo;
 
 /**
  * Represents the information behind a Pixel.

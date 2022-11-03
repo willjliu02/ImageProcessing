@@ -1,9 +1,9 @@
 import org.junit.Test;
 
-import imageInfo.BasicImage;
-import imageInfo.IImage;
-import imageInfo.IPixel;
-import imageInfo.Pixel;
+import imageinfo.BasicImage;
+import imageinfo.IImage;
+import imageinfo.IPixel;
+import imageinfo.Pixel;
 import model.Brighten;
 
 import static org.junit.Assert.assertEquals;

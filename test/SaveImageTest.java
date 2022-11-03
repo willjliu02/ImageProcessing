@@ -1,17 +1,17 @@
+import imageinfo.BasicImage;
+import imageinfo.IImage;
+import imageinfo.IPixel;
+import imageinfo.Pixel;
+
 import org.junit.Test;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
-import imageInfo.BasicImage;
-import imageInfo.IImage;
-import imageInfo.IPixel;
-import imageInfo.Pixel;
 import model.ImageProcessorModel;
 import model.SaveImage;
-import model.SaveImageMock;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
 
 /**
  * Tests the save image command.
@@ -25,7 +25,7 @@ public class SaveImageTest {
   /**
    * Set values to create an image with.
    */
-  public void setValues() {
+  private void setValues() {
     save = new SaveImage("ourImages/updatedImage.ppm");
     saveMock = new SaveImageMock("ourImages/updatedImage.ppm");
     pixels = new Pixel[5][5];
@@ -47,10 +47,10 @@ public class SaveImageTest {
 
     IImage resultImage = modelTest.getImage("loadedImage");
 
-    assertEquals(basic.getWidth(),resultImage.getWidth());
-    assertEquals(basic.getHeight(),resultImage.getHeight());
-    assertEquals(basic.getMaxValue(),resultImage.getMaxValue());
-    assertEquals(basic.getPixels(),resultImage.getPixels());
+    assertEquals(basic.getWidth(), resultImage.getWidth());
+    assertEquals(basic.getHeight(), resultImage.getHeight());
+    assertEquals(basic.getMaxValue(), resultImage.getMaxValue());
+    assertEquals(basic.getPixels(), resultImage.getPixels());
   }
 
   @Test
@@ -59,8 +59,7 @@ public class SaveImageTest {
     try {
       saveMock.apply(basic);
       fail("Unable to write to file.");
-    }
-    catch(IllegalStateException e) {
+    } catch (IllegalStateException e) {
       assertNotNull(e);
     }
   }

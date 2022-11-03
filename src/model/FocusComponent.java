@@ -1,9 +1,9 @@
 package model;
 
-import imageInfo.BasicImage;
-import imageInfo.IImage;
-import imageInfo.IPixel;
-import imageInfo.Pixel;
+import imageinfo.BasicImage;
+import imageinfo.IImage;
+import imageinfo.IPixel;
+import imageinfo.Pixel;
 
 /**
  * Creates a greyscale image using one component of the image.
@@ -12,7 +12,7 @@ public class FocusComponent implements ImageCommand {
   private final String component;
 
   /**
-   * Constructs a command to create a greyscale image based on a certain component
+   * Constructs a command to create a greyscale image based on a certain component.
    *
    * @param component to make the greyscale of
    * @throws new IllegalArgumentException if the component provided is invalid.

@@ -1,4 +1,4 @@
-package imageInfo;
+package imageinfo;
 
 import model.ImageCommand;
 

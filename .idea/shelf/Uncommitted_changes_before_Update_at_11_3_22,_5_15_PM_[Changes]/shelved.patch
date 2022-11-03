@@ -1,0 +1,180 @@
+Index: test/ImageProcessorModelTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import static org.junit.Assert.*;\n\npublic class ImageProcessorModelTest {\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/test/ImageProcessorModelTest.java b/test/ImageProcessorModelTest.java
+--- a/test/ImageProcessorModelTest.java	(revision 33499db78bcf61f6c41f7f8f7cb2184f5888c700)
++++ b/test/ImageProcessorModelTest.java	(date 1667510071088)
+@@ -1,5 +1,29 @@
+-import static org.junit.Assert.*;
++import org.junit.Test;
++
++import model.IImageProcessor;
++import model.ImageProcessorModel;
++import model.MockImageCommand;
++
++import static org.junit.Assert.assertEquals;
+ 
+ public class ImageProcessorModelTest {
++  private IImageProcessor model;
++  private void initCond() {
++    this.model = new ImageProcessorModel();
++  }
++  @Test
++  public void testApplyCommandException() {
++    this.initCond();
++    this.model.applyCommand("random image",
++            new MockImageCommand(null),
++            "random");
++  }
+ 
++  @Test
++  public void testApplyCommandException() {
++    this.initCond();
++    this.model.applyCommand("random image",
++            new MockImageCommand(null),
++            "random");
++  }
+ }
+\ No newline at end of file
+Index: src/model/ImageProcessorModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\n\nimport java.util.HashMap;\nimport java.util.Map;\n\nimport imageInfo.BasicImage;\nimport imageInfo.IImage;\nimport imageInfo.ImageUtil;\n\n/**\n * Represents an Image Processor.\n */\npublic class ImageProcessorModel implements IImageProcessor {\n\n  private final Map<String, IImage> images;\n\n  /**\n   * Constructs a new Image Processor model.\n   */\n  public ImageProcessorModel() {\n    images = new HashMap<String, IImage>();\n  }\n\n  @Override\n  public void applyCommand(String imageName, ImageCommand command, String newImageName)\n          throws IllegalArgumentException {\n\n    if (!this.images.containsKey(imageName)) {\n      throw new IllegalArgumentException(imageName + \" has not been loaded.\");\n    }\n\n    this.images.put(newImageName,\n            command.apply(this.images.get(imageName)));\n  }\n\n  @Override\n  public void loadImage(String imagePath, String imageName) {\n    ImageUtil processImage = new ImageUtil(imagePath);\n    IImage image = new BasicImage(processImage.getWidth(),\n            processImage.getHeight(),\n            processImage.getMaxValue(),\n            processImage.getPixels());\n    this.images.put(imageName, image);\n  }\n\n  @Override\n  public void saveImage(String imagePath, String imageName) throws IllegalArgumentException {\n    if (!this.images.containsKey(imageName)) {\n      throw new IllegalArgumentException(\"This image has not been loaded, so it cannot be saved.\");\n    }\n    ImageCommand saver = new SaveImage(imagePath);\n    saver.apply(this.images.get(imageName));\n  }\n\n  @Override\n  public IImage getImage(String imageName) {\n    return new BasicImage(this.images.get(imageName));\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/model/ImageProcessorModel.java b/src/model/ImageProcessorModel.java
+--- a/src/model/ImageProcessorModel.java	(revision 33499db78bcf61f6c41f7f8f7cb2184f5888c700)
++++ b/src/model/ImageProcessorModel.java	(date 1667510011156)
+@@ -27,6 +27,8 @@
+ 
+     if (!this.images.containsKey(imageName)) {
+       throw new IllegalArgumentException(imageName + " has not been loaded.");
++    } else if (command == null) {
++      throw new IllegalArgumentException("There must be a command");
+     }
+ 
+     this.images.put(newImageName,
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"917f784c-d3d5-4a0c-b5c2-613eef66990b\" name=\"Changes\" comment=\"I added to strings to the commands. A save and load message to the processor, and tested them with them mock.\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/model/IImageProcessor.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/model/IImageProcessor.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/model/ImageProcessorModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/model/ImageProcessorModel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/test/BasicImageTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/test/BasicImageTest.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/test/BrightenTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/test/BrightenTest.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/test/FlipImageTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/test/FlipImageTest.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Interface\" />\n        <option value=\"JUnit5 Test Class\" />\n        <option value=\"JUnit4 Test Class\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2GxdxkRGmNBbrNSgGv2lFGSRTia\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"Downloaded.Files.Path.Enabled\": \"false\",\n    \"Repository.Attach.Annotations\": \"false\",\n    \"Repository.Attach.JavaDocs\": \"false\",\n    \"Repository.Attach.Sources\": \"false\",\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\",\n    \"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary\": \"JUnit4\",\n    \"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4\": \"\",\n    \"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5\": \"\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"project.structure.last.edited\": \"Modules\",\n    \"project.structure.proportion\": \"0.0\",\n    \"project.structure.side.proportion\": \"0.0\",\n    \"settings.editor.selected.configurable\": \"project.propVCSSupport.Mappings\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/images\" />\n    </key>\n    <key name=\"CreateTestDialog.Recents.Supers\">\n      <recent name=\"\" />\n    </key>\n    <key name=\"CreateTestDialog.RecentsKey\">\n      <recent name=\"\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"JUnit.ImageProcessorControllerTest\">\n    <configuration name=\"ImageProcessorControllerTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"ImageProcessorControllerTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"ImageProcessorControllerTest.testProcessHorizontalFlip\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"ImageProcessorControllerTest\" />\n      <option name=\"METHOD_NAME\" value=\"testProcessHorizontalFlip\" />\n      <option name=\"TEST_OBJECT\" value=\"method\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"ImageProcessorControllerTest.testProcessLoad\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"ImageProcessorControllerTest\" />\n      <option name=\"METHOD_NAME\" value=\"testProcessLoad\" />\n      <option name=\"TEST_OBJECT\" value=\"method\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"ImageProcessorControllerTest.testProcessSave\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"ImageProcessorControllerTest\" />\n      <option name=\"METHOD_NAME\" value=\"testProcessSave\" />\n      <option name=\"TEST_OBJECT\" value=\"method\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"PixelTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"PixelTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"JUnit.ImageProcessorControllerTest\" />\n        <item itemvalue=\"JUnit.ImageProcessorControllerTest.testProcessLoad\" />\n        <item itemvalue=\"JUnit.ImageProcessorControllerTest.testProcessSave\" />\n        <item itemvalue=\"JUnit.ImageProcessorControllerTest.testProcessHorizontalFlip\" />\n        <item itemvalue=\"JUnit.PixelTest\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"917f784c-d3d5-4a0c-b5c2-613eef66990b\" name=\"Changes\" comment=\"\" />\n      <created>1667334424469</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1667334424469</updated>\n      <workItem from=\"1667334429430\" duration=\"1000\" />\n      <workItem from=\"1667336156401\" duration=\"13511000\" />\n      <workItem from=\"1667451964545\" duration=\"1797000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.\">\n      <created>1667369821089</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667369821089</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.\">\n      <created>1667409714613</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667409714613</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Comment updates\">\n      <created>1667457509881</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667457509881</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Made tester classes for everything that has to be tested.\">\n      <created>1667499840776</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667499840776</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Updated the FocusComponentTest and am startign the PixelTest\">\n      <created>1667502106838</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667502106838</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Finished writing PixelTest. Also fixed getMax in Pixel\">\n      <created>1667502923868</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667502923868</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"I  added load and save as commands to the controller.\">\n      <created>1667503060304</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667503060304</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"I added to strings to the commands. A save and load message to the processor, and tested them with them mock.\">\n      <created>1667506497735</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667506497735</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"9\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\n                <map>\n                  <entry key=\"Show.Git.Branches\" value=\"true\" />\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.\" />\n    <MESSAGE value=\"Comment updates\" />\n    <MESSAGE value=\"Made tester classes for everything that has to be tested.\" />\n    <MESSAGE value=\"Updated the FocusComponentTest and am startign the PixelTest\" />\n    <MESSAGE value=\"Finished writing PixelTest. Also fixed getMax in Pixel\" />\n    <MESSAGE value=\"I  added load and save as commands to the controller.\" />\n    <MESSAGE value=\"I added to strings to the commands. A save and load message to the processor, and tested them with them mock.\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"I added to strings to the commands. A save and load message to the processor, and tested them with them mock.\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\n          <url>file://$PROJECT_DIR$/test/FocusComponentTest.java</url>\n          <line>141</line>\n          <option name=\"timeStamp\" value=\"4\" />\n        </line-breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 33499db78bcf61f6c41f7f8f7cb2184f5888c700)
++++ b/.idea/workspace.xml	(date 1667510011639)
+@@ -4,13 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="I added to strings to the commands. A save and load message to the processor, and tested them with them mock.">
++    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="I added exceptions that were supposed to be thrown and reformatted some test files.">
++      <change afterPath="$PROJECT_DIR$/src/model/MockImageCommand.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/imageInfo/Pixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/Pixel.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/test/BasicImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BasicImageTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/test/BrightenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BrightenTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/test/FlipImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FlipImageTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/model/SaveImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SaveImage.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -199,7 +199,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1667506497735</updated>
+     </task>
+-    <option name="localTasksCounter" value="9" />
++    <task id="LOCAL-00009" summary="I added exceptions that were supposed to be thrown and reformatted some test files.">
++      <created>1667506979261</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1667506979261</updated>
++    </task>
++    <option name="localTasksCounter" value="10" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -230,7 +237,8 @@
+     <MESSAGE value="Finished writing PixelTest. Also fixed getMax in Pixel" />
+     <MESSAGE value="I  added load and save as commands to the controller." />
+     <MESSAGE value="I added to strings to the commands. A save and load message to the processor, and tested them with them mock." />
+-    <option name="LAST_COMMIT_MESSAGE" value="I added to strings to the commands. A save and load message to the processor, and tested them with them mock." />
++    <MESSAGE value="I added exceptions that were supposed to be thrown and reformatted some test files." />
++    <option name="LAST_COMMIT_MESSAGE" value="I added exceptions that were supposed to be thrown and reformatted some test files." />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: src/imageInfo/Pixel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package imageInfo;\n\npublic class Pixel implements IPixel {\n\n  private final int r;\n  private final int g;\n  private final int b;\n\n  private final int value;\n\n  private final int luma;\n\n  private final int intensity;\n\n  /**\n   * Assigns red, green, and blue values to a pixel.\n   *\n   * @param r red value to assign\n   * @param g green value to assign\n   * @param b blue value to assign\n   */\n  public Pixel(int r, int g, int b) {\n    if (!this.validVal(r) || !this.validVal(g) || !this.validVal(b)) {\n      throw new IllegalArgumentException(\"Invalid RGB values.\");\n    }\n    this.r = r;\n    this.g = g;\n    this.b = b;\n\n    this.value = this.getMax(this.r, this.g, this.b);\n    this.intensity = (r + g + b) / 3;\n    this.luma = (int) (0.2126 * r + 0.7152 * g + 0.0722 * b);\n  }\n\n  private boolean validVal(int value) {\n    return value >= 0 && value <= 255;\n  }\n\n  /**\n   * Returns the max value between the r, g, b values provided.\n   *\n   * @param r red value\n   * @param g green value\n   * @param b blue value\n   * @return max value\n   */\n  protected int getMax(int r, int g, int b) {\n    int max = r;\n    if (g > max) {\n      max = g;\n    }\n    if (b > max) {\n      max = b;\n    }\n    return max;\n  }\n\n  @Override\n  public int getValue() {\n    return this.value;\n  }\n\n  @Override\n  public int getIntensity() {\n    return this.intensity;\n  }\n\n  @Override\n  public int getLuma() {\n    return this.luma;\n  }\n\n  @Override\n  public int getR() {\n    return this.r;\n  }\n\n  @Override\n  public int getG() {\n    return this.g;\n  }\n\n  @Override\n  public int getB() {\n    return this.b;\n  }\n\n  @Override\n  public boolean equals(Object o) {\n    if (o == this) {\n      return true;\n    }\n\n    if (o instanceof Pixel) {\n      return this.r == ((Pixel) o).r\n              && this.g == ((Pixel) o).g\n              && this.b == ((Pixel) o).b\n              && this.luma == ((Pixel) o).luma\n              && this.value == ((Pixel) o).value\n              && this.intensity == ((Pixel) o).intensity;\n    }\n    return false;\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/imageInfo/Pixel.java b/src/imageInfo/Pixel.java
+--- a/src/imageInfo/Pixel.java	(revision 33499db78bcf61f6c41f7f8f7cb2184f5888c700)
++++ b/src/imageInfo/Pixel.java	(date 1667509654081)
+@@ -101,4 +101,9 @@
+     }
+     return false;
+   }
++
++  @Override
++  public String toString() {
++    return "(" + this.r + " " + this.g + " " + this.b + ")";
++  }
+ }
+Index: src/model/MockImageCommand.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/model/MockImageCommand.java b/src/model/MockImageCommand.java
+new file mode 100644
+--- /dev/null	(date 1667509798055)
++++ b/src/model/MockImageCommand.java	(date 1667509798055)
+@@ -0,0 +1,34 @@
++package model;
++
++import java.io.IOException;
++
++import imageInfo.IImage;
++import imageInfo.IPixel;
++
++public class MockImageCommand implements ImageCommand {
++  private Appendable log;
++
++  public MockImageCommand(Appendable log) {
++    this.log = log;
++  }
++
++  @Override
++  public IImage apply(IImage currentImage) {
++    try {
++      this.log.append("Width: " + currentImage.getWidth() + "\n");
++      this.log.append("Height: " + currentImage.getHeight() + "\n");
++      this.log.append("Max Value: " + currentImage.getMaxValue() + "\n");
++      IPixel[][] pixel = currentImage.getPixels();
++      for (int r = 0; r < currentImage.getHeight(); r++) {
++        for (int c = 0; c < currentImage.getWidth(); c++) {
++          this.log.append(pixel[r][c].toString() + " ");
++        }
++        this.log.append("\n");
++      }
++
++      return null;
++    } catch (IOException e) {
++      throw new IllegalStateException("Unable to write to the file.");
++    }
++  }
++}

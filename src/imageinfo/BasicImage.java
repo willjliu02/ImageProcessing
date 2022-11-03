@@ -1,4 +1,4 @@
-package imageInfo;
+package imageinfo;
 
 import model.ImageCommand;
 
@@ -13,9 +13,9 @@ public class BasicImage implements IImage {
   private final int maxVal;
 
   /**
-   * Creates a basic image based on a provided image
+   * Creates a basic image based on a provided image.
    *
-   * @param image
+   * @param image another IImage that will be converted to a BasicImage.
    */
   public BasicImage(IImage image) {
     this.width = image.getWidth();
@@ -25,12 +25,14 @@ public class BasicImage implements IImage {
     IPixel[][] otherPixels = image.getPixels();
     this.pixels = new IPixel[height][width];
     for (int r = 0; r < height; r++) {
-      if (width >= 0) System.arraycopy(otherPixels[r], 0, this.pixels[r], 0, width);
+      if (width >= 0) {
+        System.arraycopy(otherPixels[r], 0, this.pixels[r], 0, width);
+      }
     }
   }
 
   /**
-   * Creates a basic image with provided image information
+   * Creates a basic image with provided image information.
    *
    * @param width    width of the image
    * @param height   height of the image
@@ -71,32 +73,5 @@ public class BasicImage implements IImage {
   @Override
   public int getMaxValue() {
     return this.maxVal;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-
-    if (o instanceof BasicImage) {
-      if (this.width != ((BasicImage) o).width
-      || this.height != ((BasicImage) o).height
-      || this.maxVal != ((BasicImage) o).maxVal) {
-        return false;
-      }
-
-      for (int r = 0; r < this.height; r++) {
-        for (int c = 0; c < this.width; c++) {
-          if (this.pixels[r][c] != ((BasicImage) o).pixels[r][c]) {
-            return false;
-          }
-        }
-      }
-
-      return true;
-    }
-
-    return false;
   }
 }

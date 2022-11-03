@@ -1,7 +1,7 @@
-package imageInfo;
+package imageinfo;
 
 /**
- * Represents an immutable Image
+ * Represents an immutable Image.
  */
 public interface IImageState {
   /**

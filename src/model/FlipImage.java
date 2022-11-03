@@ -1,12 +1,12 @@
 package model;
 
-import imageInfo.BasicImage;
-import imageInfo.IImage;
-import imageInfo.IPixel;
-import imageInfo.Pixel;
+import imageinfo.BasicImage;
+import imageinfo.IImage;
+import imageinfo.IPixel;
+import imageinfo.Pixel;
 
 /**
- * Represents a command to flip the desired image across the
+ * Represents a command to flip the desired image across the axis.
  */
 public class FlipImage implements ImageCommand {
 

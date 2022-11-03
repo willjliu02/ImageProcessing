@@ -1,10 +1,6 @@
-package model;
+import imageinfo.IImage;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
-import imageInfo.IImage;
-import imageInfo.IPixel;
+import model.ImageCommand;
 
 /**
  * Represents a command that saves an IImage.
@@ -18,7 +14,7 @@ public class SaveImageMock implements ImageCommand {
 
   @Override
   public IImage apply(IImage currentImage) {
-      throw new IllegalStateException("Unable to write to file.");
+    throw new IllegalStateException("Unable to write to file.");
   }
 
   @Override

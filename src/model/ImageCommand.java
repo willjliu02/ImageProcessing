@@ -1,6 +1,6 @@
 package model;
 
-import imageInfo.IImage;
+import imageinfo.IImage;
 
 /**
  * Applies an action onto an image.

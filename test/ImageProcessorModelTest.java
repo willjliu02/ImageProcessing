@@ -1,8 +1,8 @@
 import org.junit.Test;
 
-import imageInfo.BasicImage;
-import imageInfo.IImage;
-import imageInfo.ImageUtil;
+import imageinfo.BasicImage;
+import imageinfo.IImage;
+import imageinfo.ImageUtil;
 import model.IImageProcessor;
 import model.ImageProcessorModel;
 import model.MockImageCommand;
@@ -15,6 +15,7 @@ import static org.junit.Assert.fail;
  */
 public class ImageProcessorModelTest {
   private IImageProcessor model;
+
   private void initCond() {
     this.model = new ImageProcessorModel();
   }

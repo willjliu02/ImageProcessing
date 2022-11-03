@@ -1,0 +1,291 @@
+Index: test/ImageProcessorModelTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import static org.junit.Assert.*;\n\npublic class ImageProcessorModelTest {\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/test/ImageProcessorModelTest.java b/test/ImageProcessorModelTest.java
+--- a/test/ImageProcessorModelTest.java	(revision 5a96f23145a016bc461015559cd45599a5bcb221)
++++ b/test/ImageProcessorModelTest.java	(date 1667512201107)
+@@ -1,5 +1,93 @@
+-import static org.junit.Assert.*;
++import org.junit.Test;
++
++import imageInfo.BasicImage;
++import imageInfo.IImage;
++import imageInfo.ImageUtil;
++import model.IImageProcessor;
++import model.ImageProcessorModel;
++import model.MockImageCommand;
+ 
++import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.fail;
++
++/**
++ * Tests if the ImageProcessorModel works correctly.
++ */
+ public class ImageProcessorModelTest {
++  private IImageProcessor model;
++  private void initCond() {
++    this.model = new ImageProcessorModel();
++  }
++
++  @Test
++  public void testHasImage() {
++    this.initCond();
++    assertEquals(false, this.model.hasImage("twoBytwo"));
++    this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
++    assertEquals(true, this.model.hasImage("twoBytwo"));
++  }
++
++  @Test
++  public void testLoad() {
++    this.initCond();
++    try {
++      this.model.applyCommand("twoBytwo",
++              new MockImageCommand(null),
++              "random");
++      fail();
++    } catch (IllegalArgumentException e) {
++      this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
++      this.model.applyCommand("twoBytwo",
++              new MockImageCommand(null),
++              "random");
++      assertEquals(true, this.model.hasImage("twoBytwo"));
++    }
++  }
++
++  @Test(expected = IllegalArgumentException.class)
++  public void testApplyCommandImageDoesntExistException() {
++    this.initCond();
++    this.model.applyCommand("random image",
++            new MockImageCommand(null),
++            "random");
++  }
++
++  @Test(expected = IllegalArgumentException.class)
++  public void testApplyCommandNullException() {
++    this.initCond();
++    this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
++    this.model.applyCommand("twoBytwo",
++            new MockImageCommand(null),
++            "random");
++  }
++
++  @Test
++  public void testApplyCommand() {
++    this.initCond();
++    Appendable log = new StringBuilder();
++    this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
++    this.model.applyCommand("twoBytwo", new MockImageCommand(log), "twoByTwo");
++    String expected = "Width: 2\n"
++                    + "Height: 2\n"
++                    + "Max Value: 255\n"
++                    + "(0 0 0) (1 1 1)\n"
++                    + "(2 2 2) (3 3 3)\n";
++
++    assertEquals(expected, log.toString());
++  }
++
++  @Test
++  public void testGetImage() {
++    ImageUtil processImage = new ImageUtil("ourImages/twoByTwo.ppm");
++    IImage expectedImage = new BasicImage(processImage.getWidth(),
++            processImage.getHeight(),
++            processImage.getMaxValue(),
++            processImage.getPixels());
++    this.initCond();
++    this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
++
++    assertEquals(expectedImage, this.model.getImage("twoBytwo"));
++  }
++
+ 
+ }
+\ No newline at end of file
+Index: src/model/IImageProcessor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\n\n/**\n * Represents an ImageProcessor.\n */\npublic interface IImageProcessor {\n\n  /**\n   * Applies the command onto the desired IImage and saves it under the newImageName in the map.\n   *\n   * @param imageName    the desired IImage nap\n   * @param command      the desired command\n   * @param newImageName the newImageName\n   * @throws IllegalArgumentException if imageName has not been loaded into the map\n   */\n  void applyCommand(String imageName, ImageCommand command, String newImageName)\n          throws IllegalArgumentException;\n\n  /**\n   * Loads an image with the given path into the map with the given name.\n   *\n   * @param imagePath the path of the image\n   * @param imageName the name of the image in the map\n   */\n  void loadImage(String imagePath, String imageName);\n\n  /**\n   * Saves an image with the given name in the map to the given path.\n   *\n   * @param imagePath the path of the image\n   * @param imageName the name of the image in the map\n   * @throws IllegalArgumentException if the file that is trying to be saved has not been loaded.\n   */\n  void saveImage(String imagePath, String imageName) throws IllegalArgumentException;\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/model/IImageProcessor.java b/src/model/IImageProcessor.java
+--- a/src/model/IImageProcessor.java	(revision 5a96f23145a016bc461015559cd45599a5bcb221)
++++ b/src/model/IImageProcessor.java	(date 1667511343092)
+@@ -1,5 +1,7 @@
+ package model;
+ 
++import imageInfo.IImage;
++
+ /**
+  * Represents an ImageProcessor.
+  */
+@@ -16,6 +18,21 @@
+   void applyCommand(String imageName, ImageCommand command, String newImageName)
+           throws IllegalArgumentException;
+ 
++  /**
++   * Retrieves the image with that desires name from the processor.
++   * @param imageName the name of the image that is to be retrieved
++   * @return IImage the image that is desired
++   * @throws IllegalArgumentException thrown if the imageName has not been loaded
++   */
++  IImage getImage(String imageName) throws IllegalArgumentException;
++
++  /**
++   * Has the image been loaded?
++   * @param imageName the image that is to be retrieved
++   * @return boolean if the image is loaded in the processor
++   */
++  boolean hasImage(String imageName);
++
+   /**
+    * Loads an image with the given path into the map with the given name.
+    *
+Index: src/model/ImageProcessorModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\n\nimport java.util.HashMap;\nimport java.util.Map;\n\nimport imageInfo.BasicImage;\nimport imageInfo.IImage;\nimport imageInfo.ImageUtil;\n\n/**\n * Represents an Image Processor.\n */\npublic class ImageProcessorModel implements IImageProcessor {\n\n  private final Map<String, IImage> images;\n\n  /**\n   * Constructs a new Image Processor model.\n   */\n  public ImageProcessorModel() {\n    images = new HashMap<String, IImage>();\n  }\n\n  @Override\n  public void applyCommand(String imageName, ImageCommand command, String newImageName)\n          throws IllegalArgumentException {\n\n    if (!this.images.containsKey(imageName)) {\n      throw new IllegalArgumentException(imageName + \" has not been loaded.\");\n    }\n\n    this.images.put(newImageName,\n            command.apply(this.images.get(imageName)));\n  }\n\n  @Override\n  public void loadImage(String imagePath, String imageName) {\n    ImageUtil processImage = new ImageUtil(imagePath);\n    IImage image = new BasicImage(processImage.getWidth(),\n            processImage.getHeight(),\n            processImage.getMaxValue(),\n            processImage.getPixels());\n    this.images.put(imageName, image);\n  }\n\n  @Override\n  public void saveImage(String imagePath, String imageName) throws IllegalArgumentException {\n    if (!this.images.containsKey(imageName)) {\n      throw new IllegalArgumentException(\"This image has not been loaded, so it cannot be saved.\");\n    }\n    ImageCommand saver = new SaveImage(imagePath);\n    saver.apply(this.images.get(imageName));\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/model/ImageProcessorModel.java b/src/model/ImageProcessorModel.java
+--- a/src/model/ImageProcessorModel.java	(revision 5a96f23145a016bc461015559cd45599a5bcb221)
++++ b/src/model/ImageProcessorModel.java	(date 1667512361873)
+@@ -27,12 +27,27 @@
+ 
+     if (!this.images.containsKey(imageName)) {
+       throw new IllegalArgumentException(imageName + " has not been loaded.");
++    } else if (command == null) {
++      throw new IllegalArgumentException("There must be a command");
+     }
+ 
+     this.images.put(newImageName,
+             command.apply(this.images.get(imageName)));
+   }
+ 
++  @Override
++  public IImage getImage(String imageName) throws IllegalArgumentException {
++    if (!this.hasImage(imageName)) {
++      throw new IllegalArgumentException("This image has not been loaded.");
++    }
++    return this.images.get(imageName);
++  }
++
++  @Override
++  public boolean hasImage(String imageName) {
++    return this.images.containsKey(imageName);
++  }
++
+   @Override
+   public void loadImage(String imagePath, String imageName) {
+     ImageUtil processImage = new ImageUtil(imagePath);
+Index: src/imageInfo/Pixel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package imageInfo;\n\npublic class Pixel implements IPixel {\n\n  private final int r;\n  private final int g;\n  private final int b;\n\n  private final int value;\n\n  private final int luma;\n\n  private final int intensity;\n\n  /**\n   * Assigns red, green, and blue values to a pixel.\n   *\n   * @param r red value to assign\n   * @param g green value to assign\n   * @param b blue value to assign\n   */\n  public Pixel(int r, int g, int b) {\n    if (!this.validVal(r) || !this.validVal(g) || !this.validVal(b)) {\n      throw new IllegalArgumentException(\"Invalid RGB values.\");\n    }\n    this.r = r;\n    this.g = g;\n    this.b = b;\n\n    this.value = this.getMax(this.r, this.g, this.b);\n    this.intensity = (r + g + b) / 3;\n    this.luma = (int) (0.2126 * r + 0.7152 * g + 0.0722 * b);\n  }\n\n  private boolean validVal(int value) {\n    return value >= 0 && value <= 255;\n  }\n\n  /**\n   * Returns the max value between the r, g, b values provided.\n   *\n   * @param r red value\n   * @param g green value\n   * @param b blue value\n   * @return max value\n   */\n  protected int getMax(int r, int g, int b) {\n    int max = r;\n    if (g > max) {\n      max = g;\n    }\n    if (b > max) {\n      max = b;\n    }\n    return max;\n  }\n\n  @Override\n  public int getValue() {\n    return this.value;\n  }\n\n  @Override\n  public int getIntensity() {\n    return this.intensity;\n  }\n\n  @Override\n  public int getLuma() {\n    return this.luma;\n  }\n\n  @Override\n  public int getR() {\n    return this.r;\n  }\n\n  @Override\n  public int getG() {\n    return this.g;\n  }\n\n  @Override\n  public int getB() {\n    return this.b;\n  }\n\n  @Override\n  public boolean equals(Object o) {\n    if (o == this) {\n      return true;\n    }\n\n    if (o instanceof Pixel) {\n      return this.r == ((Pixel) o).r\n              && this.g == ((Pixel) o).g\n              && this.b == ((Pixel) o).b\n              && this.luma == ((Pixel) o).luma\n              && this.value == ((Pixel) o).value\n              && this.intensity == ((Pixel) o).intensity;\n    }\n    return false;\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/imageInfo/Pixel.java b/src/imageInfo/Pixel.java
+--- a/src/imageInfo/Pixel.java	(revision 5a96f23145a016bc461015559cd45599a5bcb221)
++++ b/src/imageInfo/Pixel.java	(date 1667510120087)
+@@ -101,4 +101,9 @@
+     }
+     return false;
+   }
++
++  @Override
++  public String toString() {
++    return "(" + this.r + " " + this.g + " " + this.b + ")";
++  }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"917f784c-d3d5-4a0c-b5c2-613eef66990b\" name=\"Changes\" comment=\"Comment updates\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/class diagram.png\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/model/IImageProcessor.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/model/IImageProcessor.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/model/IImageProcessorState.java\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/model/ImageProcessorModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/model/ImageProcessorModel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/model/MockImageProcessor.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/model/MockImageProcessor.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/view/TextImageView.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/view/TextImageView.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/test/BasicImageTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/test/BasicImageTest.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/test/BrightenTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/test/BrightenTest.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/test/FlipImageTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/test/FlipImageTest.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/test/FocusComponentTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/test/FocusComponentTest.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/test/ImageProcessorControllerTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/test/ImageProcessorControllerTest.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/test/PixelTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/test/PixelTest.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Interface\" />\n        <option value=\"Class\" />\n        <option value=\"JUnit5 Test Class\" />\n        <option value=\"JUnit4 Test Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2GxdxkRGmNBbrNSgGv2lFGSRTia\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/images\" />\n    </key>\n    <key name=\"CreateTestDialog.Recents.Supers\">\n      <recent name=\"\" />\n    </key>\n    <key name=\"CreateTestDialog.RecentsKey\">\n      <recent name=\"\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"JUnit.BasicImageTest.testValues\">\n    <configuration name=\"BasicImageTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"BasicImageTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"BasicImageTest.testValues\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"BasicImageTest\" />\n      <option name=\"METHOD_NAME\" value=\"testValues\" />\n      <option name=\"TEST_OBJECT\" value=\"method\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"BrightenTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"BrightenTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"FocusComponentTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"FocusComponentTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"FocusComponentTest.testFocusLuma\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"FocusComponentTest\" />\n      <option name=\"METHOD_NAME\" value=\"testFocusLuma\" />\n      <option name=\"TEST_OBJECT\" value=\"method\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"JUnit.BasicImageTest.testValues\" />\n        <item itemvalue=\"JUnit.BasicImageTest\" />\n        <item itemvalue=\"JUnit.FocusComponentTest.testFocusLuma\" />\n        <item itemvalue=\"JUnit.FocusComponentTest\" />\n        <item itemvalue=\"JUnit.BrightenTest\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"917f784c-d3d5-4a0c-b5c2-613eef66990b\" name=\"Changes\" comment=\"\" />\n      <created>1667334424469</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1667334424469</updated>\n      <workItem from=\"1667334429430\" duration=\"1000\" />\n      <workItem from=\"1667336156401\" duration=\"13511000\" />\n      <workItem from=\"1667451964545\" duration=\"1797000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.\">\n      <created>1667369821089</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667369821089</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.\">\n      <created>1667409714613</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667409714613</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Comment updates\">\n      <created>1667457509881</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667457509881</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Made tester classes for everything that has to be tested.\">\n      <created>1667499840776</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667499840776</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Comment updates\">\n      <created>1667508978116</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667508978116</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"6\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\n                <map>\n                  <entry key=\"Show.Git.Branches\" value=\"true\" />\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.\" />\n    <MESSAGE value=\"Made tester classes for everything that has to be tested.\" />\n    <MESSAGE value=\"Comment updates\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Comment updates\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 5a96f23145a016bc461015559cd45599a5bcb221)
++++ b/.idea/workspace.xml	(date 1667511344422)
+@@ -4,20 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Comment updates">
++    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Changed Save image">
++      <change afterPath="$PROJECT_DIR$/src/model/MockImageCommand.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/class diagram.png" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/imageInfo/Pixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/Pixel.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessorState.java" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/model/MockImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockImageProcessor.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/view/TextImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TextImageView.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/test/BasicImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BasicImageTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/test/BrightenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BrightenTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/test/FlipImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FlipImageTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/test/FocusComponentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FocusComponentTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/test/ImageProcessorControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessorControllerTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/test/PixelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/PixelTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -35,6 +28,7 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="PUSH_AUTO_UPDATE" value="true" />
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+Index: src/model/MockImageCommand.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/model/MockImageCommand.java b/src/model/MockImageCommand.java
+new file mode 100644
+--- /dev/null	(date 1667510120100)
++++ b/src/model/MockImageCommand.java	(date 1667510120100)
+@@ -0,0 +1,34 @@
++package model;
++
++import java.io.IOException;
++
++import imageInfo.IImage;
++import imageInfo.IPixel;
++
++public class MockImageCommand implements ImageCommand {
++  private Appendable log;
++
++  public MockImageCommand(Appendable log) {
++    this.log = log;
++  }
++
++  @Override
++  public IImage apply(IImage currentImage) {
++    try {
++      this.log.append("Width: " + currentImage.getWidth() + "\n");
++      this.log.append("Height: " + currentImage.getHeight() + "\n");
++      this.log.append("Max Value: " + currentImage.getMaxValue() + "\n");
++      IPixel[][] pixel = currentImage.getPixels();
++      for (int r = 0; r < currentImage.getHeight(); r++) {
++        for (int c = 0; c < currentImage.getWidth(); c++) {
++          this.log.append(pixel[r][c].toString() + " ");
++        }
++        this.log.append("\n");
++      }
++
++      return null;
++    } catch (IOException e) {
++      throw new IllegalStateException("Unable to write to the file.");
++    }
++  }
++}

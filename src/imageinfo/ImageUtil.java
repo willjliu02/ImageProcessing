@@ -1,11 +1,12 @@
-package imageInfo;
+package imageinfo;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * This class contains utility methods to read a PPM image from file and simply print its contents. Feel free to change this method
+ * This class contains utility methods to read a PPM image from file and simply print its contents.
+ * Feel free to change this method
  * as required.
  */
 public class ImageUtil {
@@ -118,7 +119,10 @@ public class ImageUtil {
     return maxValue;
   }
 
-  //demo main
+  /**
+   * Demos the main.
+   * @param args the arguments to the main.
+   */
   public static void main(String[] args) {
     String filename;
 

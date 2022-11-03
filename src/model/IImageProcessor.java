@@ -1,6 +1,6 @@
 package model;
 
-import imageInfo.IImage;
+import imageinfo.IImage;
 
 /**
  * Represents an ImageProcessor.
@@ -27,7 +27,7 @@ public interface IImageProcessor {
   IImage getImage(String imageName) throws IllegalArgumentException;
 
   /**
-   * Has the image been loaded?
+   * Answers the question has the image been loaded.
    * @param imageName the image that is to be retrieved
    * @return boolean if the image is loaded in the processor
    */

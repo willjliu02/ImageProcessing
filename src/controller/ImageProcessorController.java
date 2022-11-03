@@ -12,9 +12,11 @@ import model.FlipImage;
 import model.FocusComponent;
 import model.IImageProcessor;
 import model.ImageCommand;
-import model.SaveImage;
 import view.IView;
 
+/**
+ * Represents a controller to interact with the ImageProcessor and the view.
+ */
 public class ImageProcessorController implements IController {
 
   private final Map<String, Function<String, ImageCommand>> commands;
@@ -22,6 +24,13 @@ public class ImageProcessorController implements IController {
   private final IView view;
   private final Scanner scan;
 
+  /**
+   * Constructs a controller to interact with the IImageProcessor.
+   *
+   * @param model the ImageProcessor
+   * @param view  the View
+   * @param in    the Readable
+   */
   public ImageProcessorController(IImageProcessor model, IView view, Readable in) {
     try {
       this.model = Objects.requireNonNull(model);
@@ -51,7 +60,7 @@ public class ImageProcessorController implements IController {
     }
   }
 
-  public void applyCommand(String[] command) {
+  private void applyCommand(String[] command) {
     Function<String, ImageCommand> func = this.commands.getOrDefault(command[0].toLowerCase(),
             null);
     if (func == null) {

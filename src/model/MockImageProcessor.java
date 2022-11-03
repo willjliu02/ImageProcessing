@@ -2,12 +2,19 @@ package model;
 
 import java.io.IOException;
 
-import imageInfo.IImage;
+import imageinfo.IImage;
 
+/**
+ * Represents a tester ImageProcessor ot test the inputs from the controller.
+ */
 public class MockImageProcessor implements IImageProcessor {
 
   Appendable log;
 
+  /**
+   * Constructs a MockImageProcessor.
+   * @param log a log to look at the inputs.
+   */
   public MockImageProcessor(Appendable log) {
     this.log = log;
   }

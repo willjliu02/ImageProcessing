@@ -1,5 +1,8 @@
 package controller;
 
+/**
+ * Represents a controller to interact with the ImageProcessor and the View.
+ */
 public interface IController {
 
   /**
@@ -9,5 +12,7 @@ public interface IController {
    *                               read input or transmit output.
    */
   void processImage() throws IllegalStateException;
+
+
 
 }

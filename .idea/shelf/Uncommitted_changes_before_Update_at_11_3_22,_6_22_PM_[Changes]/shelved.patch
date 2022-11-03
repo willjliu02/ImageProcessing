@@ -1,0 +1,244 @@
+Index: test/ImageProcessorModelTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import org.junit.Test;\n\nimport imageInfo.BasicImage;\nimport imageInfo.IImage;\nimport imageInfo.ImageUtil;\nimport model.IImageProcessor;\nimport model.ImageProcessorModel;\nimport model.MockImageCommand;\n\nimport static org.junit.Assert.assertEquals;\nimport static org.junit.Assert.fail;\n\n/**\n * Tests if the ImageProcessorModel works correctly.\n */\npublic class ImageProcessorModelTest {\n  private IImageProcessor model;\n  private void initCond() {\n    this.model = new ImageProcessorModel();\n  }\n\n  @Test\n  public void testHasImage() {\n    this.initCond();\n    assertEquals(false, this.model.hasImage(\"twoBytwo\"));\n    this.model.loadImage(\"ourImages/twoByTwo.ppm\", \"twoBytwo\");\n    assertEquals(true, this.model.hasImage(\"twoBytwo\"));\n  }\n\n  @Test\n  public void testLoad() {\n    this.initCond();\n    try {\n      this.model.applyCommand(\"twoBytwo\",\n              new MockImageCommand(null),\n              \"random\");\n      fail();\n    } catch (IllegalArgumentException e) {\n      this.model.loadImage(\"ourImages/twoByTwo.ppm\", \"twoBytwo\");\n      this.model.applyCommand(\"twoBytwo\",\n              new MockImageCommand(null),\n              \"random\");\n      assertEquals(true, this.model.hasImage(\"twoBytwo\"));\n    }\n  }\n\n  @Test(expected = IllegalArgumentException.class)\n  public void testApplyCommandImageDoesntExistException() {\n    this.initCond();\n    this.model.applyCommand(\"random image\",\n            new MockImageCommand(null),\n            \"random\");\n  }\n\n  @Test(expected = IllegalArgumentException.class)\n  public void testApplyCommandNullException() {\n    this.initCond();\n    this.model.loadImage(\"ourImages/twoByTwo.ppm\", \"twoBytwo\");\n    this.model.applyCommand(\"twoBytwo\",\n            new MockImageCommand(null),\n            \"random\");\n  }\n\n  @Test\n  public void testApplyCommand() {\n    this.initCond();\n    Appendable log = new StringBuilder();\n    this.model.loadImage(\"ourImages/twoByTwo.ppm\", \"twoBytwo\");\n    this.model.applyCommand(\"twoBytwo\", new MockImageCommand(log), \"twoByTwo\");\n    String expected = \"Width: 2\\n\"\n                    + \"Height: 2\\n\"\n                    + \"Max Value: 255\\n\"\n                    + \"(0 0 0) (1 1 1)\\n\"\n                    + \"(2 2 2) (3 3 3)\\n\";\n\n    assertEquals(expected, log.toString());\n  }\n\n  @Test\n  public void testGetImage() {\n    ImageUtil processImage = new ImageUtil(\"ourImages/twoByTwo.ppm\");\n    IImage expectedImage = new BasicImage(processImage.getWidth(),\n            processImage.getHeight(),\n            processImage.getMaxValue(),\n            processImage.getPixels());\n    this.initCond();\n    this.model.loadImage(\"ourImages/twoByTwo.ppm\", \"twoBytwo\");\n\n    assertEquals(expectedImage, this.model.getImage(\"twoBytwo\"));\n  }\n\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/test/ImageProcessorModelTest.java b/test/ImageProcessorModelTest.java
+--- a/test/ImageProcessorModelTest.java	(revision be512075574145cb5eaf5b009bf125d10320b88a)
++++ b/test/ImageProcessorModelTest.java	(date 1667513998378)
+@@ -38,7 +38,7 @@
+     } catch (IllegalArgumentException e) {
+       this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
+       this.model.applyCommand("twoBytwo",
+-              new MockImageCommand(null),
++              new MockImageCommand(new StringBuilder()),
+               "random");
+       assertEquals(true, this.model.hasImage("twoBytwo"));
+     }
+@@ -57,7 +57,7 @@
+     this.initCond();
+     this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
+     this.model.applyCommand("twoBytwo",
+-            new MockImageCommand(null),
++            null,
+             "random");
+   }
+ 
+@@ -70,8 +70,8 @@
+     String expected = "Width: 2\n"
+                     + "Height: 2\n"
+                     + "Max Value: 255\n"
+-                    + "(0 0 0) (1 1 1)\n"
+-                    + "(2 2 2) (3 3 3)\n";
++                    + "(0 0 0) (1 1 1) \n"
++                    + "(2 2 2) (3 3 3) \n";
+ 
+     assertEquals(expected, log.toString());
+   }
+@@ -86,8 +86,27 @@
+     this.initCond();
+     this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
+ 
+-    assertEquals(expectedImage, this.model.getImage("twoBytwo"));
++    IImage resultImage = this.model.getImage("twoBytwo");
++
++    assertEquals(expectedImage.getHeight(), resultImage.getHeight());
++    assertEquals(expectedImage.getWidth(), resultImage.getWidth());
++    assertEquals(expectedImage.getMaxValue(), resultImage.getMaxValue());
++    assertEquals(expectedImage.getPixels(), resultImage.getPixels());
+   }
+ 
++  @Test(expected = IllegalArgumentException.class)
++  public void testSaveException() {
++    this.initCond();
++    this.model.saveImage("random", "random/random");
++  }
+ 
++  @Test
++  public void testSaveSuccessful() {
++    this.initCond();
++    this.model.loadImage("ourImages/twoByTwo.ppm", "twoByTwo");
++    IImage expected = this.model.getImage("twoByTwo");
++    this.model.saveImage("ourImages/newTwoByTwo.ppm", "twoByTwo");
++    this.model.loadImage("ourImages/newTwoByTwo.ppm", "newTwoByTwo");
++    assertEquals(expected, this.model.getImage("newTwoByTwo"));
++  }
+ }
+\ No newline at end of file
+Index: src/imageInfo/ImageUtil.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package imageInfo;\n\nimport java.io.FileInputStream;\nimport java.io.FileNotFoundException;\nimport java.util.Scanner;\n\n/**\n * This class contains utility methods to read a PPM image from file and simply print its contents. Feel free to change this method\n * as required.\n */\npublic class ImageUtil {\n\n  private static int width;\n  private static int height;\n  private static int maxValue;\n  private static IPixel[][] imagePixels;\n\n  public ImageUtil(String fileName) {\n    readPPM(fileName);\n  }\n\n  /**\n   * Read an image file in the PPM format and print the colors.\n   *\n   * @param filename the path of the file.\n   */\n  public static void readPPM(String filename) {\n    Scanner sc;\n\n    try {\n      sc = new Scanner(new FileInputStream(filename));\n    } catch (FileNotFoundException e) {\n      System.out.println(\"File \" + filename + \" not found!\");\n      return;\n    }\n    StringBuilder builder = new StringBuilder();\n    //read the file line by line, and populate a string. This will throw away any comment lines\n    while (sc.hasNextLine()) {\n      String s = sc.nextLine();\n      //System.out.println(s);\n      if (s.charAt(0) != '#') {\n        builder.append(s + System.lineSeparator());\n      }\n    }\n\n    //now set up the scanner to read from the string we just built\n    sc = new Scanner(builder.toString());\n\n    String token;\n\n    token = sc.next();\n    if (!token.equals(\"P3\")) {\n      System.out.println(\"Invalid PPM file: plain RAW file should begin with P3\");\n    }\n    int width = sc.nextInt();\n    ImageUtil.width = width;\n    System.out.println(\"Width of image: \" + width);\n    int height = sc.nextInt();\n    ImageUtil.height = height;\n    ImageUtil.imagePixels = new Pixel[width][height];\n    System.out.println(\"Height of image: \" + height);\n    int maxValue = sc.nextInt();\n    ImageUtil.maxValue = maxValue;\n    System.out.println(\"Maximum value of a color in this file (usually 255): \" + maxValue);\n\n    for (int i = 0; i < height; i++) {\n      for (int j = 0; j < width; j++) {\n        int r = sc.nextInt();\n        int g = sc.nextInt();\n        int b = sc.nextInt();\n        imagePixels[i][j] = new Pixel(r, g, b);\n        System.out.println(\"Color of pixel (\" + j + \",\" + i + \"): \" + r + \",\" + g + \",\" + b);\n      }\n    }\n  }\n\n  /**\n   * Returns a copy of the current pixels in the array.\n   *\n   * @return pixel array of the pixels in the image\n   */\n  public IPixel[][] getPixels() {\n    IPixel[][] returnArray = new Pixel[width][height];\n    IPixel reference = new Pixel(0, 0, 0);\n    for (int i = 0; i < imagePixels.length; i++) {\n      for (int j = 0; i < imagePixels[i].length; i++) {\n        reference = imagePixels[i][j];\n        returnArray[i][j] = new Pixel(reference.getR(), reference.getG(), reference.getB());\n      }\n    }\n    return returnArray;\n  }\n\n  /**\n   * Returns the width of the image.\n   *\n   * @return image width\n   */\n  public int getWidth() {\n    return width;\n  }\n\n  /**\n   * Returns the height of the image.\n   *\n   * @return image width\n   */\n  public int getHeight() {\n    return width;\n  }\n\n  /**\n   * Returns the width of the image.\n   *\n   * @return image width\n   */\n  public int getMaxValue() {\n    return maxValue;\n  }\n\n  //demo main\n  public static void main(String[] args) {\n    String filename;\n\n    if (args.length > 0) {\n      filename = args[0];\n    } else {\n      filename = \"sample.ppm\";\n    }\n\n    ImageUtil.readPPM(filename);\n  }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/imageInfo/ImageUtil.java b/src/imageInfo/ImageUtil.java
+--- a/src/imageInfo/ImageUtil.java	(revision be512075574145cb5eaf5b009bf125d10320b88a)
++++ b/src/imageInfo/ImageUtil.java	(date 1667513505934)
+@@ -80,10 +80,10 @@
+    * @return pixel array of the pixels in the image
+    */
+   public IPixel[][] getPixels() {
+-    IPixel[][] returnArray = new Pixel[width][height];
++    IPixel[][] returnArray = new Pixel[height][width];
+     IPixel reference = new Pixel(0, 0, 0);
+     for (int i = 0; i < imagePixels.length; i++) {
+-      for (int j = 0; i < imagePixels[i].length; i++) {
++      for (int j = 0; j < imagePixels[i].length; j++) {
+         reference = imagePixels[i][j];
+         returnArray[i][j] = new Pixel(reference.getR(), reference.getG(), reference.getB());
+       }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"917f784c-d3d5-4a0c-b5c2-613eef66990b\" name=\"Changes\" comment=\"Changed Save image\">\n      <change afterPath=\"$PROJECT_DIR$/src/model/MockImageCommand.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/imageInfo/Pixel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/imageInfo/Pixel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/model/IImageProcessor.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/model/IImageProcessor.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/model/ImageProcessorModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/model/ImageProcessorModel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/test/ImageProcessorModelTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/test/ImageProcessorModelTest.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Interface\" />\n        <option value=\"JUnit5 Test Class\" />\n        <option value=\"JUnit4 Test Class\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2GxdxkRGmNBbrNSgGv2lFGSRTia\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/exampleImages\" />\n      <recent name=\"$PROJECT_DIR$/images\" />\n    </key>\n    <key name=\"CreateTestDialog.Recents.Supers\">\n      <recent name=\"\" />\n    </key>\n    <key name=\"CreateTestDialog.RecentsKey\">\n      <recent name=\"\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"JUnit.BasicImageTest.testValues\">\n    <configuration name=\"BasicImageTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"BasicImageTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"BasicImageTest.testValues\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"BasicImageTest\" />\n      <option name=\"METHOD_NAME\" value=\"testValues\" />\n      <option name=\"TEST_OBJECT\" value=\"method\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"BrightenTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"BrightenTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"FocusComponentTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"FocusComponentTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"FocusComponentTest.testFocusLuma\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ImageProcessing\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"FocusComponentTest\" />\n      <option name=\"METHOD_NAME\" value=\"testFocusLuma\" />\n      <option name=\"TEST_OBJECT\" value=\"method\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"JUnit.BasicImageTest.testValues\" />\n        <item itemvalue=\"JUnit.BasicImageTest\" />\n        <item itemvalue=\"JUnit.FocusComponentTest.testFocusLuma\" />\n        <item itemvalue=\"JUnit.FocusComponentTest\" />\n        <item itemvalue=\"JUnit.BrightenTest\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"917f784c-d3d5-4a0c-b5c2-613eef66990b\" name=\"Changes\" comment=\"\" />\n      <created>1667334424469</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1667334424469</updated>\n      <workItem from=\"1667334429430\" duration=\"1000\" />\n      <workItem from=\"1667336156401\" duration=\"13511000\" />\n      <workItem from=\"1667451964545\" duration=\"1797000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.\">\n      <created>1667369821089</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667369821089</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.\">\n      <created>1667409714613</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667409714613</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Comment updates\">\n      <created>1667457509881</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667457509881</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Made tester classes for everything that has to be tested.\">\n      <created>1667499840776</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667499840776</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Comment updates\">\n      <created>1667508978116</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667508978116</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Comment updates\">\n      <created>1667510091466</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667510091466</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Changed Save image\">\n      <created>1667512521292</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667512521292</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"8\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\n                <map>\n                  <entry key=\"Show.Git.Branches\" value=\"true\" />\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.\" />\n    <MESSAGE value=\"Made tester classes for everything that has to be tested.\" />\n    <MESSAGE value=\"Comment updates\" />\n    <MESSAGE value=\"Changed Save image\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Changed Save image\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision be512075574145cb5eaf5b009bf125d10320b88a)
++++ b/.idea/workspace.xml	(date 1667514023994)
+@@ -5,11 +5,10 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Changed Save image">
+-      <change afterPath="$PROJECT_DIR$/src/model/MockImageCommand.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/imageInfo/Pixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/Pixel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/exampleImages/Koala.ppm" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/model/MockImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockImageProcessor.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -73,49 +72,51 @@
+       <recent name="" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="JUnit.BasicImageTest.testValues">
+-    <configuration name="BasicImageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++  <component name="RunManager" selected="JUnit.ImageProcessorModelTest">
++    <configuration name="ImageProcessorModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ImageProcessing" />
+       <option name="PACKAGE_NAME" value="" />
+-      <option name="MAIN_CLASS_NAME" value="BasicImageTest" />
++      <option name="MAIN_CLASS_NAME" value="ImageProcessorModelTest" />
+       <option name="TEST_OBJECT" value="class" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="BasicImageTest.testValues" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="ImageProcessorModelTest.testApplyCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ImageProcessing" />
+       <option name="PACKAGE_NAME" value="" />
+-      <option name="MAIN_CLASS_NAME" value="BasicImageTest" />
+-      <option name="METHOD_NAME" value="testValues" />
++      <option name="MAIN_CLASS_NAME" value="ImageProcessorModelTest" />
++      <option name="METHOD_NAME" value="testApplyCommand" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="BrightenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="ImageProcessorModelTest.testApplyCommandNullException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ImageProcessing" />
+       <option name="PACKAGE_NAME" value="" />
+-      <option name="MAIN_CLASS_NAME" value="BrightenTest" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="MAIN_CLASS_NAME" value="ImageProcessorModelTest" />
++      <option name="METHOD_NAME" value="testApplyCommandNullException" />
++      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="FocusComponentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="ImageProcessorModelTest.testGetImage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ImageProcessing" />
+       <option name="PACKAGE_NAME" value="" />
+-      <option name="MAIN_CLASS_NAME" value="FocusComponentTest" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="MAIN_CLASS_NAME" value="ImageProcessorModelTest" />
++      <option name="METHOD_NAME" value="testGetImage" />
++      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="FocusComponentTest.testFocusLuma" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="ImageProcessorModelTest.testLoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ImageProcessing" />
+       <option name="PACKAGE_NAME" value="" />
+-      <option name="MAIN_CLASS_NAME" value="FocusComponentTest" />
+-      <option name="METHOD_NAME" value="testFocusLuma" />
++      <option name="MAIN_CLASS_NAME" value="ImageProcessorModelTest" />
++      <option name="METHOD_NAME" value="testLoad" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -123,11 +124,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="JUnit.BasicImageTest.testValues" />
+-        <item itemvalue="JUnit.BasicImageTest" />
+-        <item itemvalue="JUnit.FocusComponentTest.testFocusLuma" />
+-        <item itemvalue="JUnit.FocusComponentTest" />
+-        <item itemvalue="JUnit.BrightenTest" />
++        <item itemvalue="JUnit.ImageProcessorModelTest" />
++        <item itemvalue="JUnit.ImageProcessorModelTest.testApplyCommand" />
++        <item itemvalue="JUnit.ImageProcessorModelTest.testApplyCommandNullException" />
++        <item itemvalue="JUnit.ImageProcessorModelTest.testLoad" />
++        <item itemvalue="JUnit.ImageProcessorModelTest.testGetImage" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -192,7 +193,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1667512521292</updated>
+     </task>
+-    <option name="localTasksCounter" value="8" />
++    <task id="LOCAL-00008" summary="Changed Save image">
++      <created>1667512581478</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1667512581478</updated>
++    </task>
++    <option name="localTasksCounter" value="9" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+Index: src/model/MockImageProcessor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\n\nimport java.io.IOException;\n\nimport imageInfo.IImage;\n\npublic class MockImageProcessor implements IImageProcessor {\n\n  Appendable log;\n\n  public MockImageProcessor(Appendable log) {\n    this.log = log;\n  }\n\n  @Override\n  public void applyCommand(String imageName, ImageCommand command, String newImageName)\n          throws IllegalArgumentException {\n    try {\n      this.log.append(\"ImageName: \");\n      this.log.append(imageName);\n      this.log.append(\"; Command: \");\n      this.log.append(command.toString());\n      this.log.append(\"; NewImageName: \");\n      this.log.append(newImageName);\n      this.log.append(\"\\n\");\n    } catch (IOException e) {\n      throw new IllegalStateException(\"Unable to append to the file.\");\n    }\n  }\n\n  @Override\n  public void loadImage(String imagePath, String imageName) {\n    try {\n      this.log.append(\"Loading; \");\n      this.log.append(\"ImagePath: \");\n      this.log.append(imagePath);\n      this.log.append(\"; ImageName: \");\n      this.log.append(imageName);\n      this.log.append(\"\\n\");\n    } catch (IOException e) {\n      throw new IllegalStateException(\"Unable to append to the file.\");\n    }\n  }\n\n  @Override\n  public void saveImage(String imagePath, String imageName) {\n    try {\n      this.log.append(\"Saving; \");\n      this.log.append(\"ImagePath: \");\n      this.log.append(imagePath);\n      this.log.append(\"; ImageName: \");\n      this.log.append(imageName);\n      this.log.append(\"\\n\");\n    } catch (IOException e) {\n      throw new IllegalStateException(\"Unable to append to the file.\");\n    }\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/model/MockImageProcessor.java b/src/model/MockImageProcessor.java
+--- a/src/model/MockImageProcessor.java	(revision be512075574145cb5eaf5b009bf125d10320b88a)
++++ b/src/model/MockImageProcessor.java	(date 1667512991705)
+@@ -28,6 +28,16 @@
+     }
+   }
+ 
++  @Override
++  public IImage getImage(String imageName) throws IllegalArgumentException {
++    return null;
++  }
++
++  @Override
++  public boolean hasImage(String imageName) {
++    return false;
++  }
++
+   @Override
+   public void loadImage(String imagePath, String imageName) {
+     try {

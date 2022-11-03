@@ -3,9 +3,9 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
-import imageInfo.BasicImage;
-import imageInfo.IImage;
-import imageInfo.ImageUtil;
+import imageinfo.BasicImage;
+import imageinfo.IImage;
+import imageinfo.ImageUtil;
 
 /**
  * Represents an Image Processor.
