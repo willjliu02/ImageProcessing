@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import imageInfo.BasicImage;
+import imageInfo.IImageState;
 import imageInfo.IPixel;
 import imageInfo.IImage;
 import imageInfo.ImageUtil;
@@ -30,5 +31,22 @@ public class ImageProcessorModel implements IImageProcessor {
   @Override
   public void saveImagePathAndName(String imagePath, String imageName) {
     //?? save to a specific place ??
+  }
+
+  @Override
+  public void applyCommand(String imageName, ImageCommand command, String newImageName)
+          throws IllegalArgumentException {
+
+    this.images.put(newImageName, command.apply(this.images.get(imageName)));
+  }
+
+  @Override
+  public void brightenImage(int increment, String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public IImage getImage(String imageName) {
+    return new BasicImage(this.images.get(imageName));
   }
 }
