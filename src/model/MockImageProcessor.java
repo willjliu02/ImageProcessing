@@ -29,6 +29,16 @@ public class MockImageProcessor implements IImageProcessor {
   }
 
   @Override
+  public IImage getImage(String imageName) throws IllegalArgumentException {
+    return null;
+  }
+
+  @Override
+  public boolean hasImage(String imageName) {
+    return false;
+  }
+
+  @Override
   public void loadImage(String imagePath, String imageName) {
     try {
       this.log.append("Loading; ");
