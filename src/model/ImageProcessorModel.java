@@ -25,8 +25,12 @@ public class ImageProcessorModel implements IImageProcessor {
   public void applyCommand(String imageName, ImageCommand command, String newImageName)
           throws IllegalArgumentException {
 
+    if (!this.images.containsKey(imageName)) {
+      throw new IllegalArgumentException(imageName + " has not been loaded.");
+    }
+
     this.images.put(newImageName,
-                    command.apply(this.images.getOrDefault(imageName, null)));
+            command.apply(this.images.get(imageName)));
   }
 
   @Override
@@ -40,7 +44,7 @@ public class ImageProcessorModel implements IImageProcessor {
   }
 
   @Override
-  public void saveImage(String imagePath, String imageName) {
+  public void saveImage(String imagePath, String imageName) throws IllegalArgumentException {
     if (!this.images.containsKey(imageName)) {
       throw new IllegalArgumentException("This image has not been loaded, so it cannot be saved.");
     }

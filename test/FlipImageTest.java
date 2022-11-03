@@ -22,7 +22,7 @@ public class FlipImageTest {
     for (int r = 0; r < 5; r++) {
       for (int c = 0; c < 5; c++) {
         pixels[r][c] = new Pixel(r, c, r);
-        expectedPixels[r][4-c] = new Pixel(r, c, r);
+        expectedPixels[r][4 - c] = new Pixel(r, c, r);
       }
     }
     IImage starterImage = new BasicImage(5, 5, 5, pixels);
@@ -43,7 +43,7 @@ public class FlipImageTest {
     for (int r = 0; r < 5; r++) {
       for (int c = 0; c < 5; c++) {
         pixels[r][c] = new Pixel(r, c, r);
-        expectedPixels[4-r][c] = new Pixel(r, c, r);
+        expectedPixels[4 - r][c] = new Pixel(r, c, r);
       }
     }
     IImage starterImage = new BasicImage(5, 5, 5, pixels);
