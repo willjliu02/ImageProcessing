@@ -11,6 +11,7 @@ import imageInfo.IPixel;
  */
 public class SaveImage implements ImageCommand {
   private final String path;
+
   public SaveImage(String path) {
     this.path = path;
   }

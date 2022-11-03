@@ -6,25 +6,29 @@ package imageInfo;
 public interface IImageState {
   /**
    * Gets the list of Pixels holding the data of the images.
+   *
    * @return IPixel[][] containing the Pixels of the loaded image
    */
-  public IPixel[][] getPixels();
+  IPixel[][] getPixels();
 
   /**
    * Gets the width of the image.
+   *
    * @return the width
    */
-  public int getWidth();
+  int getWidth();
 
   /**
    * Gets the height of the image.
+   *
    * @return the height
    */
-  public int getHeight();
+  int getHeight();
 
   /**
    * Gets the maximum value of the image.
+   *
    * @return the width
    */
-  public int getMaxValue();
+  int getMaxValue();
 }

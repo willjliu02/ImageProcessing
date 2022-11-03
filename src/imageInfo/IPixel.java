@@ -7,37 +7,43 @@ public interface IPixel {
 
   /**
    * Get the maximum of the three components.
+   *
    * @return int the maximum of the three components
    */
-  public int getValue();
+  int getValue();
 
   /**
    * Gets the weighted sum of the components.
+   *
    * @return double the weighted sum
    */
-  public int getIntensity();
+  int getIntensity();
 
   /**
    * Get the average of the three components.
+   *
    * @return double returns the average of the three components
    */
-  public int getLuma();
+  int getLuma();
 
   /**
    * Get red value of a pixel.
+   *
    * @return red value
    */
-  public int getR();
+  int getR();
 
   /**
    * Get green value of a pixel.
+   *
    * @return green value
    */
-  public int getG();
+  int getG();
 
   /**
    * Get blue value of a pixel.
+   *
    * @return blue value
    */
-  public int getB();
+  int getB();
 }

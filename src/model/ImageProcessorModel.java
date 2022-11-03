@@ -11,18 +11,13 @@ import imageInfo.IImage;
  */
 public class ImageProcessorModel implements IImageProcessor {
 
-  private Map<String, IImage> images;
+  private final Map<String, IImage> images;
 
   /**
    * Constructs a new Image Processor model.
    */
   public ImageProcessorModel() {
     images = new HashMap<String, IImage>();
-  }
-
-  @Override
-  public void saveImagePathAndName(String imagePath, String imageName) {
-    //?? save to a specific place ??
   }
 
   @Override

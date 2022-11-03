@@ -12,6 +12,7 @@ public class LoadImage implements ImageCommand {
 
   /**
    * Creates a command for loading an image
+   *
    * @param imagePath path to access the image from.
    */
   public LoadImage(String imagePath) {

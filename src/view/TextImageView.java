@@ -16,6 +16,7 @@ public class TextImageView implements IView {
 
   /**
    * Constructor to save the game model and default appendable.
+   *
    * @param model model to make a view of
    */
   public TextImageView(IImageProcessorState model) {
@@ -28,7 +29,8 @@ public class TextImageView implements IView {
 
   /**
    * Constructor to save the game model and default appendable.
-   * @param model model to make a view of
+   *
+   * @param model      model to make a view of
    * @param appendable appendable to save
    */
   public TextImageView(IImageProcessorState model, Appendable appendable) {

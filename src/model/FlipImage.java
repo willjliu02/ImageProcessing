@@ -10,10 +10,11 @@ import imageInfo.Pixel;
  */
 public class FlipImage implements ImageCommand {
 
-  private String flip;
+  private final String flip;
 
   /**
    * Constructs a command to flip an IImage.
+   *
    * @param flip the direction to flip it.
    */
   public FlipImage(String flip) {
@@ -22,7 +23,7 @@ public class FlipImage implements ImageCommand {
       throw new IllegalArgumentException("This is not a valid flip option.");
     }
 
-    this.flip =  flip;
+    this.flip = flip;
   }
 
   @Override

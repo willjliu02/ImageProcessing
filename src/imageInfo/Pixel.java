@@ -14,6 +14,7 @@ public class Pixel implements IPixel {
 
   /**
    * Assigns red, green, and blue values to a pixel.
+   *
    * @param r red value to assign
    * @param g green value to assign
    * @param b blue value to assign
@@ -30,6 +31,7 @@ public class Pixel implements IPixel {
 
   /**
    * Returns the max value between the r, g, b values provided.
+   *
    * @param r red value
    * @param g green value
    * @param b blue value
@@ -37,14 +39,14 @@ public class Pixel implements IPixel {
    */
   protected int getMax(int r, int g, int b) {
     int max = r;
-    if(g > max) {
+    if (g > max) {
       max = g;
-    }
-    else if(b > max) {
+    } else if (b > max) {
       max = b;
     }
     return max;
   }
+
   @Override
   public int getValue() {
     return this.value;

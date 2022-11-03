@@ -4,10 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="WOO SAVE">
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Comment updates">
+      <change afterPath="$PROJECT_DIR$/class diagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ourImages/cayuga_1.ppm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/koala-blue-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-blue-greyscale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/koala-brighter-by-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-brighter-by-50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/koala-green-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-green-greyscale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/koala-horizontal-vertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-horizontal-vertical.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/koala-horizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-horizontal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/koala-intensity-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-intensity-greyscale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/koala-luma-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-luma-greyscale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/koala-red-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-red-greyscale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/koala-value-greyscale.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-value-greyscale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/koala-vertical-horizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-vertical-horizontal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/koala-vertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/exampleImages/koala-vertical.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageInfo/Brighten.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageInfo/BasicImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/BasicImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageInfo/IImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/IImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +46,6 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectId" id="2GxdxkRGmNBbrNSgGv2lFGSRTia" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -39,16 +54,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/images" />
@@ -87,14 +101,7 @@
       <option name="project" value="LOCAL" />
       <updated>1667457509881</updated>
     </task>
-    <task id="LOCAL-00004" summary="WOO SAVE">
-      <created>1667460092452</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1667460092452</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,7 +127,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image." />
     <MESSAGE value="Comment updates" />
-    <MESSAGE value="WOO SAVE" />
-    <option name="LAST_COMMIT_MESSAGE" value="WOO SAVE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comment updates" />
   </component>
 </project>

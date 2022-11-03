@@ -6,14 +6,15 @@ import model.ImageCommand;
  * Represents an image with basic information.
  */
 public class BasicImage implements IImage {
-  private IPixel[][] pixels;
-  private int width;
-  private int height;
+  private final IPixel[][] pixels;
+  private final int width;
+  private final int height;
 
-  private int maxVal;
+  private final int maxVal;
 
   /**
    * Creates a basic image based on a provided image
+   *
    * @param image
    */
   public BasicImage(IImage image) {
@@ -24,18 +25,17 @@ public class BasicImage implements IImage {
     IPixel[][] otherPixels = image.getPixels();
     this.pixels = new IPixel[height][width];
     for (int r = 0; r < height; r++) {
-      for (int c = 0; c < width; c++) {
-        this.pixels[r][c] = otherPixels[r][c];
-      }
+      if (width >= 0) System.arraycopy(otherPixels[r], 0, this.pixels[r], 0, width);
     }
   }
 
   /**
    * Creates a basic image with provided image information
-   * @param width width of the image
-   * @param height height of the image
+   *
+   * @param width    width of the image
+   * @param height   height of the image
    * @param maxValue max value seen in the image
-   * @param pixels pixels that make up the image
+   * @param pixels   pixels that make up the image
    */
   public BasicImage(int width, int height, int maxValue, IPixel[][] pixels) {
     this.width = width;
@@ -44,15 +44,8 @@ public class BasicImage implements IImage {
 
     this.pixels = new IPixel[height][width];
     for (int r = 0; r < height; r++) {
-      for (int c = 0; c < width; c++) {
-        this.pixels[r][c] = pixels[r][c];
-      }
+      System.arraycopy(pixels[r], 0, this.pixels[r], 0, width);
     }
-  }
-
-  @Override
-  public IPixel setPixel(int row, int col, IPixel newPixel) {
-    return this.pixels[row][col] = newPixel;
   }
 
   @Override
