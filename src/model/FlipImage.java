@@ -57,4 +57,9 @@ public class FlipImage implements ImageCommand {
       return width - 1 - col;
     }
   }
+
+  @Override
+  public String toString() {
+    return "Flip Image: " + this.flip;
+  }
 }

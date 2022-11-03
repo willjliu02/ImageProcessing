@@ -71,4 +71,9 @@ public class FocusComponent implements ImageCommand {
       return currentPixel.getB();
     }
   }
+
+  @Override
+  public String toString() {
+    return "Focus Component: " + this.component;
+  }
 }

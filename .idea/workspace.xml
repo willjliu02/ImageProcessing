@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Finished writing PixelTest. Also fixed getMax in Pixel">
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="I  added load and save as commands to the controller.">
+      <change afterPath="$PROJECT_DIR$/src/model/MockImageProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Brighten.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Brighten.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FlipImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlipImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FocusComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FocusComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/LoadImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/SaveImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SaveImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageProcessorControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessorControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +26,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -68,30 +77,41 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PixelTest">
-    <configuration name="BrightenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ImageProcessorControllerTest">
+    <configuration name="ImageProcessorControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="BrightenTest" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessorControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FocusComponentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessorControllerTest.testProcessHorizontalFlip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FocusComponentTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessorControllerTest" />
+      <option name="METHOD_NAME" value="testProcessHorizontalFlip" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FocusComponentTest.testFocusLuma" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessorControllerTest.testProcessLoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FocusComponentTest" />
-      <option name="METHOD_NAME" value="testFocusLuma" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessorControllerTest" />
+      <option name="METHOD_NAME" value="testProcessLoad" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageProcessorControllerTest.testProcessSave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessorControllerTest" />
+      <option name="METHOD_NAME" value="testProcessSave" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -106,23 +126,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PixelTest.testGetValue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ImageProcessing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PixelTest" />
-      <option name="METHOD_NAME" value="testGetValue" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ImageProcessorControllerTest" />
+        <item itemvalue="JUnit.ImageProcessorControllerTest.testProcessLoad" />
+        <item itemvalue="JUnit.ImageProcessorControllerTest.testProcessSave" />
+        <item itemvalue="JUnit.ImageProcessorControllerTest.testProcessHorizontalFlip" />
         <item itemvalue="JUnit.PixelTest" />
-        <item itemvalue="JUnit.PixelTest.testGetValue" />
-        <item itemvalue="JUnit.FocusComponentTest.testFocusLuma" />
-        <item itemvalue="JUnit.FocusComponentTest" />
-        <item itemvalue="JUnit.BrightenTest" />
       </list>
     </recent_temporary>
   </component>
@@ -180,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667502923868</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="I  added load and save as commands to the controller.">
+      <created>1667503060304</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667503060304</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,7 +226,8 @@
     <MESSAGE value="Made tester classes for everything that has to be tested." />
     <MESSAGE value="Updated the FocusComponentTest and am startign the PixelTest" />
     <MESSAGE value="Finished writing PixelTest. Also fixed getMax in Pixel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished writing PixelTest. Also fixed getMax in Pixel" />
+    <MESSAGE value="I  added load and save as commands to the controller." />
+    <option name="LAST_COMMIT_MESSAGE" value="I  added load and save as commands to the controller." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

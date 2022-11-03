@@ -10,16 +10,16 @@ import imageInfo.IPixel;
  * Represents a command that saves an IImage.
  */
 public class SaveImage implements ImageCommand {
-  private final String path;
+  private final String imagePath;
 
-  public SaveImage(String path) {
-    this.path = path;
+  public SaveImage(String imagePath) {
+    this.imagePath = imagePath;
   }
 
   @Override
   public IImage apply(IImage currentImage) {
     try {
-      Appendable file = new FileWriter(this.path);
+      Appendable file = new FileWriter(this.imagePath);
       int width = currentImage.getWidth();
       int height = currentImage.getHeight();
       IPixel[][] pixels = currentImage.getPixels();
@@ -44,5 +44,10 @@ public class SaveImage implements ImageCommand {
     }
 
     return null;
+  }
+
+  @Override
+  public String toString() {
+    return "Save Image: " + this.imagePath;
   }
 }

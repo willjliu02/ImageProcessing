@@ -12,7 +12,6 @@ import model.FlipImage;
 import model.FocusComponent;
 import model.IImageProcessor;
 import model.ImageCommand;
-import model.LoadImage;
 import model.SaveImage;
 import view.IView;
 
@@ -31,6 +30,7 @@ public class ImageProcessorController implements IController {
     } catch (NullPointerException e) {
       throw new IllegalArgumentException("The arguments cannot be null.");
     }
+
     this.commands = new HashMap<String, Function<String, ImageCommand>>();
     this.commands.put("brighten", inc -> new Brighten(Integer.parseInt(inc)));
     this.commands.put("horizontal-flip", flip -> new FlipImage("horizontal-flip"));
@@ -41,8 +41,6 @@ public class ImageProcessorController implements IController {
     this.commands.put("green-component", comp -> new FocusComponent("green-component"));
     this.commands.put("value-component", comp -> new FocusComponent("value-component"));
     this.commands.put("blue-component", comp -> new FocusComponent("blue-component"));
-    this.commands.put("load",  path -> new LoadImage(path));
-    this.commands.put("save",  path -> new SaveImage(path));
   }
 
   private void writeMessage(String message) {
@@ -53,29 +51,41 @@ public class ImageProcessorController implements IController {
     }
   }
 
+  public void applyCommand(String[] command) {
+    Function<String, ImageCommand> func = this.commands.getOrDefault(command[0].toLowerCase(),
+            null);
+    if (func == null) {
+      writeMessage("This is not a viable command. \nPlease enter another one:");
+    } else {
+      String imageName;
+      String newImageName;
+      ImageCommand cmd = func.apply(command[1]);
+      if (command.length > 3) {
+        imageName = command[2];
+        newImageName = command[3];
+      } else {
+        imageName = command[1];
+        newImageName = command[2];
+      }
+      this.model.applyCommand(imageName, cmd, newImageName);
+    }
+  }
+
   @Override
   public void processImage() throws IllegalStateException {
     while (scan.hasNext()) {
       String nextCommand = scan.nextLine();
       String[] line = nextCommand.split(" ");
 
-      Function<String, ImageCommand> func = this.commands.getOrDefault(line[0].toLowerCase(), null);
-      if (func == null) {
-        writeMessage("This is not a viable command. \nPlease enter another one:");
-      } else {
-        String imageName;
-        String newImageName;
-        ImageCommand cmd;
-        if (line.length > 3) {
-          imageName = line[2];
-          newImageName = line[3];
-          cmd = func.apply(line[1]);
-        } else {
-          imageName = line[1];
-          newImageName = line[2];
-          cmd = func.apply(line[1]);
-        }
-        this.model.applyCommand(imageName, cmd, newImageName);
+      switch (line[0]) {
+        case "load":
+          this.model.loadImage(line[1], line[2]);
+          break;
+        case "save":
+          this.model.saveImage(line[1], line[2]);
+          break;
+        default:
+          this.applyCommand(line);
       }
     }
   }

@@ -58,4 +58,9 @@ public class Brighten implements ImageCommand {
       return newValue;
     }
   }
+
+  @Override
+  public String toString() {
+    return "Brighten Image: " + this.increment;
+  }
 }
