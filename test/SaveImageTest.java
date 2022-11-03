@@ -28,13 +28,13 @@ public class SaveImageTest {
   public void setValues() {
     save = new SaveImage("ourImages/updatedImage.ppm");
     saveMock = new SaveImageMock("ourImages/updatedImage.ppm");
-    pixels = new Pixel[10][5];
-    for (int r = 0; r < 10; r++) {
+    pixels = new Pixel[5][5];
+    for (int r = 0; r < 5; r++) {
       for (int c = 0; c < 5; c++) {
         pixels[r][c] = new Pixel(r, c, r);
       }
     }
-    basic = new BasicImage(5, 10, 255, pixels);
+    basic = new BasicImage(5, 5, 255, pixels);
   }
 
   @Test
@@ -44,7 +44,13 @@ public class SaveImageTest {
 
     ImageProcessorModel modelTest = new ImageProcessorModel();
     modelTest.loadImage("ourImages/updatedImage.ppm", "loadedImage");
-    assertEquals(basic, modelTest.getImage("loadedImage"));
+
+    IImage resultImage = modelTest.getImage("loadedImage");
+
+    assertEquals(basic.getWidth(),resultImage.getWidth());
+    assertEquals(basic.getHeight(),resultImage.getHeight());
+    assertEquals(basic.getMaxValue(),resultImage.getMaxValue());
+    assertEquals(basic.getPixels(),resultImage.getPixels());
   }
 
   @Test
