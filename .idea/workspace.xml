@@ -4,33 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Comment updates">
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Style updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/IController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageInfo/BasicImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/BasicImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageInfo/IImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/IImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageInfo/IImageState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/IImageState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageInfo/IPixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/IPixel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageInfo/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/ImageUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageInfo/Pixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/Pixel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Brighten.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Brighten.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/FlipImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlipImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/FocusComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FocusComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MockImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MockImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SaveImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SaveImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/BasicImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BasicImageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/BrightenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BrightenTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FlipImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FlipImageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FocusComponentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FocusComponentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/PixelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/PixelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/SaveImageMock.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/SaveImageMock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/SaveImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/SaveImageTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667510091466</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Style updated">
+      <created>1667515872901</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667515872902</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +217,7 @@
     <MESSAGE value="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image." />
     <MESSAGE value="Made tester classes for everything that has to be tested." />
     <MESSAGE value="Comment updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comment updates" />
+    <MESSAGE value="Style updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Style updated" />
   </component>
 </project>
