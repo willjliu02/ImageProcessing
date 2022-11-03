@@ -18,8 +18,7 @@ We have a class diagram saved as "class diagram.png" to visualize all the classe
     per RGB value. A negative increment would mean darkening an image. 
   - FlipImage: Represents a command to either vertically or horizontally flip an image. 
   - FocusComponent: Creates a grayscale image based off the specified component. 
-  - IImageProcessor: Allows different commands for editing to be placed on an image. 
-  - IImageState: ?? Represents the state of a processor.
+  - IImageProcessor: Allows different commands for editing to be placed on an image.
   - ImageCommand: Represents applying an edit on a given image.
   - ImageProcessorModel: Saves image references, while also performing image edits
     and saving new references to those. 

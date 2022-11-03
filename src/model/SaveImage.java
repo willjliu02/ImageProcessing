@@ -24,7 +24,6 @@ public class SaveImage implements ImageCommand {
       int height = currentImage.getHeight();
       IPixel[][] pixels = currentImage.getPixels();
 
-
       file.append("P3\n");
       file.append(width + " " + height);
       file.append("\n");

@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Comment updates">
+      <change afterPath="$PROJECT_DIR$/exampleImages/Koala.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/SaveImageMock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class diagram.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessorState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MockImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/TextImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TextImageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/BasicImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BasicImageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/BrightenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BrightenTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FlipImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FlipImageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FocusComponentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FocusComponentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessorControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessorControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/PixelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/PixelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/SaveImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SaveImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/SaveImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/SaveImageTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +21,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -70,6 +63,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/exampleImages" />
       <recent name="$PROJECT_DIR$/images" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -184,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667508978116</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Comment updates">
+      <created>1667510091466</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667510091466</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
