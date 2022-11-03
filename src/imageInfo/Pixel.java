@@ -48,7 +48,8 @@ public class Pixel implements IPixel {
     int max = r;
     if (g > max) {
       max = g;
-    } else if (b > max) {
+    }
+    if (b > max) {
       max = b;
     }
     return max;

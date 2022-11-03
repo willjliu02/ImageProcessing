@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Made tester classes for everything that has to be tested.">
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Updated the FocusComponentTest and am startign the PixelTest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/imageInfo/Pixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageInfo/Pixel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FocusComponentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FocusComponentTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/PixelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/PixelTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,31 +69,12 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FocusComponentTest.testFocusLuma">
+  <component name="RunManager" selected="JUnit.PixelTest">
     <configuration name="BrightenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BrightenTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlipImageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ImageProcessing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FlipImageTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlipImageTest.testCorrectHorizontalApply" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ImageProcessing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FlipImageTest" />
-      <option name="METHOD_NAME" value="testCorrectHorizontalApply" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -118,13 +98,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PixelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PixelTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PixelTest.testGetValue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PixelTest" />
+      <option name="METHOD_NAME" value="testGetValue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PixelTest" />
+        <item itemvalue="JUnit.PixelTest.testGetValue" />
         <item itemvalue="JUnit.FocusComponentTest.testFocusLuma" />
         <item itemvalue="JUnit.FocusComponentTest" />
         <item itemvalue="JUnit.BrightenTest" />
-        <item itemvalue="JUnit.FlipImageTest.testCorrectHorizontalApply" />
-        <item itemvalue="JUnit.FlipImageTest" />
       </list>
     </recent_temporary>
   </component>
@@ -168,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667499840776</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated the FocusComponentTest and am startign the PixelTest">
+      <created>1667502106838</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667502106838</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +201,8 @@
     <MESSAGE value="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image." />
     <MESSAGE value="Comment updates" />
     <MESSAGE value="Made tester classes for everything that has to be tested." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made tester classes for everything that has to be tested." />
+    <MESSAGE value="Updated the FocusComponentTest and am startign the PixelTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the FocusComponentTest and am startign the PixelTest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
