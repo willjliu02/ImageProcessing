@@ -51,18 +51,20 @@ public class ImageUtil {
 
     token = sc.next();
     if (!token.equals("P3")) {
-      System.out.println("Invalid PPM file: plain RAW file should begin with P3");
+      //System.out.println("Invalid PPM file: plain RAW file should begin with P3");
+      // JUST ADDED + commented out print lines
+      throw new IllegalStateException("Invalid PPM file provided.");
     }
     int width = sc.nextInt();
     ImageUtil.width = width;
-    System.out.println("Width of image: " + width);
+    //System.out.println("Width of image: " + width);
     int height = sc.nextInt();
     ImageUtil.height = height;
     ImageUtil.imagePixels = new Pixel[width][height];
-    System.out.println("Height of image: " + height);
+    //System.out.println("Height of image: " + height);
     int maxValue = sc.nextInt();
     ImageUtil.maxValue = maxValue;
-    System.out.println("Maximum value of a color in this file (usually 255): " + maxValue);
+    //System.out.println("Maximum value of a color in this file (usually 255): " + maxValue);
 
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
@@ -70,7 +72,7 @@ public class ImageUtil {
         int g = sc.nextInt();
         int b = sc.nextInt();
         imagePixels[i][j] = new Pixel(r, g, b);
-        System.out.println("Color of pixel (" + j + "," + i + "): " + r + "," + g + "," + b);
+        //System.out.println("Color of pixel (" + j + "," + i + "): " + r + "," + g + "," + b);
       }
     }
   }

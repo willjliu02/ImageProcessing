@@ -32,7 +32,7 @@ We have a class diagram saved as "class diagram.png" to visualize all the classe
 
 COMMANDS:
 The following commands should be typed one after another as our program runs:
-ALSO IN OUR SCRIPTS
+ALSO IN OUR SCRIPT
 load ourImages/imageFound.ppm foundImage
 brighten 10 foundImage brighterImage
 horizontal-flip brighterImage hFlipImage

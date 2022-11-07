@@ -82,6 +82,7 @@ public class ImageProcessorController implements IController {
 
   @Override
   public void processImage() throws IllegalStateException {
+    this.printWelcomeMessage();
     while (scan.hasNext()) {
       String nextCommand = scan.nextLine();
       String[] line = nextCommand.split(" ");
@@ -96,6 +97,23 @@ public class ImageProcessorController implements IController {
         default:
           this.applyCommand(line);
       }
+      this.writeMessage("Request processed!\n");
+      //?? MAYBE ADD A CONFIRMATION THAT THE COMMAND WAS PROCESSED ??
+      // added this line but it will print regardless of the command works or not.
     }
+  }
+
+  /**
+   * Prints the welcome message when the user starts the processor.
+   */
+  // MOVE TO INTERFACE ?
+  private void printWelcomeMessage() {
+    this.writeMessage("Welcome to Image Processor! Current accepted commands are:\n" +
+            "load filePath fileName\n" +
+            "brighten 'incrementToBrightenBy' fileName newFileName\n" +
+            "horizontalFlip fileName newFileName\n" +
+            "verticalFlip fileName newFileName\n" +
+            "'componentToMakeGreyScaleFrom'-component fileName newFileName\n" +
+            "save filePath fileName\n\n");
   }
 }

@@ -5,24 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Comment updates">
-      <change afterPath="$PROJECT_DIR$/class diagram.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exampleImages/.Koala.ppm.icloud" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exampleImages/koala-blue-greyscale.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exampleImages/koala-brighter-by-50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exampleImages/koala-green-greyscale.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exampleImages/koala-horizontal-vertical.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exampleImages/koala-horizontal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exampleImages/koala-intensity-greyscale.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exampleImages/koala-luma-greyscale.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exampleImages/koala-red-greyscale.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exampleImages/koala-value-greyscale.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exampleImages/koala-vertical-horizontal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exampleImages/koala-vertical.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ourImages/cayuga_1.ppm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SaveImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SaveImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageinfo/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/ImageUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +72,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BasicImageTest">
+  <component name="RunManager">
     <configuration name="BasicImageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
@@ -137,8 +123,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BasicImageTest.testValues" />
         <item itemvalue="JUnit.BasicImageTest" />
+        <item itemvalue="JUnit.BasicImageTest.testValues" />
         <item itemvalue="JUnit.SaveImageTest" />
         <item itemvalue="JUnit.SaveImageTest.testImageSaving" />
         <item itemvalue="JUnit.SaveImageTest.testImageSavingExceptions" />
@@ -157,6 +143,11 @@
       <workItem from="1667336156401" duration="13511000" />
       <workItem from="1667451964545" duration="1797000" />
       <workItem from="1667518432500" duration="182000" />
+      <workItem from="1667518696909" duration="66000" />
+      <workItem from="1667519506032" duration="480000" />
+      <workItem from="1667608020142" duration="628000" />
+      <workItem from="1667779985644" duration="1454000" />
+      <workItem from="1667785118253" duration="296000" />
     </task>
     <task id="LOCAL-00001" summary="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.">
       <created>1667369821089</created>
@@ -207,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667515872902</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Comment updates">
+      <created>1667518709354</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1667518709354</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,9 +231,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image." />
     <MESSAGE value="Made tester classes for everything that has to be tested." />
-    <MESSAGE value="Comment updates" />
     <MESSAGE value="Style updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Style updated" />
+    <MESSAGE value="Comment updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comment updates" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ImageProcessing$Main.ic" NAME="Main Coverage Results" MODIFIED="1667517629294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
