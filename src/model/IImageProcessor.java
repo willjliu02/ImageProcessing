@@ -20,6 +20,7 @@ public interface IImageProcessor {
 
   /**
    * Retrieves the image with that desires name from the processor.
+   *
    * @param imageName the name of the image that is to be retrieved
    * @return IImage the image that is desired
    * @throws IllegalArgumentException thrown if the imageName has not been loaded
@@ -28,6 +29,7 @@ public interface IImageProcessor {
 
   /**
    * Answers the question has the image been loaded.
+   *
    * @param imageName the image that is to be retrieved
    * @return boolean if the image is loaded in the processor
    */

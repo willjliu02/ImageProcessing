@@ -1,18 +1,19 @@
 package model;
 
-import java.io.IOException;
-
 import imageinfo.IImage;
 import imageinfo.IPixel;
+
+import java.io.IOException;
 
 /**
  * Represents a tester ImageCommand to tests the the input are valid.
  */
 public class MockImageCommand implements ImageCommand {
-  private Appendable log;
+  private final Appendable log;
 
   /**
    * Constructs a MockImageCommand to test.
+   *
    * @param log an appendable to tests its inputs.
    */
   public MockImageCommand(Appendable log) {

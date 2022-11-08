@@ -14,5 +14,4 @@ public interface IController {
   void processImage() throws IllegalStateException;
 
 
-
 }

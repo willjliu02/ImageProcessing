@@ -123,6 +123,7 @@ public class ImageUtil {
 
   /**
    * Demos the main.
+   *
    * @param args the arguments to the main.
    */
   public static void main(String[] args) {

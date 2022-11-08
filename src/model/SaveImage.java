@@ -1,10 +1,10 @@
 package model;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
 import imageinfo.IImage;
 import imageinfo.IPixel;
+
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Represents a command that saves an IImage.

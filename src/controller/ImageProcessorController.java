@@ -91,13 +91,26 @@ public class ImageProcessorController implements IController {
 
       switch (line[0]) {
         case "load":
-          this.model.loadImage(line[1], line[2]);
+          try {
+            this.model.loadImage(line[1], line[2]);
+          } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Invalid command format. Please check the format list above.");
+          }
           break;
         case "save":
-          this.model.saveImage(line[1], line[2]);
+          try {
+            this.model.saveImage(line[1], line[2]);
+          } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Invalid command format. Please check the format list above.");
+          }
           break;
         default:
-          this.applyCommand(line);
+          try {
+            this.applyCommand(line);
+          } catch (Exception e) {
+            // okay to catch general exception??
+            System.out.println("Invalid command format. Please check the format list above.");
+          }
       }
       this.writeMessage("Request processed!\n");
       //?? MAYBE ADD A CONFIRMATION THAT THE COMMAND WAS PROCESSED ??
