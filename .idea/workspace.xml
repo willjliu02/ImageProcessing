@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Small changes - Removed print lines of information that would print after loading an image. Added a welcome message. Added functionality to say that an image was processed so there's some sort of response.">
-      <change afterPath="$PROJECT_DIR$/src/model/Filter.java" afterDir="false" />
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Tried some stuff for filtering (blur/sharpen) havent tested or anything tho">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageinfo/BasicImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/BasicImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageinfo/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/ImageUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Brighten.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Brighten.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FocusComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FocusComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/SaveImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SaveImage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +76,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BasicImageTest">
+  <component name="RunManager">
     <configuration name="BasicImageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
@@ -147,7 +153,7 @@
       <workItem from="1667779985644" duration="1454000" />
       <workItem from="1667785118253" duration="376000" />
       <workItem from="1667785512861" duration="598000" />
-      <workItem from="1667866590194" duration="6675000" />
+      <workItem from="1667866590194" duration="15537000" />
     </task>
     <task id="LOCAL-00001" summary="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.">
       <created>1667369821089</created>
@@ -212,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667785480757</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Tried some stuff for filtering (blur/sharpen) havent tested or anything tho">
+      <created>1667890829282</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1667890829282</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +254,8 @@
     <MESSAGE value="Style updated" />
     <MESSAGE value="Comment updates" />
     <MESSAGE value="Small changes - Removed print lines of information that would print after loading an image. Added a welcome message. Added functionality to say that an image was processed so there's some sort of response." />
-    <option name="LAST_COMMIT_MESSAGE" value="Small changes - Removed print lines of information that would print after loading an image. Added a welcome message. Added functionality to say that an image was processed so there's some sort of response." />
+    <MESSAGE value="Tried some stuff for filtering (blur/sharpen) havent tested or anything tho" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tried some stuff for filtering (blur/sharpen) havent tested or anything tho" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ImageProcessing$Main.ic" NAME="Main Coverage Results" MODIFIED="1667517629294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

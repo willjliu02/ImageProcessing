@@ -33,14 +33,15 @@ We have a class diagram saved as "class diagram.png" to visualize all the classe
 COMMANDS:
 The following commands should be typed one after another as our program runs:
 ALSO IN OUR SCRIPT
-load ourImages/imageFound.ppm foundImage
-brighten 10 foundImage brighterImage
-horizontal-flip brighterImage hFlipImage
-vertical-flip hFlipImage vFlipImage
-red-component vFlipImage greyImage
-save ourImages/greyImage greyscaleImage
+load ourImages/starfield.ppm star
+brighten 100 star starBright
+horizontal-flip starBright hFlipBright
+vertical-flip star vFlip
+red-component vFlip greyRedVFlip
+save ourImages/greyRedVFlip.ppm greyRedVFlip
 
 PPM IMAGE EXAMPLE IS FROM:
-It is the first sample ppm file. 
-CS35: Lab 1 - Ppm Image Format, www.cs.swarthmore.edu/~soni/cs35/f13/Labs/extras/01/ppm_info.html. 
+It is the starfield image on this page. 
+“PPMA Files Portable Pixel Map (ASCII).” PPMA Files, 22 July 2011,
+people.sc.fsu.edu/~jburkardt/data/ppma/ppma.html. 
 

@@ -24,13 +24,13 @@ public class Brighten implements ImageCommand {
   @Override
   public IImage apply(IImage currentImage) {
     IPixel[][] oldPixels = currentImage.getPixels();
-    IPixel[][] newPixels = new Pixel[currentImage.getWidth()][currentImage.getHeight()];
+    IPixel[][] newPixels = new Pixel[currentImage.getHeight()][currentImage.getWidth()];
     IImage newImage = new BasicImage(currentImage);
     IPixel currentPixel = new Pixel(0, 0, 0);
     int maxVal = currentImage.getMaxValue();
 
     for (int i = 0; i < oldPixels.length; i++) {
-      for (int j = 0; j < oldPixels.length; j++) {
+      for (int j = 0; j < oldPixels[i].length; j++) {
         currentPixel = oldPixels[i][j];
         newPixels[i][j] = new Pixel(this.getValue(currentPixel.getR()),
                 this.getValue(currentPixel.getG()), this.getValue(currentPixel.getB()));

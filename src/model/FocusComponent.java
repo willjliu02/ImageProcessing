@@ -29,14 +29,14 @@ public class FocusComponent implements ImageCommand {
   @Override
   public IImage apply(IImage currentImage) {
     IPixel[][] oldPixels = currentImage.getPixels();
-    IPixel[][] newPixels = new Pixel[currentImage.getWidth()][currentImage.getHeight()];
+    IPixel[][] newPixels = new Pixel[currentImage.getHeight()][currentImage.getWidth()];
     IImage newImage = new BasicImage(currentImage);
     IPixel currentPixel = new Pixel(0, 0, 0);
     int maxVal = -1;
     int currentVal = -1;
 
     for (int i = 0; i < oldPixels.length; i++) {
-      for (int j = 0; j < oldPixels.length; j++) {
+      for (int j = 0; j < oldPixels[i].length; j++) {
         currentPixel = oldPixels[i][j];
         currentVal = this.getGreyscale(currentPixel);
         newPixels[i][j] = new Pixel(currentVal, currentVal, currentVal);

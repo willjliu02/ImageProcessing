@@ -60,7 +60,7 @@ public class ImageUtil {
     //System.out.println("Width of image: " + width);
     int height = sc.nextInt();
     ImageUtil.height = height;
-    ImageUtil.imagePixels = new Pixel[width][height];
+    ImageUtil.imagePixels = new Pixel[height][width];
     //System.out.println("Height of image: " + height);
     int maxValue = sc.nextInt();
     ImageUtil.maxValue = maxValue;
@@ -85,8 +85,8 @@ public class ImageUtil {
   public IPixel[][] getPixels() {
     IPixel[][] returnArray = new Pixel[height][width];
     IPixel reference = new Pixel(0, 0, 0);
-    for (int i = 0; i < imagePixels.length; i++) {
-      for (int j = 0; j < imagePixels[i].length; j++) {
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
         reference = imagePixels[i][j];
         returnArray[i][j] = new Pixel(reference.getR(), reference.getG(), reference.getB());
       }
@@ -109,7 +109,7 @@ public class ImageUtil {
    * @return image width
    */
   public int getHeight() {
-    return width;
+    return height;
   }
 
   /**
