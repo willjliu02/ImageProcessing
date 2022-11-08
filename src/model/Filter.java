@@ -35,9 +35,9 @@ public class Filter implements ImageCommand {
     IPixel[][] currentPixels = currentImage.getPixels();
     IPixel[][] newPixels = currentImage.getPixels();
 
-    int newRed = -1;
-    int newGreen = -1;
-    int newBlue = -1;
+    int newRed = 0;
+    int newGreen = 0;
+    int newBlue = 0;
 
     IImage newImage = new BasicImage(currentImage);
 
@@ -54,6 +54,9 @@ public class Filter implements ImageCommand {
           }
         }
         newPixels[i][j] = new Pixel(newRed, newGreen, newBlue);
+        newRed = 0;
+        newGreen = 0;
+        newBlue = 0;
       }
     }
     // old maxVal okay?

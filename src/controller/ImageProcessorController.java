@@ -50,8 +50,6 @@ public class ImageProcessorController implements IController {
     this.commands.put("green-component", comp -> new FocusComponent("green-component"));
     this.commands.put("value-component", comp -> new FocusComponent("value-component"));
     this.commands.put("blue-component", comp -> new FocusComponent("blue-component"));
-    this.commands.put("blur", comp -> new FocusComponent("blur"));
-    this.commands.put("sharpen", comp -> new FocusComponent("sharpen"));
   }
 
   private void writeMessage(String message) {

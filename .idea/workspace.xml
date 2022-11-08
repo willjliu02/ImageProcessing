@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Lots of design changes in how images are processed and saved.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/IController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageinfo/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/ImageUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Filter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MockImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MockImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SaveImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SaveImage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +147,7 @@
       <workItem from="1667779985644" duration="1454000" />
       <workItem from="1667785118253" duration="376000" />
       <workItem from="1667785512861" duration="598000" />
-      <workItem from="1667866590194" duration="16165000" />
+      <workItem from="1667866590194" duration="16360000" />
     </task>
     <task id="LOCAL-00001" summary="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.">
       <created>1667369821089</created>
@@ -235,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667946018903</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Lots of design changes in how images are processed and saved.">
+      <created>1667946641477</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1667946641477</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
