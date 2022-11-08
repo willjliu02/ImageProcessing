@@ -17,8 +17,13 @@ public class Brighten implements ImageCommand {
    *
    * @param increment to brighten the image by
    */
-  public Brighten(int increment) {
-    this.increment = increment;
+  public Brighten(String increment) {
+    try {
+      this.increment = Integer.parseInt(increment);
+    } catch (NumberFormatException e) {
+      throw new IllegalArgumentException("");
+    }
+
   }
 
   @Override

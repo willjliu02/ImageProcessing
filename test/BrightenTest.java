@@ -27,7 +27,7 @@ public class BrightenTest {
     IImage starterImage = new BasicImage(5, 5, 5, pixels);
     IImage expectedImage = new BasicImage(5, 5, 5 + inc, expectedPixels);
 
-    IImage resultImage = (new Brighten(inc)).apply(starterImage);
+    IImage resultImage = (new Brighten("" + inc)).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());
@@ -49,7 +49,7 @@ public class BrightenTest {
     IImage starterImage = new BasicImage(5, 5, 5, pixels);
     IImage expectedImage = new BasicImage(5, 5, 255, expectedPixels);
 
-    IImage resultImage = (new Brighten(inc)).apply(starterImage);
+    IImage resultImage = (new Brighten("" + inc)).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());
@@ -71,7 +71,7 @@ public class BrightenTest {
     IImage starterImage = new BasicImage(5, 5, 5, pixels);
     IImage expectedImage = new BasicImage(5, 5, 0, expectedPixels);
 
-    IImage resultImage = (new Brighten(inc)).apply(starterImage);
+    IImage resultImage = (new Brighten("" + inc)).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());

@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.function.Function;
 
 import model.Brighten;
+import model.Filter;
 import model.FlipImage;
 import model.FocusComponent;
 import model.IImageProcessor;
@@ -41,7 +42,7 @@ public class ImageProcessorController implements IController {
     }
 
     this.commands = new HashMap<String, Function<String, ImageCommand>>();
-    this.commands.put("brighten", inc -> new Brighten(Integer.parseInt(inc)));
+    this.commands.put("brighten", inc -> new Brighten(inc));
     this.commands.put("horizontal-flip", flip -> new FlipImage("horizontal-flip"));
     this.commands.put("vertical-flip", flip -> new FlipImage("vertical-flip"));
     this.commands.put("luma-component", comp -> new FocusComponent("luma-component"));
@@ -50,6 +51,8 @@ public class ImageProcessorController implements IController {
     this.commands.put("green-component", comp -> new FocusComponent("green-component"));
     this.commands.put("value-component", comp -> new FocusComponent("value-component"));
     this.commands.put("blue-component", comp -> new FocusComponent("blue-component"));
+    this.commands.put("blur", filter -> new Filter("blur"));
+    this.commands.put("sharpen", filter -> new Filter("sharpen"));
   }
 
   private void writeMessage(String message) {
@@ -87,27 +90,29 @@ public class ImageProcessorController implements IController {
       String nextCommand = scan.nextLine();
       String[] line = nextCommand.split(" ");
 
+      if (line.length < 3) {
+        try {
+          this.view.renderMessage("Insufficient inputs.\n");
+        } catch (IOException e) {
+          throw new IllegalStateException("Unable to print to the file.");
+        }
+        continue;
+      }
+
       switch (line[0]) {
         case "load":
-          try {
-            this.model.loadImage(line[1], line[2]);
-          } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Invalid command format. Please check the format list above.");
-          }
+          this.model.loadImage(line[1], line[2]);
           break;
         case "save":
-          try {
-            this.model.saveImage(line[1], line[2]);
-          } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Invalid command format. Please check the format list above.");
-          }
+          this.model.saveImage(line[1], line[2]);
           break;
         default:
           try {
             this.applyCommand(line);
-          } catch (Exception e) {
+          } catch (IllegalArgumentException e) {
             // okay to catch general exception??
-            System.out.println("Invalid command format. Please check the format list above.");
+            System.out.println("Error: " + e.getMessage());
+            continue;
           }
       }
       this.writeMessage("Request processed!\n");
