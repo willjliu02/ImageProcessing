@@ -1,8 +1,14 @@
 package imageinfo;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
 
 /**
  * This class contains utility methods to read a PPM image from file and simply print its contents.
@@ -17,11 +23,18 @@ public class ImageUtil {
   private static IPixel[][] imagePixels;
 
   public ImageUtil(String fileName) {
-    readPPM(fileName);
+    // try catch??
+    String fileExtension = fileName.substring(fileName.lastIndexOf("."));
+    if(fileExtension.equals(".ppm")) {
+      readPPM(fileName);
+    }
+    else {
+      readOtherImageFormats(fileName, fileExtension);
+    }
   }
 
   /**
-   * Read an image file in the PPM format and print the colors.
+   * Read an image file in the PPM format.
    *
    * @param filename the path of the file.
    */
@@ -74,6 +87,34 @@ public class ImageUtil {
         imagePixels[i][j] = new Pixel(r, g, b);
         //System.out.println("Color of pixel (" + j + "," + i + "): " + r + "," + g + "," + b);
       }
+    }
+  }
+
+  /**
+   * Read an image file in standard image formats.
+   *
+   * @param filename the path of the file.
+   * @param fileExtension file format.
+   */
+  public static void readOtherImageFormats(String filename, String fileExtension) {
+    File file = new File(filename);
+    try {
+      BufferedImage image = ImageIO.read(file);
+      Color color = new Color(0, 0, 0);
+      width = image.getWidth();
+      height = image.getHeight();
+      //?? maxval
+      maxValue = 255;
+      imagePixels = new IPixel[height][width];
+      for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+          color = new Color(image.getRGB(j, i));
+          imagePixels[i][j] = new Pixel(color.getRed(), color.getGreen(), color.getBlue());
+        }
+      }
+    }
+    catch(IOException e) {
+      System.out.println("Invalid image.");
     }
   }
 
