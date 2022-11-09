@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Updated thingies.">
-      <change afterPath="$PROJECT_DIR$/ourImages/Koala.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ourImages/greyRedVFlip.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ourImages/hFlipBright.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ourImages/starBright.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ourImages/starfield.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ourImages/vFlip.ppm" afterDir="false" />
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Lots of design changes in how images are processed and saved.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Brighten.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Brighten.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/BrightenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BrightenTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Filter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,31 +38,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/ourImages" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/exampleImages" />
       <recent name="$PROJECT_DIR$/images" />
@@ -81,14 +71,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="ImageProcessing" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="BasicImageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
@@ -127,13 +110,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SaveImageTest.testImageSavingExceptions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SaveImageTest" />
+      <option name="METHOD_NAME" value="testImageSavingExceptions" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.BasicImageTest" />
         <item itemvalue="JUnit.BasicImageTest.testValues" />
         <item itemvalue="JUnit.SaveImageTest" />
         <item itemvalue="JUnit.SaveImageTest.testImageSaving" />
+        <item itemvalue="JUnit.SaveImageTest.testImageSavingExceptions" />
       </list>
     </recent_temporary>
   </component>
@@ -241,14 +234,7 @@
       <option name="project" value="LOCAL" />
       <updated>1667946641477</updated>
     </task>
-    <task id="LOCAL-00013" summary="Updated thingies.">
-      <created>1667948575098</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1667948575098</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,8 +265,7 @@
     <MESSAGE value="Small changes - Removed print lines of information that would print after loading an image. Added a welcome message. Added functionality to say that an image was processed so there's some sort of response." />
     <MESSAGE value="Tried some stuff for filtering (blur/sharpen) havent tested or anything tho" />
     <MESSAGE value="Lots of design changes in how images are processed and saved." />
-    <MESSAGE value="Updated thingies." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated thingies." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lots of design changes in how images are processed and saved." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ImageProcessing$Main.ic" NAME="Main Coverage Results" MODIFIED="1667517629294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

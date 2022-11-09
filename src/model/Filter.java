@@ -42,17 +42,27 @@ public class Filter implements ImageCommand {
     IImage newImage = new BasicImage(currentImage);
 
     for (int i = 0; i < currentPixels.length; i++) {
-      for (int j = 0; j < currentPixels[i].length; i++) {
+      for (int j = 0; j < currentPixels[i].length; j++) {
         for (int k = -filter.length / 2; k < filter.length / 2 + 1; k++) {
-          for (int l = -filter[i].length / 2; l < filter[i].length / 2 + 1; l++) {
+          for (int l = -filter.length / 2; l < filter.length / 2 + 1; l++) {
+            //System.out.println("i j " + i + " " + j);
             if (i + k >= 0 && i + k < currentPixels.length && j + l >= 0 &&
-                    j + l < currentPixels.length) {
-              newRed += (int) (currentPixels[i + k][j + l].getR() * filter[k][l]);
-              newGreen += (int) (currentPixels[i + k][j + l].getG() * filter[k][l]);
-              newBlue += (int) (currentPixels[i + k][j + l].getB() * filter[k][l]);
+                    j + l < currentPixels[i].length) {
+              //System.out.println("filter x: " + (k
+                  //    + filter.length / 2));
+              //System.out.println("filter y: " + (l + filter[i].length / 2));
+              newRed += (int) (currentPixels[i + k][j + l].getR() * filter[k
+                      + filter.length / 2][l + filter.length / 2]);
+              newGreen += (int) (currentPixels[i + k][j + l].getG() * filter[k
+                      + filter.length / 2][l + filter.length / 2]);
+              newBlue += (int) (currentPixels[i + k][j + l].getB() * filter[k
+                      + filter.length / 2][l + filter.length / 2]);
             }
           }
         }
+        newRed = this.checkVal(newRed);
+        newGreen = this.checkVal(newGreen);
+        newBlue = this.checkVal(newBlue);
         newPixels[i][j] = new Pixel(newRed, newGreen, newBlue);
         newRed = 0;
         newGreen = 0;
@@ -63,5 +73,15 @@ public class Filter implements ImageCommand {
     newImage = new BasicImage(currentImage.getWidth(), currentImage.getHeight(),
             currentImage.getMaxValue(), newPixels);
     return newImage;
+  }
+
+  private int checkVal(int value) {
+    if(value < 0) {
+      value = 0;
+    }
+    else if(value > 255) {
+      value = 255;
+    }
+    return value;
   }
 }
