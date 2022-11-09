@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Lots of design changes in how images are processed and saved.">
+    <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Blur and sharpen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Filter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -234,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667946641477</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Blur and sharpen">
+      <created>1667974402156</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1667974402156</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +271,8 @@
     <MESSAGE value="Small changes - Removed print lines of information that would print after loading an image. Added a welcome message. Added functionality to say that an image was processed so there's some sort of response." />
     <MESSAGE value="Tried some stuff for filtering (blur/sharpen) havent tested or anything tho" />
     <MESSAGE value="Lots of design changes in how images are processed and saved." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lots of design changes in how images are processed and saved." />
+    <MESSAGE value="Blur and sharpen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Blur and sharpen" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ImageProcessing$Main.ic" NAME="Main Coverage Results" MODIFIED="1667517629294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

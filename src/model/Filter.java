@@ -45,12 +45,8 @@ public class Filter implements ImageCommand {
       for (int j = 0; j < currentPixels[i].length; j++) {
         for (int k = -filter.length / 2; k < filter.length / 2 + 1; k++) {
           for (int l = -filter.length / 2; l < filter.length / 2 + 1; l++) {
-            //System.out.println("i j " + i + " " + j);
             if (i + k >= 0 && i + k < currentPixels.length && j + l >= 0 &&
                     j + l < currentPixels[i].length) {
-              //System.out.println("filter x: " + (k
-                  //    + filter.length / 2));
-              //System.out.println("filter y: " + (l + filter[i].length / 2));
               newRed += (int) (currentPixels[i + k][j + l].getR() * filter[k
                       + filter.length / 2][l + filter.length / 2]);
               newGreen += (int) (currentPixels[i + k][j + l].getG() * filter[k
@@ -60,27 +56,32 @@ public class Filter implements ImageCommand {
             }
           }
         }
-        newRed = this.checkVal(newRed);
-        newGreen = this.checkVal(newGreen);
-        newBlue = this.checkVal(newBlue);
+        newRed = this.checkVal(newRed, currentImage.getMaxValue());
+        newGreen = this.checkVal(newGreen, currentImage.getMaxValue());
+        newBlue = this.checkVal(newBlue, currentImage.getMaxValue());
         newPixels[i][j] = new Pixel(newRed, newGreen, newBlue);
         newRed = 0;
         newGreen = 0;
         newBlue = 0;
       }
     }
-    // old maxVal okay?
+
     newImage = new BasicImage(currentImage.getWidth(), currentImage.getHeight(),
             currentImage.getMaxValue(), newPixels);
     return newImage;
   }
 
-  private int checkVal(int value) {
+  /**
+   * Updates values to make sure they don't exceed the range of possible values.
+   * @param value current value
+   * @return corrected value
+   */
+  private int checkVal(int value, int maxVal) {
     if(value < 0) {
       value = 0;
     }
     else if(value > 255) {
-      value = 255;
+      value = maxVal;
     }
     return value;
   }
