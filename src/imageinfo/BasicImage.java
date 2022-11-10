@@ -46,7 +46,13 @@ public class BasicImage implements IImage {
 
   @Override
   public IPixel[][] getPixels() {
-    return this.pixels;
+    IPixel[][] copy = new Pixel[this.height][this.width];
+    for (int r = 0; r < this.height; r++) {
+      for (int c = 0; c < this.width; c++) {
+        copy[r][c] = this.pixels[r][c];
+      }
+    }
+    return copy;
   }
 
   @Override

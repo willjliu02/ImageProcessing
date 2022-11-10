@@ -31,7 +31,6 @@ public class Filter implements ImageCommand {
     this.filterCommand = filterCommand;
   }
 
-
   @Override
   public IImage apply(IImage currentImage) {
     IPixel[][] currentPixels = currentImage.getPixels();
@@ -43,18 +42,24 @@ public class Filter implements ImageCommand {
 
     IImage newImage = new BasicImage(currentImage);
 
+    int halfLength = filter.length / 2;
+
     for (int i = 0; i < currentPixels.length; i++) {
       for (int j = 0; j < currentPixels[i].length; j++) {
-        for (int k = -filter.length / 2; k < filter.length / 2 + 1; k++) {
-          for (int l = -filter.length / 2; l < filter.length / 2 + 1; l++) {
+        for (int k = -1 * halfLength; k < halfLength + 1; k++) {
+          for (int l = -1 * halfLength; l < halfLength + 1; l++) {
             if (i + k >= 0 && i + k < currentPixels.length && j + l >= 0 &&
                     j + l < currentPixels[i].length) {
-              newRed += (int) (currentPixels[i + k][j + l].getR() * filter[k
-                      + filter.length / 2][l + filter.length / 2]);
-              newGreen += (int) (currentPixels[i + k][j + l].getG() * filter[k
-                      + filter.length / 2][l + filter.length / 2]);
-              newBlue += (int) (currentPixels[i + k][j + l].getB() * filter[k
-                      + filter.length / 2][l + filter.length / 2]);
+              int currentR = i + k;
+              int currentC = j + l;
+              int filterR = k + halfLength;
+              int filterC = l + halfLength;
+              newRed += (int) (currentPixels[currentR][currentC].getR()
+                      * filter[filterR][filterC]);
+              newGreen += (int) (currentPixels[currentR][currentC].getG()
+                      * filter[filterR][filterC]);
+              newBlue += (int) (currentPixels[currentR][currentC].getB()
+                      * filter[filterR][filterC]);
             }
           }
         }
