@@ -38,7 +38,7 @@ public interface IImageProcessor {
   /**
    * Loads an image with the given path into the map with the given name.
    *
-   * @param image image to load
+   * @param image     image to load
    * @param imageName the name of the image in the map
    */
   void loadImage(IImage image, String imageName);

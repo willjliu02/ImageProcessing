@@ -22,6 +22,7 @@ public class ImageProcessorControllerTest {
 
   /**
    * Creates a mock model for the controller to test with.
+   *
    * @param commands commands to work with
    */
   private void initCond(String commands) {
@@ -62,8 +63,8 @@ public class ImageProcessorControllerTest {
     this.initCond("load ourImages/koala.ppm koala");
     this.controller.processImage();
     String expected = "Loading; "
-                    + "Image Details: Width: 1024; Height: 768; Max Value: 255; "
-                    + "ImageName: koala\n";
+            + "Image Details: Width: 1024; Height: 768; Max Value: 255; "
+            + "ImageName: koala\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -74,8 +75,8 @@ public class ImageProcessorControllerTest {
     this.initCond("brighten 10 koala koala-brighter");
     this.controller.processImage();
     String expected = "ImageName: koala; "
-                    + "Command: Brighten Image: 10; "
-                    + "NewImageName: koala-brighter\n";
+            + "Command: Brighten Image: 10; "
+            + "NewImageName: koala-brighter\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -86,8 +87,8 @@ public class ImageProcessorControllerTest {
     this.initCond("vertical-flip koala koala-vertical");
     this.controller.processImage();
     String expected = "ImageName: koala; "
-                    + "Command: Flip Image: vertical-flip; "
-                    + "NewImageName: koala-vertical\n";
+            + "Command: Flip Image: vertical-flip; "
+            + "NewImageName: koala-vertical\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -98,8 +99,8 @@ public class ImageProcessorControllerTest {
     this.initCond("horizontal-flip koala-vertical koala-vertical-horizontal");
     this.controller.processImage();
     String expected = "ImageName: koala-vertical; "
-                    + "Command: Flip Image: horizontal-flip; "
-                    + "NewImageName: koala-vertical-horizontal\n";
+            + "Command: Flip Image: horizontal-flip; "
+            + "NewImageName: koala-vertical-horizontal\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -110,8 +111,8 @@ public class ImageProcessorControllerTest {
     this.initCond("red-component koala koala-greyscale");
     this.controller.processImage();
     String expected = "ImageName: koala; "
-                    + "Command: Focus Component: red-component; "
-                    + "NewImageName: koala-greyscale\n";
+            + "Command: Focus Component: red-component; "
+            + "NewImageName: koala-greyscale\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -122,8 +123,8 @@ public class ImageProcessorControllerTest {
     this.initCond("green-component koala koala-greyscale");
     this.controller.processImage();
     String expected = "ImageName: koala; "
-                    + "Command: Focus Component: green-component; "
-                    + "NewImageName: koala-greyscale\n";
+            + "Command: Focus Component: green-component; "
+            + "NewImageName: koala-greyscale\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -134,8 +135,8 @@ public class ImageProcessorControllerTest {
     this.initCond("blue-component koala koala-greyscale");
     this.controller.processImage();
     String expected = "ImageName: koala; "
-                    + "Command: Focus Component: blue-component; "
-                    + "NewImageName: koala-greyscale\n";
+            + "Command: Focus Component: blue-component; "
+            + "NewImageName: koala-greyscale\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -146,8 +147,8 @@ public class ImageProcessorControllerTest {
     this.initCond("value-component koala koala-greyscale");
     this.controller.processImage();
     String expected = "ImageName: koala; "
-                    + "Command: Focus Component: value-component; "
-                    + "NewImageName: koala-greyscale\n";
+            + "Command: Focus Component: value-component; "
+            + "NewImageName: koala-greyscale\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -158,8 +159,8 @@ public class ImageProcessorControllerTest {
     this.initCond("luma-component koala koala-greyscale");
     this.controller.processImage();
     String expected = "ImageName: koala; "
-                    + "Command: Focus Component: luma-component; "
-                    + "NewImageName: koala-greyscale\n";
+            + "Command: Focus Component: luma-component; "
+            + "NewImageName: koala-greyscale\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -170,8 +171,8 @@ public class ImageProcessorControllerTest {
     this.initCond("intensity-component koala koala-greyscale");
     this.controller.processImage();
     String expected = "ImageName: koala; "
-                    + "Command: Focus Component: intensity-component; "
-                    + "NewImageName: koala-greyscale\n";
+            + "Command: Focus Component: intensity-component; "
+            + "NewImageName: koala-greyscale\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -182,8 +183,8 @@ public class ImageProcessorControllerTest {
     this.initCond("save images/koala-brighter.ppm koala-brighter");
     this.controller.processImage();
     String expected = "Saving; "
-                    + "ImagePath: images/koala-brighter.ppm; "
-                    + "ImageName: koala-brighter\n";
+            + "ImagePath: images/koala-brighter.ppm; "
+            + "ImageName: koala-brighter\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);

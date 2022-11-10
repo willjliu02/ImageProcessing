@@ -99,13 +99,12 @@ public class ImageProcessorController implements IController {
       String nextCommand = scan.nextLine();
       String[] line = nextCommand.split(" ");
 
-      if(line[0].equalsIgnoreCase("file")) {
-        if(this.checkInputs(line, 2)) {
+      if (line[0].equalsIgnoreCase("file")) {
+        if (this.checkInputs(line, 2)) {
           continue;
         }
-      }
-      else {
-        if(this.checkInputs(line, 3)) {
+      } else {
+        if (this.checkInputs(line, 3)) {
           continue;
         }
       }
@@ -115,8 +114,7 @@ public class ImageProcessorController implements IController {
           try {
             File file = new File(line[1]);
             scan = new Scanner(file);
-          }
-          catch(FileNotFoundException e) {
+          } catch (FileNotFoundException e) {
             try {
               this.view.renderMessage("File not found, please retry input!");
             } catch (IOException exc) {
@@ -151,8 +149,9 @@ public class ImageProcessorController implements IController {
 
   /**
    * Checks if the # of inputs is valid.
+   *
    * @param line the array of inputs
-   * @param amt the number of inputs needed
+   * @param amt  the number of inputs needed
    * @return true if the inputs are invalid, and false otherwise
    */
   private boolean checkInputs(String[] line, int amt) {

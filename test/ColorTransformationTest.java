@@ -48,9 +48,9 @@ public class ColorTransformationTest {
     for (int r = 0; r < 5; r++) {
       for (int c = 0; c < 5; c++) {
         pixels[r][c] = new Pixel(r, r * c, c);
-        int newRed = (int)(r * 0.393 + r * c * 0.769 + c * 0.189);
-        int newGreen = (int)(r * 0.349 + r * c * 0.686 + c * 0.169);
-        int newBlue = (int)(r * 0.272 + r * c * 0.534 + c * 0.131);
+        int newRed = (int) (r * 0.393 + r * c * 0.769 + c * 0.189);
+        int newGreen = (int) (r * 0.349 + r * c * 0.686 + c * 0.169);
+        int newBlue = (int) (r * 0.272 + r * c * 0.534 + c * 0.131);
         expectedPixels[r][c] = new Pixel(newRed, newGreen, newBlue);
       }
     }

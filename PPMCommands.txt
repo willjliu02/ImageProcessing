@@ -1,0 +1,6 @@
+load ourImages/starfield.ppm star
+brighten 100 star starBright
+horizontal-flip starBright hFlipBright
+vertical-flip star vFlip
+red-component vFlip greyRedVFlip
+save ourImages/greyRedVFlip.ppm greyRedVFlip

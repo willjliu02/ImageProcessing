@@ -11,6 +11,7 @@ import imageinfo.Pixel;
 public class ColorTransformation implements ImageCommand {
   private final String transformation;
   private final double[][] transform;
+
   public ColorTransformation(String transformation) {
     if (transformation.equalsIgnoreCase("greyscale")) {
       this.transform = new double[][]
@@ -31,7 +32,7 @@ public class ColorTransformation implements ImageCommand {
   @Override
   public IImage apply(IImage currentImage) {
     IPixel[][] currentPixels = currentImage.getPixels();
-    IPixel[][] newPixels =  currentImage.getPixels();
+    IPixel[][] newPixels = currentImage.getPixels();
 
     double[] colorValues = new double[3];
     double[] resultColor = new double[colorValues.length];
@@ -41,9 +42,9 @@ public class ColorTransformation implements ImageCommand {
         colorValues = new double[]{currentPixels[i][j].getR(), currentPixels[i][j].getG(),
                 currentPixels[i][j].getB()};
         resultColor = this.getColor(colorValues);
-        newPixels[i][j] = new Pixel(this.checkVal((int)(resultColor[0]), currentImage.getMaxValue()),
-                this.checkVal((int)(resultColor[1]), currentImage.getMaxValue()),
-                this.checkVal((int)(resultColor[2]), currentImage.getMaxValue()));
+        newPixels[i][j] = new Pixel(this.checkVal((int) (resultColor[0]), currentImage.getMaxValue()),
+                this.checkVal((int) (resultColor[1]), currentImage.getMaxValue()),
+                this.checkVal((int) (resultColor[2]), currentImage.getMaxValue()));
 
       }
     }
@@ -54,6 +55,7 @@ public class ColorTransformation implements ImageCommand {
 
   /**
    * Returns the new RGB values.
+   *
    * @param colorValues current color values
    * @return new color values
    */
@@ -62,25 +64,25 @@ public class ColorTransformation implements ImageCommand {
     double currentVal = 0;
 
     for (int i = 0; i < resultColor.length; i++) {
-        for (int k = 0; k < colorValues.length; k++) {
-          currentVal += this.transform[i][k] * colorValues[k];
-        }
-        resultColor[i] = currentVal;
-        currentVal = 0;
+      for (int k = 0; k < colorValues.length; k++) {
+        currentVal += this.transform[i][k] * colorValues[k];
+      }
+      resultColor[i] = currentVal;
+      currentVal = 0;
     }
     return resultColor;
   }
 
   /**
    * Updates values to make sure they don't exceed the range of possible values.
+   *
    * @param value current value
    * @return corrected value
    */
   private int checkVal(int value, int maxVal) {
-    if(value < 0) {
+    if (value < 0) {
       value = 0;
-    }
-    else if(value > maxVal) {
+    } else if (value > maxVal) {
       value = maxVal;
     }
     return value;

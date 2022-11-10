@@ -2,7 +2,6 @@ package model;
 
 import imageinfo.IImage;
 import imageinfo.IPixel;
-import imageinfo.Pixel;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -30,10 +29,9 @@ public class SaveImage implements ImageCommand {
 
   @Override
   public IImage apply(IImage currentImage) {
-    if(this.imageExtension.equals(".ppm")) {
+    if (this.imageExtension.equals(".ppm")) {
       this.ppmWriter(currentImage);
-    }
-    else {
+    } else {
       this.otherWriter(currentImage);
     }
     return null;
@@ -41,6 +39,7 @@ public class SaveImage implements ImageCommand {
 
   /**
    * Handles writing ppm files.
+   *
    * @param currentImage image to save to location
    * @return IImage placeholder
    */
@@ -86,17 +85,15 @@ public class SaveImage implements ImageCommand {
     }
     File file = new File(imagePath);
     try {
-      if(imageExtension.equals(".png")) {
+      if (imageExtension.equals(".png")) {
         ImageIO.write(image, "PNG", file);
-      }
-      else if(imageExtension.equals(".jpg")) {
+      } else if (imageExtension.equals(".jpg")) {
         ImageIO.write(image, "JPG", file);
-      }
-      else if(imageExtension.equals(".bmp")) {
+      } else if (imageExtension.equals(".bmp")) {
         ImageIO.write(image, "BMP", file);
       }
 
-    } catch(IOException e) {
+    } catch (IOException e) {
       System.out.println("Saving failed!");
     }
   }

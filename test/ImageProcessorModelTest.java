@@ -1,17 +1,18 @@
-import org.junit.Test;
-
 import imageinfo.BasicImage;
 import imageinfo.IImage;
 import imageinfo.IPixel;
 import imageinfo.ImageUtil;
 import imageinfo.Pixel;
 
+import org.junit.Test;
+
 import model.IImageProcessor;
 import model.ImageProcessorModel;
 import model.MockImageCommand;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests if the ImageProcessorModel works correctly.
@@ -30,9 +31,9 @@ public class ImageProcessorModelTest {
   @Test
   public void testHasImage() {
     this.initCond();
-    assertEquals(false, this.model.hasImage("twoBytwo"));
+    assertFalse(this.model.hasImage("twoBytwo"));
     this.model.loadImage(image, "twoBytwo");
-    assertEquals(true, this.model.hasImage("twoBytwo"));
+    assertTrue(this.model.hasImage("twoBytwo"));
   }
 
   @Test
@@ -81,7 +82,7 @@ public class ImageProcessorModelTest {
 
     ImageUtil loadedImage = new ImageUtil("ourImages/customPNG.png");
     IImage resultingImage = new BasicImage(loadedImage.getWidth(), loadedImage.getHeight(),
-                                           loadedImage.getMaxValue(), loadedImage.getPixels());
+            loadedImage.getMaxValue(), loadedImage.getPixels());
 
     this.model.loadImage(resultingImage, "customPNG");
 
@@ -175,10 +176,10 @@ public class ImageProcessorModelTest {
     this.model.loadImage(image, "twoBytwo");
     this.model.applyCommand("twoBytwo", new MockImageCommand(log), "twoByTwo");
     String expected = "Width: 2\n"
-                    + "Height: 2\n"
-                    + "Max Value: 255\n"
-                    + "(0 0 0) (1 1 1) \n"
-                    + "(2 2 2) (3 3 3) \n";
+            + "Height: 2\n"
+            + "Max Value: 255\n"
+            + "(0 0 0) (1 1 1) \n"
+            + "(2 2 2) (3 3 3) \n";
 
     assertEquals(expected, log.toString());
   }

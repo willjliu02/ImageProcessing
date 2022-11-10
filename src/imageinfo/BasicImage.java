@@ -38,9 +38,7 @@ public class BasicImage implements IImage {
     this.maxVal = maxValue;
     this.pixels = new Pixel[this.height][this.width];
     for (int r = 0; r < this.height; r++) {
-      for (int c = 0; c < this.width; c++) {
-        this.pixels[r][c] = pixels[r][c];
-      }
+      System.arraycopy(pixels[r], 0, this.pixels[r], 0, this.width);
     }
   }
 
@@ -53,9 +51,7 @@ public class BasicImage implements IImage {
   public IPixel[][] getPixels() {
     IPixel[][] copy = new Pixel[this.height][this.width];
     for (int r = 0; r < this.height; r++) {
-      for (int c = 0; c < this.width; c++) {
-        copy[r][c] = this.pixels[r][c];
-      }
+      System.arraycopy(this.pixels[r], 0, copy[r], 0, this.width);
     }
     return copy;
   }

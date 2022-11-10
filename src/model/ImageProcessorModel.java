@@ -1,8 +1,6 @@
 package model;
 
-import imageinfo.BasicImage;
 import imageinfo.IImage;
-import imageinfo.ImageUtil;
 
 import java.util.HashMap;
 import java.util.Map;

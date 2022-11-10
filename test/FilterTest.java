@@ -4,6 +4,7 @@ import imageinfo.IPixel;
 import imageinfo.Pixel;
 
 import org.junit.Test;
+
 import model.Filter;
 
 import static org.junit.Assert.assertEquals;
@@ -30,7 +31,7 @@ public class FilterTest {
 
     expected[0][0] = new Pixel(3, 1, 3);
     expected[0][1] = new Pixel(4, 4, 12);
-    expected[0][2] = new Pixel(3,5, 15);
+    expected[0][2] = new Pixel(3, 5, 15);
 
     expected[1][0] = new Pixel(12, 4, 4);
     expected[1][1] = new Pixel(16, 16, 16);

@@ -2,8 +2,6 @@ package model;
 
 import imageinfo.IImage;
 
-import model.ImageCommand;
-
 /**
  * Represents a command that saves an IImage.
  */

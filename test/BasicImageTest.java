@@ -1,9 +1,9 @@
-import org.junit.Test;
-
 import imageinfo.BasicImage;
 import imageinfo.IImage;
 import imageinfo.IPixel;
 import imageinfo.Pixel;
+
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -43,7 +43,6 @@ public class BasicImageTest {
       }
     }
   }
-
 
 
 }

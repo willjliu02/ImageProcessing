@@ -5,8 +5,6 @@ import imageinfo.IImage;
 import imageinfo.IPixel;
 import imageinfo.Pixel;
 
-import java.io.File;
-
 public class Filter implements ImageCommand {
 
   private final String filterCommand;
@@ -80,14 +78,14 @@ public class Filter implements ImageCommand {
 
   /**
    * Updates values to make sure they don't exceed the range of possible values.
+   *
    * @param value current value
    * @return corrected value
    */
   private int checkVal(int value, int maxVal) {
-    if(value < 0) {
+    if (value < 0) {
       value = 0;
-    }
-    else if(value > maxVal) {
+    } else if (value > maxVal) {
       value = maxVal;
     }
     return value;

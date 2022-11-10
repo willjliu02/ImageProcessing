@@ -26,14 +26,12 @@ public class ImageUtil {
     String fileExtension = "";
     try {
       fileExtension = fileName.substring(fileName.lastIndexOf("."));
-    }
-    catch(StringIndexOutOfBoundsException e) {
+    } catch (StringIndexOutOfBoundsException e) {
       System.out.println("Unsupported file extension.");
     }
-    if(fileExtension.equals(".ppm")) {
+    if (fileExtension.equals(".ppm")) {
       readPPM(fileName);
-    }
-    else {
+    } else {
       readOtherImageFormats(fileName);
     }
   }
@@ -115,8 +113,7 @@ public class ImageUtil {
           imagePixels[i][j] = new Pixel(color.getRed(), color.getGreen(), color.getBlue());
         }
       }
-    }
-    catch(IOException e) {
+    } catch (IOException e) {
       System.out.println("Invalid image.");
     }
   }

@@ -1,9 +1,10 @@
-import org.junit.Test;
-
 import imageinfo.BasicImage;
 import imageinfo.IImage;
 import imageinfo.IPixel;
 import imageinfo.Pixel;
+
+import org.junit.Test;
+
 import model.FocusComponent;
 
 import static org.junit.Assert.assertEquals;
@@ -130,7 +131,7 @@ public class FocusComponentTest {
     for (int r = 0; r < 5; r++) {
       for (int c = 0; c < 5; c++) {
         pixels[r][c] = new Pixel(r, r + c, c);
-        int luma = (int)((r * 0.2126) + ((r + c) * 0.7152) + (c * 0.0722));
+        int luma = (int) ((r * 0.2126) + ((r + c) * 0.7152) + (c * 0.0722));
         expectedPixels[r][c] = new Pixel(luma, luma, luma);
       }
     }
