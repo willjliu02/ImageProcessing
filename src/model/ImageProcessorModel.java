@@ -49,12 +49,7 @@ public class ImageProcessorModel implements IImageProcessor {
   }
 
   @Override
-  public void loadImage(String imagePath, String imageName) {
-    ImageUtil processImage = new ImageUtil(imagePath);
-    IImage image = new BasicImage(processImage.getWidth(),
-            processImage.getHeight(),
-            processImage.getMaxValue(),
-            processImage.getPixels());
+  public void loadImage(IImage image, String imageName) {
     this.images.put(imageName, image);
   }
 

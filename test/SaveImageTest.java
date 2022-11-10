@@ -1,6 +1,7 @@
 import imageinfo.BasicImage;
 import imageinfo.IImage;
 import imageinfo.IPixel;
+import imageinfo.ImageUtil;
 import imageinfo.Pixel;
 
 import org.junit.Test;
@@ -43,7 +44,12 @@ public class SaveImageTest {
     save.apply(basic);
 
     ImageProcessorModel modelTest = new ImageProcessorModel();
-    modelTest.loadImage("ourImages/updatedImage.ppm", "loadedImage");
+    ImageUtil processImage = new ImageUtil("ourImages/updatedImage.ppm");
+    IImage image = new BasicImage(processImage.getWidth(),
+            processImage.getHeight(),
+            processImage.getMaxValue(),
+            processImage.getPixels());
+    modelTest.loadImage(image, "loadedImage");
 
     IImage resultImage = modelTest.getImage("loadedImage");
 

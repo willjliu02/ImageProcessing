@@ -1,5 +1,9 @@
 package controller;
 
+import imageinfo.BasicImage;
+import imageinfo.IImage;
+import imageinfo.ImageUtil;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -122,7 +126,12 @@ public class ImageProcessorController implements IController {
           break;
 
         case "load":
-          this.model.loadImage(line[1], line[2]);
+          ImageUtil processImage = new ImageUtil(line[1]);
+          IImage image = new BasicImage(processImage.getWidth(),
+                  processImage.getHeight(),
+                  processImage.getMaxValue(),
+                  processImage.getPixels());
+          this.model.loadImage(image, line[2]);
           break;
         case "save":
           this.model.saveImage(line[1], line[2]);

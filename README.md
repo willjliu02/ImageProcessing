@@ -4,13 +4,17 @@ We have a class diagram saved as "class diagram.png" to visualize all the classe
 - CONTROLLER FOLDER:
   - IController: Represents a controller with the functionality of processing an image. 
   - ImageProcessorController: Supports specific commands for editing PPM files. These commands are 
-  outlined in the commands section.
+  outlined in the commands section. 
+    - UPDATE: We added functionality for the blur, sharpen, greyscale, and sepia commands here.
+      Moreover, the constructor is also able to accept a file with a script of commands now. 
 - IMAGE INFO FOLDER: 
   - BasicImage: Represents basic information for an image.
   - IImage: Represents an image, supporting functionality for certain image edits.
   - IImageState: Represents an immutable image, supporting specific functionality in returning 
     information. The width, height, max value, and pixels are saved for the image.
   - ImageUtil: Saves information from reading a PPM file.
+    - UPDATE: We added the ability to process reading other common image formats like JPG, PNG, 
+      and BMP.
   - IPixel: Provides access to value, intensity, luma, and RGB values
   - Pixel: Saves information per pixel regarding value, intensity, luma, and RGB
 - MODEL FOLDER:
@@ -18,11 +22,13 @@ We have a class diagram saved as "class diagram.png" to visualize all the classe
     per RGB value. A negative increment would mean darkening an image. 
   - FlipImage: Represents a command to either vertically or horizontally flip an image. 
   - FocusComponent: Creates a grayscale image based off the specified component. 
+  - Color Transformation: NEW, transforms the colors of the image, currently supporting making a
+    greyscale one and applying a sepia filter. 
+  - Filter: NEW, applies a filter on the image, currently supporting either blurring or sharpening. 
   - IImageProcessor: Allows different commands for editing to be placed on an image.
   - ImageCommand: Represents applying an edit on a given image.
   - ImageProcessorModel: Saves image references, while also performing image edits
-    and saving new references to those. 
-  - LoadImage: Loads a new image to save
+    and saving new references to those.
   - SaveImage: Saves an image to a specified location.
 - VIEW FOLDER:
   - IView: Represents view functionality, which currently only consists of rendering messages 
