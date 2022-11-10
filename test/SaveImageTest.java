@@ -81,28 +81,6 @@ public class SaveImageTest {
   }
 
   @Test
-  public void testJPGImageSaving() {
-    String path = "res/updatedImageJPG.jpg";
-    this.setValues(path);
-    save.apply(basic);
-
-    ImageProcessorModel modelTest = new ImageProcessorModel();
-    ImageUtil processImage = new ImageUtil(path);
-    IImage image = new BasicImage(processImage.getWidth(),
-            processImage.getHeight(),
-            processImage.getMaxValue(),
-            processImage.getPixels());
-    modelTest.loadImage(image, "loadedImage");
-
-    IImage resultImage = modelTest.getImage("loadedImage");
-
-    assertEquals(basic.getWidth(), resultImage.getWidth());
-    assertEquals(basic.getHeight(), resultImage.getHeight());
-    assertEquals(basic.getMaxValue(), resultImage.getMaxValue());
-    assertEquals(basic.getPixels(), resultImage.getPixels());
-  }
-
-  @Test
   public void testBMPImageSaving() {
     String path = "res/updatedImageBMP.bmp";
     this.setValues(path);

@@ -51,100 +51,13 @@ public class ImageProcessorModelTest {
     }
     IImage expectedImage = new BasicImage(2, 2, 255, expectedPixels);
 
-    ImageUtil loadedImage = new ImageUtil("ourImages/twoByTwo.ppm");
+    ImageUtil loadedImage = new ImageUtil("res/twoByTwo.ppm");
     IImage image = new BasicImage(loadedImage.getWidth(), loadedImage.getHeight(),
             loadedImage.getMaxValue(), loadedImage.getPixels());
 
     this.model.loadImage(image, "twoBytwo");
 
     IImage resultImage = this.model.getImage("twoBytwo");
-
-    assertEquals(expectedImage.getHeight(), resultImage.getHeight());
-    assertEquals(expectedImage.getWidth(), resultImage.getWidth());
-    assertEquals(expectedImage.getMaxValue(), resultImage.getMaxValue());
-    assertEquals(expectedImage.getPixels(), resultImage.getPixels());
-  }
-
-  @Test
-  public void testLoadPNGFormatting() {
-    this.initCond();
-    int width = 5;
-    int height = 5;
-    IPixel[][] expectedPixels = new Pixel[height][width];
-    int counter = 0;
-    for (int r = 0; r < height; r++) {
-      for (int c = 0; c < width; c++) {
-        expectedPixels[r][c] = new Pixel(counter, counter, counter);
-        counter++;
-      }
-    }
-    IImage expectedImage = new BasicImage(width, height, 255, expectedPixels);
-
-    ImageUtil loadedImage = new ImageUtil("ourImages/customPNG.png");
-    IImage resultingImage = new BasicImage(loadedImage.getWidth(), loadedImage.getHeight(),
-            loadedImage.getMaxValue(), loadedImage.getPixels());
-
-    this.model.loadImage(resultingImage, "customPNG");
-
-    IImage resultImage = this.model.getImage("customPNG");
-
-    assertEquals(expectedImage.getHeight(), resultImage.getHeight());
-    assertEquals(expectedImage.getWidth(), resultImage.getWidth());
-    assertEquals(expectedImage.getMaxValue(), resultImage.getMaxValue());
-    assertEquals(expectedImage.getPixels(), resultImage.getPixels());
-  }
-
-  @Test
-  public void testLoadBMPFormatting() {
-    this.initCond();
-    int width = 7;
-    int height = 5;
-    IPixel[][] expectedPixels = new Pixel[height][width];
-    int counter = 0;
-    for (int r = 0; r < height; r++) {
-      for (int c = 0; c < width; c++) {
-        expectedPixels[r][c] = new Pixel(counter, counter, counter);
-        counter++;
-      }
-    }
-    IImage expectedImage = new BasicImage(width, height, 255, expectedPixels);
-
-    ImageUtil loadedImage = new ImageUtil("ourImages/customBMP.bmp");
-    IImage resultingImage = new BasicImage(loadedImage.getWidth(), loadedImage.getHeight(),
-            loadedImage.getMaxValue(), loadedImage.getPixels());
-
-    this.model.loadImage(resultingImage, "customBMP");
-
-    IImage resultImage = this.model.getImage("customBMP");
-
-    assertEquals(expectedImage.getHeight(), resultImage.getHeight());
-    assertEquals(expectedImage.getWidth(), resultImage.getWidth());
-    assertEquals(expectedImage.getMaxValue(), resultImage.getMaxValue());
-    assertEquals(expectedImage.getPixels(), resultImage.getPixels());
-  }
-
-  @Test
-  public void testLoadJPGFormatting() {
-    this.initCond();
-    int width = 5;
-    int height = 7;
-    IPixel[][] expectedPixels = new Pixel[height][width];
-    int counter = 0;
-    for (int r = 0; r < height; r++) {
-      for (int c = 0; c < width; c++) {
-        expectedPixels[r][c] = new Pixel(counter, counter, counter);
-        counter++;
-      }
-    }
-    IImage expectedImage = new BasicImage(width, height, 255, expectedPixels);
-
-    ImageUtil loadedImage = new ImageUtil("ourImages/customJPG.jpg");
-    IImage resultingImage = new BasicImage(loadedImage.getWidth(), loadedImage.getHeight(),
-            loadedImage.getMaxValue(), loadedImage.getPixels());
-
-    this.model.loadImage(resultingImage, "customJPG");
-
-    IImage resultImage = this.model.getImage("customJPG");
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());
