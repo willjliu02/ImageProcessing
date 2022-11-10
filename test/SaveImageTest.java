@@ -27,8 +27,8 @@ public class SaveImageTest {
    * Set values to create an image with.
    */
   private void setValues() {
-    save = new SaveImage("ourImages/updatedImage.ppm");
-    saveMock = new SaveImageMock("ourImages/updatedImage.ppm");
+    save = new SaveImage("res/updatedImage.ppm");
+    saveMock = new SaveImageMock("res/updatedImage.ppm");
     pixels = new Pixel[5][5];
     for (int r = 0; r < 5; r++) {
       for (int c = 0; c < 5; c++) {
@@ -44,7 +44,7 @@ public class SaveImageTest {
     save.apply(basic);
 
     ImageProcessorModel modelTest = new ImageProcessorModel();
-    ImageUtil processImage = new ImageUtil("ourImages/updatedImage.ppm");
+    ImageUtil processImage = new ImageUtil("res/updatedImage.ppm");
     IImage image = new BasicImage(processImage.getWidth(),
             processImage.getHeight(),
             processImage.getMaxValue(),

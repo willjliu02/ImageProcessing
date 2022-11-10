@@ -22,7 +22,7 @@ public class ImageProcessorModelTest {
 
   private void initCond() {
     this.model = new ImageProcessorModel();
-    ImageUtil processImage = new ImageUtil("ourImages/twoByTwo.ppm");
+    ImageUtil processImage = new ImageUtil("res/twoByTwo.ppm");
     IPixel[][] pixels = processImage.getPixels();
     this.image = new BasicImage(2, 2, 255, pixels);
   }
@@ -69,7 +69,7 @@ public class ImageProcessorModelTest {
 
   @Test
   public void testGetImage() {
-    ImageUtil processImage = new ImageUtil("ourImages/twoByTwo.ppm");
+    ImageUtil processImage = new ImageUtil("res/twoByTwo.ppm");
     IImage expectedImage = new BasicImage(processImage.getWidth(),
             processImage.getHeight(),
             processImage.getMaxValue(),
@@ -96,9 +96,9 @@ public class ImageProcessorModelTest {
     this.initCond();
     this.model.loadImage(image, "twoByTwo");
     IImage expectedImage = this.model.getImage("twoByTwo");
-    this.model.saveImage("ourImages/newTwoByTwo.ppm", "twoByTwo");
+    this.model.saveImage("res/newTwoByTwo.ppm", "twoByTwo");
 
-    ImageUtil processImage = new ImageUtil("ourImages/newTwoByTwo.ppm");
+    ImageUtil processImage = new ImageUtil("res/newTwoByTwo.ppm");
     IImage savedImage = new BasicImage(processImage.getWidth(),
             processImage.getHeight(),
             processImage.getMaxValue(),

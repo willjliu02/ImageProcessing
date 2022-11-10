@@ -39,27 +39,31 @@ We have a class diagram saved as "class diagram.png" to visualize all the classe
 COMMANDS:
 The following commands should be typed one after another as our program runs:
 ALSO IN OUR SCRIPT
-load ourImages/starfield.ppm star
+load res/starfield.ppm star
 brighten 100 star starBright
 horizontal-flip starBright hFlipBright
 vertical-flip star vFlip
 red-component vFlip greyRedVFlip
-save ourImages/greyRedVFlip.ppm greyRedVFlip
-load ourImages/boston.jpg boston
+save res/greyRedVFlip.ppm greyRedVFlip
+load res/boston.jpg boston
 brighten 10 boston bostonBright
 horizontal-flip bostonBright bostonHFlip
 vertical-flip bostonHFlip bostonVFlip
 red-component bostonVFlip bostonRedComp
 blur bostonRedComp bostonBlur
-save ourImages/bostonSuperEdited.jpg bostonBlur
+save res/bostonSuperEdited.jpg bostonBlur
 sharpen boston bostonSharp
 greyscale bostonSharp bostonGrey
-save ourImages/bostonSharpAndGrey.jpg bostonGrey
+save res/bostonSharpAndGrey.jpg bostonGrey
 sepia boston bostonSepia
-save ourImages/bostonSepia.jpg bostonSepia
+save res/bostonSepia.jpg bostonSepia
 
 PPM IMAGE EXAMPLE IS FROM:
 It is the starfield image on this page. 
 “PPMA Files Portable Pixel Map (ASCII).” PPMA Files, 22 July 2011,
 people.sc.fsu.edu/~jburkardt/data/ppma/ppma.html. 
+
+JPG IMAGE EXAMPLE IS FROM:
+Rivera, Sofia. “The Best Views around Boston.” Boston Magazine, Boston Magazine, 1 Feb. 2021, 
+www.bostonmagazine.com/arts-entertainment/best-views-around-boston/. 
 
