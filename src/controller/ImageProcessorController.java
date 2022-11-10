@@ -132,10 +132,10 @@ public class ImageProcessorController implements IController {
                   processImage.getMaxValue(),
                   processImage.getPixels());
           this.model.loadImage(image, line[2]);
-          break;
+          continue;
         case "save":
           this.model.saveImage(line[1], line[2]);
-          break;
+          continue;
         default:
           try {
             this.applyCommand(line);
@@ -146,8 +146,6 @@ public class ImageProcessorController implements IController {
           }
       }
       this.writeMessage("Request processed!\n");
-      //?? MAYBE ADD A CONFIRMATION THAT THE COMMAND WAS PROCESSED ??
-      // added this line but it will print regardless of the command works or not.
     }
   }
 

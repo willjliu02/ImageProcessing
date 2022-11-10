@@ -23,8 +23,13 @@ public class ImageUtil {
   private static IPixel[][] imagePixels;
 
   public ImageUtil(String fileName) {
-    // try catch??
-    String fileExtension = fileName.substring(fileName.lastIndexOf("."));
+    String fileExtension = "";
+    try {
+      fileExtension = fileName.substring(fileName.lastIndexOf("."));
+    }
+    catch(StringIndexOutOfBoundsException e) {
+      System.out.println("Unsupported file extension.");
+    }
     if(fileExtension.equals(".ppm")) {
       readPPM(fileName);
     }
