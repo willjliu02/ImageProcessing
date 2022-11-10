@@ -22,7 +22,8 @@ public class ImageProcessorModelTest {
 
   private void initCond() {
     this.model = new ImageProcessorModel();
-    IPixel[][] pixels = new Pixel[2][2];
+    ImageUtil processImage = new ImageUtil("ourImages/twoByTwo.ppm");
+    IPixel[][] pixels = processImage.getPixels();
     this.image = new BasicImage(2, 2, 255, pixels);
   }
 

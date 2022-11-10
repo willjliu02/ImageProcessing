@@ -45,6 +45,18 @@ horizontal-flip starBright hFlipBright
 vertical-flip star vFlip
 red-component vFlip greyRedVFlip
 save ourImages/greyRedVFlip.ppm greyRedVFlip
+load ourImages/boston.jpg boston
+brighten 10 boston bostonBright
+horizontal-flip bostonBright bostonHFlip
+vertical-flip bostonHFlip bostonVFlip
+red-component bostonVFlip bostonRedComp
+blur bostonRedComp bostonBlur
+save ourImages/bostonSuperEdited.jpg bostonBlur
+sharpen boston bostonSharp
+greyscale bostonSharp bostonGrey
+save ourImages/bostonSharpAndGrey.jpg bostonGrey
+sepia boston bostonSepia
+save ourImages/bostonSepia.jpg bostonSepia
 
 PPM IMAGE EXAMPLE IS FROM:
 It is the starfield image on this page. 
