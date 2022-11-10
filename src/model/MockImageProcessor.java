@@ -50,7 +50,8 @@ public class MockImageProcessor implements IImageProcessor {
   public void loadImage(IImage image, String imageName) {
     try {
       this.log.append("Loading; ");
-      this.log.append("ImagePath: ");
+      this.log.append("Image Details: ");
+      this.log.append(image.toString());
       this.log.append("; ImageName: ");
       this.log.append(imageName);
       this.log.append("\n");

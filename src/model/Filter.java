@@ -92,4 +92,9 @@ public class Filter implements ImageCommand {
     }
     return value;
   }
+
+  @Override
+  public String toString() {
+    return "Filter: " + this.filterCommand;
+  }
 }

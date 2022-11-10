@@ -59,10 +59,10 @@ public class ImageProcessorControllerTest {
 
   @Test
   public void testProcessLoad() {
-    this.initCond("load images/koala.ppm koala");
+    this.initCond("load ourImages/koala.ppm koala");
     this.controller.processImage();
     String expected = "Loading; "
-                    + "ImagePath: images/koala.ppm; "
+                    + "Image Details: Width: 1024; Height: 768; Max Value: 255; "
                     + "ImageName: koala\n";
     String result = this.modelLog.toString();
 
@@ -184,6 +184,54 @@ public class ImageProcessorControllerTest {
     String expected = "Saving; "
                     + "ImagePath: images/koala-brighter.ppm; "
                     + "ImageName: koala-brighter\n";
+    String result = this.modelLog.toString();
+
+    assertEquals(expected, result);
+  }
+
+  @Test
+  public void testProcessBlur() {
+    this.initCond("blur images/koala-brighter.ppm koala-brighter");
+    this.controller.processImage();
+    String expected = "Saving; "
+            + "ImagePath: images/koala-brighter.ppm; "
+            + "ImageName: koala-brighter\n";
+    String result = this.modelLog.toString();
+
+    assertEquals(expected, result);
+  }
+
+  @Test
+  public void testProcessSharpen() {
+    this.initCond("save images/koala-brighter.ppm koala-brighter");
+    this.controller.processImage();
+    String expected = "Saving; "
+            + "ImagePath: images/koala-brighter.ppm; "
+            + "ImageName: koala-brighter\n";
+    String result = this.modelLog.toString();
+
+    assertEquals(expected, result);
+  }
+
+  @Test
+  public void testProcessGreyscale() {
+    this.initCond("save images/koala-brighter.ppm koala-brighter");
+    this.controller.processImage();
+    String expected = "Saving; "
+            + "ImagePath: images/koala-brighter.ppm; "
+            + "ImageName: koala-brighter\n";
+    String result = this.modelLog.toString();
+
+    assertEquals(expected, result);
+  }
+
+  @Test
+  public void testProcessSepia() {
+    this.initCond("save images/koala-brighter.ppm koala-brighter");
+    this.controller.processImage();
+    String expected = "Saving; "
+            + "ImagePath: images/koala-brighter.ppm; "
+            + "ImageName: koala-brighter\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);

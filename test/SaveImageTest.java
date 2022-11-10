@@ -27,9 +27,9 @@ public class SaveImageTest {
   /**
    * Set values to create an image with.
    */
-  private void setValues() {
-    save = new SaveImage("res/updatedImage.ppm");
-    saveMock = new SaveImageMock("res/updatedImage.ppm");
+  private void setValues(String path) {
+    save = new SaveImage(path);
+    saveMock = new SaveImageMock(path);
     pixels = new Pixel[5][5];
     for (int r = 0; r < 5; r++) {
       for (int c = 0; c < 5; c++) {
@@ -40,8 +40,8 @@ public class SaveImageTest {
   }
 
   @Test
-  public void testImageSaving() {
-    this.setValues();
+  public void testPPMImageSaving() {
+    this.setValues("res/updatedImage.ppm");
     save.apply(basic);
 
     ImageProcessorModel modelTest = new ImageProcessorModel();
@@ -61,13 +61,79 @@ public class SaveImageTest {
   }
 
   @Test
+  public void testPNGImageSaving() {
+    String path = "res/updatedImagePNG.png";
+    this.setValues(path);
+    save.apply(basic);
+
+    ImageProcessorModel modelTest = new ImageProcessorModel();
+    ImageUtil processImage = new ImageUtil(path);
+    IImage image = new BasicImage(processImage.getWidth(),
+            processImage.getHeight(),
+            processImage.getMaxValue(),
+            processImage.getPixels());
+    modelTest.loadImage(image, "loadedImage");
+
+    IImage resultImage = modelTest.getImage("loadedImage");
+
+    assertEquals(basic.getWidth(), resultImage.getWidth());
+    assertEquals(basic.getHeight(), resultImage.getHeight());
+    assertEquals(basic.getMaxValue(), resultImage.getMaxValue());
+    assertEquals(basic.getPixels(), resultImage.getPixels());
+  }
+
+  @Test
+  public void testJPGImageSaving() {
+    String path = "res/updatedImageJPG.jpg";
+    this.setValues(path);
+    save.apply(basic);
+
+    ImageProcessorModel modelTest = new ImageProcessorModel();
+    ImageUtil processImage = new ImageUtil(path);
+    IImage image = new BasicImage(processImage.getWidth(),
+            processImage.getHeight(),
+            processImage.getMaxValue(),
+            processImage.getPixels());
+    modelTest.loadImage(image, "loadedImage");
+
+    IImage resultImage = modelTest.getImage("loadedImage");
+
+    assertEquals(basic.getWidth(), resultImage.getWidth());
+    assertEquals(basic.getHeight(), resultImage.getHeight());
+    assertEquals(basic.getMaxValue(), resultImage.getMaxValue());
+    assertEquals(basic.getPixels(), resultImage.getPixels());
+  }
+
+  @Test
+  public void testBMPImageSaving() {
+    String path = "res/updatedImageBMP.bmp";
+    this.setValues(path);
+    save.apply(basic);
+
+    ImageProcessorModel modelTest = new ImageProcessorModel();
+    ImageUtil processImage = new ImageUtil(path);
+    IImage image = new BasicImage(processImage.getWidth(),
+            processImage.getHeight(),
+            processImage.getMaxValue(),
+            processImage.getPixels());
+    modelTest.loadImage(image, "loadedImage");
+
+    IImage resultImage = modelTest.getImage("loadedImage");
+
+    assertEquals(basic.getWidth(), resultImage.getWidth());
+    assertEquals(basic.getHeight(), resultImage.getHeight());
+    assertEquals(basic.getMaxValue(), resultImage.getMaxValue());
+    assertEquals(basic.getPixels(), resultImage.getPixels());
+  }
+
+  @Test(expected = IllegalStateException.class)
   public void testImageSavingExceptions() {
-    this.setValues();
-    try {
-      saveMock.apply(basic);
-      fail("Unable to write to file.");
-    } catch (IllegalStateException e) {
-      assertNotNull(e);
-    }
+    this.setValues("res/updatedImage.ppm");
+    saveMock.apply(basic);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testImageExtensionException() {
+    new SaveImage("invalid/path");
   }
 }

@@ -74,4 +74,10 @@ public class BasicImage implements IImage {
   public int getMaxValue() {
     return this.maxVal;
   }
+
+  @Override
+  public String toString() {
+    return String.format("Width: %d; Height: %d; Max Value: %d",
+            this.width, this.height, this.maxVal);
+  }
 }

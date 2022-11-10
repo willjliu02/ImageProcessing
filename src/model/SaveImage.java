@@ -34,42 +34,7 @@ public class SaveImage implements ImageCommand {
       this.ppmWriter(currentImage);
     }
     else {
-      BufferedImage image = new BufferedImage(currentImage.getWidth(), currentImage.getHeight(),
-              BufferedImage.TYPE_INT_RGB);
-      IPixel[][] imagePixels = currentImage.getPixels();
-      Color color = new Color(0, 0, 0);
-      for (int i = 0; i < imagePixels.length; i++) {
-        for (int j = 0; j < imagePixels[i].length; j++) {
-          color = new Color(imagePixels[i][j].getR(), imagePixels[i][j].getG(),
-                  imagePixels[i][j].getB());
-          image.setRGB(j, i, color.getRGB());
-        }
-      }
-      File file = new File(imagePath);
-      if(imageExtension.equals(".png")) {
-        try {
-          ImageIO.write(image, "PNG", file);
-        }
-        catch(IOException e) {
-          System.out.println("Saving failed!");
-        }
-      }
-      else if(imageExtension.equals(".jpg")) {
-        try {
-          ImageIO.write(image, "JPG", file);
-        }
-        catch(IOException e) {
-          System.out.println("Saving failed!");
-        }
-      }
-      else if(imageExtension.equals(".bmp")) {
-        try {
-          ImageIO.write(image, "BMP", file);
-        }
-        catch(IOException e) {
-          System.out.println("Saving failed!");
-        }
-      }
+      this.otherWriter(currentImage);
     }
     return null;
   }
@@ -79,7 +44,7 @@ public class SaveImage implements ImageCommand {
    * @param currentImage image to save to location
    * @return IImage placeholder
    */
-  private IImage ppmWriter(IImage currentImage) {
+  private void ppmWriter(IImage currentImage) {
     try {
       FileWriter file = new FileWriter(this.imagePath);
       int width = currentImage.getWidth();
@@ -105,9 +70,37 @@ public class SaveImage implements ImageCommand {
     } catch (IOException e) {
       throw new IllegalStateException("Unable to write to file.");
     }
-
-    return null;
   }
+
+  private void otherWriter(IImage currentImage) {
+    BufferedImage image = new BufferedImage(currentImage.getWidth(), currentImage.getHeight(),
+            BufferedImage.TYPE_INT_RGB);
+    IPixel[][] imagePixels = currentImage.getPixels();
+    Color color = new Color(0, 0, 0);
+    for (int i = 0; i < imagePixels.length; i++) {
+      for (int j = 0; j < imagePixels[i].length; j++) {
+        color = new Color(imagePixels[i][j].getR(), imagePixels[i][j].getG(),
+                imagePixels[i][j].getB());
+        image.setRGB(j, i, color.getRGB());
+      }
+    }
+    File file = new File(imagePath);
+    try {
+      if(imageExtension.equals(".png")) {
+        ImageIO.write(image, "PNG", file);
+      }
+      else if(imageExtension.equals(".jpg")) {
+        ImageIO.write(image, "JPG", file);
+      }
+      else if(imageExtension.equals(".bmp")) {
+        ImageIO.write(image, "BMP", file);
+      }
+
+    } catch(IOException e) {
+      System.out.println("Saving failed!");
+    }
+  }
+
   @Override
   public String toString() {
     return "Save Image: " + this.imagePath;

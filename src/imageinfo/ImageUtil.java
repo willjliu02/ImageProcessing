@@ -107,7 +107,6 @@ public class ImageUtil {
       Color color = new Color(0, 0, 0);
       width = image.getWidth();
       height = image.getHeight();
-      //?? maxval
       maxValue = 255;
       imagePixels = new IPixel[height][width];
       for (int i = 0; i < height; i++) {

@@ -85,4 +85,9 @@ public class ColorTransformation implements ImageCommand {
     }
     return value;
   }
+
+  @Override
+  public String toString() {
+    return "Color Transformation: " + this.transformation;
+  }
 }
