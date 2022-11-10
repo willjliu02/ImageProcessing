@@ -36,7 +36,12 @@ public class BasicImage implements IImage {
     this.width = width;
     this.height = height;
     this.maxVal = maxValue;
-    this.pixels = pixels;
+    this.pixels = new Pixel[this.height][this.width];
+    for (int r = 0; r < this.height; r++) {
+      for (int c = 0; c < this.width; c++) {
+        this.pixels[r][c] = pixels[r][c];
+      }
+    }
   }
 
   @Override

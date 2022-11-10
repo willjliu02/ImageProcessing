@@ -20,8 +20,12 @@ public class SaveImage implements ImageCommand {
   private final String imageExtension;
 
   public SaveImage(String imagePath) {
+    int lastPeriod = imagePath.lastIndexOf(".");
+    if (lastPeriod == -1) {
+      throw new IllegalArgumentException("Invalid Path.");
+    }
     this.imagePath = imagePath;
-    this.imageExtension = imagePath.substring(imagePath.lastIndexOf("."));
+    this.imageExtension = imagePath.substring(lastPeriod);
   }
 
   @Override

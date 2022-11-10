@@ -2,7 +2,18 @@ import org.junit.Test;
 
 import imageinfo.BasicImage;
 import imageinfo.IImage;
+import imageinfo.IPixel;
 import imageinfo.ImageUtil;
+import imageinfo.Pixel;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import model.IImageProcessor;
 import model.ImageProcessorModel;
 import model.MockImageCommand;
@@ -29,19 +40,129 @@ public class ImageProcessorModelTest {
   }
 
   @Test
-  public void testLoad() {
+  public void testLoadAppears() {
     this.initCond();
+    assertEquals(false, this.model.hasImage("twoBytwo"));
+    this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
+    assertEquals(true, this.model.hasImage("twoBytwo"));
+  }
+
+  @Test
+  public void testLoadPPMFormatting() {
+    this.initCond();
+    int width = 2;
+    int height = 2;
+    IPixel[][] expectedPixels = new Pixel[height][width];
+    int counter = 0;
+    for (int r = 0; r < height; r++) {
+      for (int c = 0; c < width; c++) {
+        expectedPixels[r][c] = new Pixel(counter, counter, counter);
+        counter++;
+      }
+    }
+    IImage expectedImage = new BasicImage(2, 2, 255, expectedPixels);
+    this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
+
+    IImage resultImage = this.model.getImage("twoBytwo");
+
+    assertEquals(expectedImage.getHeight(), resultImage.getHeight());
+    assertEquals(expectedImage.getWidth(), resultImage.getWidth());
+    assertEquals(expectedImage.getMaxValue(), resultImage.getMaxValue());
+    assertEquals(expectedImage.getPixels(), resultImage.getPixels());
+  }
+
+  @Test
+  public void testLoadPNGFormatting() {
+    this.initCond();
+    int width = 5;
+    int height = 5;
+    IPixel[][] expectedPixels = new Pixel[height][width];
+    int counter = 0;
+    for (int r = 0; r < height; r++) {
+      for (int c = 0; c < width; c++) {
+        expectedPixels[r][c] = new Pixel(counter, counter, counter);
+        counter++;
+      }
+    }
+    IImage expectedImage = new BasicImage(width, height, 255, expectedPixels);
+    this.model.loadImage("ourImages/customPNG.png", "customPNG");
+
+    IImage resultImage = this.model.getImage("customPNG");
+
+    assertEquals(expectedImage.getHeight(), resultImage.getHeight());
+    assertEquals(expectedImage.getWidth(), resultImage.getWidth());
+    assertEquals(expectedImage.getMaxValue(), resultImage.getMaxValue());
+    assertEquals(expectedImage.getPixels(), resultImage.getPixels());
+  }
+
+  @Test
+  public void testLoadBMPFormatting() {
+    this.initCond();
+    int width = 7;
+    int height = 5;
+    IPixel[][] expectedPixels = new Pixel[height][width];
+    int counter = 0;
+    for (int r = 0; r < height; r++) {
+      for (int c = 0; c < width; c++) {
+        expectedPixels[r][c] = new Pixel(counter, counter, counter);
+        counter++;
+      }
+    }
+    IImage expectedImage = new BasicImage(width, height, 255, expectedPixels);
+    this.model.loadImage("ourImages/customBMP.bmp", "customBMP");
+
+    IImage resultImage = this.model.getImage("customBMP");
+
+    assertEquals(expectedImage.getHeight(), resultImage.getHeight());
+    assertEquals(expectedImage.getWidth(), resultImage.getWidth());
+    assertEquals(expectedImage.getMaxValue(), resultImage.getMaxValue());
+    assertEquals(expectedImage.getPixels(), resultImage.getPixels());
+  }
+
+  @Test
+  public void testLoadJPGFormatting() {
+    this.initCond();
+    int width = 5;
+    int height = 7;
+    IPixel[][] expectedPixels = new Pixel[height][width];
+    int counter = 0;
+    for (int r = 0; r < height; r++) {
+      for (int c = 0; c < width; c++) {
+        expectedPixels[r][c] = new Pixel(counter, counter, counter);
+        counter++;
+      }
+    }
+    IImage expectedImage = new BasicImage(width, height, 255, expectedPixels);
+    this.model.loadImage("ourImages/customJPG.jpg", "customJPG");
+
+    IImage resultImage = this.model.getImage("customJPG");
+
+    assertEquals(expectedImage.getHeight(), resultImage.getHeight());
+    assertEquals(expectedImage.getWidth(), resultImage.getWidth());
+    assertEquals(expectedImage.getMaxValue(), resultImage.getMaxValue());
+    assertEquals(expectedImage.getPixels(), resultImage.getPixels());
+  }
+
+  @Test
+  public void nothing() {
+    int width = 5;
+    int height = 7;
+    BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    int counter = 0;
+    for (int r = 0; r < height; r++) {
+      for (int c = 0; c < width; c++) {
+        Color color = new Color(counter, counter, counter);
+        image.setRGB(c, r, color.getRGB());
+        counter++;
+      }
+    }
+
+    File file = new File("ourImages/customJPG.jpg");
     try {
-      this.model.applyCommand("twoBytwo",
-              new MockImageCommand(null),
-              "random");
-      fail();
-    } catch (IllegalArgumentException e) {
-      this.model.loadImage("ourImages/twoByTwo.ppm", "twoBytwo");
-      this.model.applyCommand("twoBytwo",
-              new MockImageCommand(new StringBuilder()),
-              "random");
-      assertEquals(true, this.model.hasImage("twoBytwo"));
+      ImageIO.write(image, "JPG", file);
+    }
+    catch(IOException e) {
+      System.out.println("Saving failed!");
     }
   }
 
