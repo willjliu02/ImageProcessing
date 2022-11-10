@@ -82,7 +82,7 @@ public class Filter implements ImageCommand {
     if(value < 0) {
       value = 0;
     }
-    else if(value > 255) {
+    else if(value > maxVal) {
       value = maxVal;
     }
     return value;

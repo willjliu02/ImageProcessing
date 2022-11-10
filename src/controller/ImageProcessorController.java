@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.function.Function;
 
 import model.Brighten;
+import model.ColorTransformation;
 import model.Filter;
 import model.FlipImage;
 import model.FocusComponent;
@@ -53,6 +54,8 @@ public class ImageProcessorController implements IController {
     this.commands.put("blue-component", comp -> new FocusComponent("blue-component"));
     this.commands.put("blur", filter -> new Filter("blur"));
     this.commands.put("sharpen", filter -> new Filter("sharpen"));
+    this.commands.put("greyscale", transform -> new ColorTransformation("greyscale"));
+    this.commands.put("sepia", transform -> new ColorTransformation("sepia"));
   }
 
   private void writeMessage(String message) {

@@ -29,7 +29,7 @@ public class ImageUtil {
       readPPM(fileName);
     }
     else {
-      readOtherImageFormats(fileName, fileExtension);
+      readOtherImageFormats(fileName);
     }
   }
 
@@ -94,9 +94,8 @@ public class ImageUtil {
    * Read an image file in standard image formats.
    *
    * @param filename the path of the file.
-   * @param fileExtension file format.
    */
-  public static void readOtherImageFormats(String filename, String fileExtension) {
+  public static void readOtherImageFormats(String filename) {
     File file = new File(filename);
     try {
       BufferedImage image = ImageIO.read(file);
