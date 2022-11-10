@@ -39,12 +39,6 @@ We have a class diagram saved as "class diagram.png" to visualize all the classe
 COMMANDS:
 The following commands should be typed one after another as our program runs:
 ALSO IN OUR SCRIPT
-load res/starfield.ppm star
-brighten 100 star starBright
-horizontal-flip starBright hFlipBright
-vertical-flip star vFlip
-red-component vFlip greyRedVFlip
-save res/greyRedVFlip.ppm greyRedVFlip
 load res/boston.jpg boston
 brighten 10 boston bostonBright
 horizontal-flip bostonBright bostonHFlip

@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import model.ImageProcessorModel;
 import model.SaveImage;
+import model.SaveImageMock;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

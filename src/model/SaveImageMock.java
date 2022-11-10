@@ -1,3 +1,5 @@
+package model;
+
 import imageinfo.IImage;
 
 import model.ImageCommand;
