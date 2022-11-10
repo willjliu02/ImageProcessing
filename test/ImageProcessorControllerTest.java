@@ -60,7 +60,7 @@ public class ImageProcessorControllerTest {
 
   @Test
   public void testProcessLoad() {
-    this.initCond("load ourImages/koala.ppm koala");
+    this.initCond("load res/koala.ppm koala");
     this.controller.processImage();
     String expected = "Loading; "
             + "Image Details: Width: 1024; Height: 768; Max Value: 255; "
@@ -192,11 +192,11 @@ public class ImageProcessorControllerTest {
 
   @Test
   public void testProcessBlur() {
-    this.initCond("blur images/koala-brighter.ppm koala-brighter");
+    this.initCond("blur koala koala-blurred");
     this.controller.processImage();
-    String expected = "Saving; "
-            + "ImagePath: images/koala-brighter.ppm; "
-            + "ImageName: koala-brighter\n";
+    String expected = "ImageName: koala; "
+            + "Command: Filter: blur; "
+            + "NewImageName: koala-blurred\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -204,11 +204,11 @@ public class ImageProcessorControllerTest {
 
   @Test
   public void testProcessSharpen() {
-    this.initCond("save images/koala-brighter.ppm koala-brighter");
+    this.initCond("sharpen koala koala-sharpen");
     this.controller.processImage();
-    String expected = "Saving; "
-            + "ImagePath: images/koala-brighter.ppm; "
-            + "ImageName: koala-brighter\n";
+    String expected = "ImageName: koala; "
+            + "Command: Filter: sharpen; "
+            + "NewImageName: koala-sharpen\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -216,11 +216,11 @@ public class ImageProcessorControllerTest {
 
   @Test
   public void testProcessGreyscale() {
-    this.initCond("save images/koala-brighter.ppm koala-brighter");
+    this.initCond("greyscale koala koala-greyscale");
     this.controller.processImage();
-    String expected = "Saving; "
-            + "ImagePath: images/koala-brighter.ppm; "
-            + "ImageName: koala-brighter\n";
+    String expected = "ImageName: koala; "
+            + "Command: Color Transformation: greyscale; "
+            + "NewImageName: koala-greyscale\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
@@ -228,11 +228,127 @@ public class ImageProcessorControllerTest {
 
   @Test
   public void testProcessSepia() {
-    this.initCond("save images/koala-brighter.ppm koala-brighter");
+    this.initCond("sepia koala koala-sepia");
     this.controller.processImage();
-    String expected = "Saving; "
-            + "ImagePath: images/koala-brighter.ppm; "
-            + "ImageName: koala-brighter\n";
+    String expected = "ImageName: koala; "
+            + "Command: Color Transformation: sepia; "
+            + "NewImageName: koala-sepia\n";
+    String result = this.modelLog.toString();
+
+    assertEquals(expected, result);
+  }
+
+  @Test
+  public void testProcessFile() {
+    this.initCond("file Script.txt");
+    this.controller.processImage();
+    String expected = "Loading; "
+            + "Image Details: Width: 1200; Height: 650; Max Value: 255; "
+            + "ImageName: boston\n"
+
+            + "ImageName: boston; "
+            + "Command: Brighten Image: 10; "
+            + "NewImageName: bostonBright\n"
+
+            + "ImageName: bostonBright; "
+            + "Command: Flip Image: horizontal-flip; "
+            + "NewImageName: bostonHFlip\n"
+
+            + "ImageName: bostonHFlip; "
+            + "Command: Flip Image: vertical-flip; "
+            + "NewImageName: bostonVFlip\n"
+
+            + "ImageName: bostonVFlip; "
+            + "Command: Focus Component: red-component; "
+            + "NewImageName: bostonRedComp\n"
+
+            + "ImageName: bostonRedComp; "
+            + "Command: Filter: blur; "
+            + "NewImageName: bostonBlur\n"
+
+            + "Saving; "
+            + "ImagePath: res/bostonSuperEdited.jpg; "
+            + "ImageName: bostonBlur\n"
+
+            + "ImageName: boston; "
+            + "Command: Filter: sharpen; "
+            + "NewImageName: bostonSharp\n"
+
+            + "ImageName: bostonSharp; "
+            + "Command: Color Transformation: greyscale; "
+            + "NewImageName: bostonGrey\n"
+
+            + "Saving; "
+            + "ImagePath: res/bostonSharpAndGrey.jpg; "
+            + "ImageName: bostonGrey\n"
+
+            + "ImageName: boston; "
+            + "Command: Color Transformation: sepia; "
+            + "NewImageName: bostonSepia\n"
+
+            + "Saving; "
+            + "ImagePath: res/bostonSepia.jpg; "
+            + "ImageName: bostonSepia\n";
+    String result = this.modelLog.toString();
+
+    assertEquals(expected, result);
+  }
+
+  @Test
+  public void testProcessFileAndInputs() {
+    this.initCond("sepia koala koala-sepia\nfile Script.txt");
+    this.controller.processImage();
+    String expected = "ImageName: koala; "
+            + "Command: Color Transformation: sepia; "
+            + "NewImageName: koala-sepia\n"
+
+            + "Loading; "
+            + "Image Details: Width: 1200; Height: 650; Max Value: 255; "
+            + "ImageName: boston\n"
+
+            + "ImageName: boston; "
+            + "Command: Brighten Image: 10; "
+            + "NewImageName: bostonBright\n"
+
+            + "ImageName: bostonBright; "
+            + "Command: Flip Image: horizontal-flip; "
+            + "NewImageName: bostonHFlip\n"
+
+            + "ImageName: bostonHFlip; "
+            + "Command: Flip Image: vertical-flip; "
+            + "NewImageName: bostonVFlip\n"
+
+            + "ImageName: bostonVFlip; "
+            + "Command: Focus Component: red-component; "
+            + "NewImageName: bostonRedComp\n"
+
+            + "ImageName: bostonRedComp; "
+            + "Command: Filter: blur; "
+            + "NewImageName: bostonBlur\n"
+
+            + "Saving; "
+            + "ImagePath: res/bostonSuperEdited.jpg; "
+            + "ImageName: bostonBlur\n"
+
+            + "ImageName: boston; "
+            + "Command: Filter: sharpen; "
+            + "NewImageName: bostonSharp\n"
+
+            + "ImageName: bostonSharp; "
+            + "Command: Color Transformation: greyscale; "
+            + "NewImageName: bostonGrey\n"
+
+            + "Saving; "
+            + "ImagePath: res/bostonSharpAndGrey.jpg; "
+            + "ImageName: bostonGrey\n"
+
+            + "ImageName: boston; "
+            + "Command: Color Transformation: sepia; "
+            + "NewImageName: bostonSepia\n"
+
+            + "Saving; "
+            + "ImagePath: res/bostonSepia.jpg; "
+            + "ImageName: bostonSepia\n";
     String result = this.modelLog.toString();
 
     assertEquals(expected, result);
