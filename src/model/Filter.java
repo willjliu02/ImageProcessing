@@ -5,6 +5,8 @@ import imageinfo.IImage;
 import imageinfo.IPixel;
 import imageinfo.Pixel;
 
+import java.io.File;
+
 public class Filter implements ImageCommand {
 
   private final String filterCommand;

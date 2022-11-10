@@ -21,16 +21,7 @@ public class BasicImage implements IImage {
     this.width = image.getWidth();
     this.height = image.getHeight();
     this.maxVal = image.getMaxValue();
-
-    IPixel[][] otherPixels = image.getPixels();
     this.pixels = image.getPixels();
-
-//    this.pixels = new IPixel[height][width];
-//    for (int r = 0; r < height; r++) {
-//      if (width >= 0) {
-//        System.arraycopy(otherPixels[r], 0, this.pixels[r], 0, width);
-//      }
-//    }
   }
 
   /**
@@ -45,11 +36,6 @@ public class BasicImage implements IImage {
     this.width = width;
     this.height = height;
     this.maxVal = maxValue;
-
-//    this.pixels = new IPixel[height][width];
-//    for (int r = 0; r < height; r++) {
-//      System.arraycopy(pixels[r], 0, this.pixels[r], 0, width);
-//    }
     this.pixels = pixels;
   }
 
