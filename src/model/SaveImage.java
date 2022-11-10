@@ -30,9 +30,43 @@ public class SaveImage implements ImageCommand {
       this.ppmWriter(currentImage);
     }
     else {
-      //i dont wanna do this rn
+      BufferedImage image = new BufferedImage(currentImage.getWidth(), currentImage.getHeight(),
+              BufferedImage.TYPE_INT_RGB);
+      IPixel[][] imagePixels = currentImage.getPixels();
+      Color color = new Color(0, 0, 0);
+      for (int i = 0; i < imagePixels.length; i++) {
+        for (int j = 0; j < imagePixels[i].length; j++) {
+          color = new Color(imagePixels[i][j].getR(), imagePixels[i][j].getG(),
+                  imagePixels[i][j].getB());
+          image.setRGB(j, i, color.getRGB());
+        }
+      }
+      File file = new File(imagePath);
+      if(imageExtension.equals(".png")) {
+        try {
+          ImageIO.write(image, "PNG", file);
+        }
+        catch(IOException e) {
+          System.out.println("Saving failed!");
+        }
+      }
+      else if(imageExtension.equals(".jpg")) {
+        try {
+          ImageIO.write(image, "JPG", file);
+        }
+        catch(IOException e) {
+          System.out.println("Saving failed!");
+        }
+      }
+      else if(imageExtension.equals(".bmp")) {
+        try {
+          ImageIO.write(image, "BMP", file);
+        }
+        catch(IOException e) {
+          System.out.println("Saving failed!");
+        }
+      }
     }
-    //#take this out later
     return null;
   }
 
