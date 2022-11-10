@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +26,7 @@ public class ImageProcessorController implements IController {
   private final Map<String, Function<String, ImageCommand>> commands;
   private final IImageProcessor model;
   private final IView view;
-  private final Scanner scan;
+  private Scanner scan;
 
   /**
    * Constructs a controller to interact with the IImageProcessor.
@@ -93,16 +95,32 @@ public class ImageProcessorController implements IController {
       String nextCommand = scan.nextLine();
       String[] line = nextCommand.split(" ");
 
-      if (line.length < 3) {
-        try {
-          this.view.renderMessage("Insufficient inputs.\n");
-        } catch (IOException e) {
-          throw new IllegalStateException("Unable to print to the file.");
+      if(line[0].equalsIgnoreCase("file")) {
+        if(this.checkInputs(line, 2)) {
+          continue;
         }
-        continue;
+      }
+      else {
+        if(this.checkInputs(line, 3)) {
+          continue;
+        }
       }
 
       switch (line[0]) {
+        case "file":
+          try {
+            File file = new File(line[1]);
+            scan = new Scanner(file);
+          }
+          catch(FileNotFoundException e) {
+            try {
+              this.view.renderMessage("File not found, please retry input!");
+            } catch (IOException exc) {
+              throw new IllegalStateException("Unable to print to the file.");
+            }
+          }
+          break;
+
         case "load":
           this.model.loadImage(line[1], line[2]);
           break;
@@ -125,6 +143,24 @@ public class ImageProcessorController implements IController {
   }
 
   /**
+   * Checks if the # of inputs is valid.
+   * @param line the array of inputs
+   * @param amt the number of inputs needed
+   * @return true if the inputs are invalid, and false otherwise
+   */
+  private boolean checkInputs(String[] line, int amt) {
+    if (line.length < amt) {
+      try {
+        this.view.renderMessage("Insufficient inputs.\n");
+      } catch (IOException e) {
+        throw new IllegalStateException("Unable to print to the file.");
+      }
+      return true;
+    }
+    return false;
+  }
+
+  /**
    * Prints the welcome message when the user starts the processor.
    */
   // MOVE TO INTERFACE ?
@@ -135,6 +171,10 @@ public class ImageProcessorController implements IController {
             "horizontalFlip fileName newFileName\n" +
             "verticalFlip fileName newFileName\n" +
             "'componentToMakeGreyScaleFrom'-component fileName newFileName\n" +
+            "blur fileName newFileName\n" +
+            "sharpen fileName newFileName\n" +
+            "greyscale fileName newFileName\n" +
+            "sepia fileName newFileName\n" +
             "save filePath fileName\n\n");
   }
 }
