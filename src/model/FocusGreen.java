@@ -2,6 +2,9 @@ package model;
 
 import imageinfo.IPixel;
 
+/**
+ * Focus the entire image the Green component of the IImage.
+ */
 public class FocusGreen extends FocusComponent {
   @Override
   protected int getGreyscale(IPixel currentPixel) {

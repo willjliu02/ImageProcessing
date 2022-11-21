@@ -8,25 +8,15 @@ import imageinfo.Pixel;
 /**
  * Represents a Color Transformation.
  */
-public class ColorTransformation implements ImageCommand {
-  private final String transformation;
+public abstract class ColorTransformation implements ImageCommand {
   private final double[][] transform;
 
-  public ColorTransformation(String transformation) {
-    if (transformation.equalsIgnoreCase("greyscale")) {
-      this.transform = new double[][]
-              {{0.2126, 0.7152, 0.0722},
-                      {0.2126, 0.7152, 0.0722},
-                      {0.2126, 0.7152, 0.0722}};
-    } else if (transformation.equalsIgnoreCase("sepia")) {
-      this.transform = new double[][]
-              {{0.393, 0.769, 0.189},
-                      {0.349, 0.686, 0.168},
-                      {0.272, 0.534, 0.131}};
-    } else {
-      throw new IllegalArgumentException("This is not a valid color transformation option.");
-    }
-    this.transformation = transformation;
+  /**
+   * Constructs a ColorTranformation to an IImage.
+   * @param transform
+   */
+  public ColorTransformation(double[][] transform) {
+    this.transform = transform;
   }
 
   @Override
@@ -89,7 +79,5 @@ public class ColorTransformation implements ImageCommand {
   }
 
   @Override
-  public String toString() {
-    return "Color Transformation: " + this.transformation;
-  }
+  public abstract String toString();
 }

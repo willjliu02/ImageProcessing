@@ -6,6 +6,8 @@ import imageinfo.Pixel;
 import org.junit.Test;
 
 import model.ColorTransformation;
+import model.Greyscale;
+import model.Sepia;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,11 +15,6 @@ import static org.junit.Assert.assertEquals;
  * Tests the different types of ColorTransformations.
  */
 public class ColorTransformationTest {
-
-  @Test(expected = IllegalArgumentException.class)
-  public void testConstructorException() {
-    new ColorTransformation("Random non transformation");
-  }
 
   @Test
   public void testGreyscale() {
@@ -33,7 +30,7 @@ public class ColorTransformationTest {
     IImage starterImage = new BasicImage(5, 5, 255, pixels);
     IImage expectedImage = new BasicImage(5, 5, 255, expectedPixels);
 
-    IImage resultImage = (new ColorTransformation("greyscale")).apply(starterImage);
+    IImage resultImage = (new Greyscale()).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());
@@ -57,7 +54,7 @@ public class ColorTransformationTest {
     IImage starterImage = new BasicImage(5, 5, 255, pixels);
     IImage expectedImage = new BasicImage(5, 5, 255, expectedPixels);
 
-    IImage resultImage = (new ColorTransformation("sepia")).apply(starterImage);
+    IImage resultImage = (new Sepia()).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());

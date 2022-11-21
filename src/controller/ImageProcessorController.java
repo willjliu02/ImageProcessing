@@ -24,8 +24,10 @@ import model.FocusIntensity;
 import model.FocusLuma;
 import model.FocusRed;
 import model.FocusValue;
+import model.Greyscale;
 import model.IImageProcessor;
 import model.ImageCommand;
+import model.Sepia;
 import view.IView;
 
 /**
@@ -66,8 +68,8 @@ public class ImageProcessorController implements IController {
     this.commands.put("blue-component", comp -> new FocusBlue());
     this.commands.put("blur", filter -> new Filter("blur"));
     this.commands.put("sharpen", filter -> new Filter("sharpen"));
-    this.commands.put("greyscale", transform -> new ColorTransformation("greyscale"));
-    this.commands.put("sepia", transform -> new ColorTransformation("sepia"));
+    this.commands.put("greyscale", transform -> new Greyscale());
+    this.commands.put("sepia", transform -> new Sepia());
   }
 
   private void writeMessage(String message) {
