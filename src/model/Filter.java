@@ -5,28 +5,12 @@ import imageinfo.IImage;
 import imageinfo.IPixel;
 import imageinfo.Pixel;
 
-public class Filter implements ImageCommand {
+public abstract class Filter implements ImageCommand {
 
-  private final String filterCommand;
   private final double[][] filter;
 
-  public Filter(String filterCommand) {
-    if (filterCommand.equalsIgnoreCase("blur")) {
-      this.filter = new double[][]
-              {{0.0625, 0.125, 0.0625},
-                      {0.125, 0.25, 0.125},
-                      {0.0625, 0.125, 0.0625}};
-    } else if (filterCommand.equalsIgnoreCase("sharpen")) {
-      this.filter = new double[][]
-              {{-0.125, -0.125, -0.125, -0.125, -0.125},
-                      {-0.125, 0.25, 0.25, 0.25, -0.125},
-                      {-0.125, 0.25, 1, 0.25, -0.125},
-                      {-0.125, 0.25, 0.25, 0.25, -0.125},
-                      {-0.125, -0.125, -0.125, -0.125, -0.125}};
-    } else {
-      throw new IllegalArgumentException("This is not a valid filter option.");
-    }
-    this.filterCommand = filterCommand;
+  public Filter(double[][] filter) {
+    this.filter = filter;
   }
 
   @Override
@@ -92,7 +76,5 @@ public class Filter implements ImageCommand {
   }
 
   @Override
-  public String toString() {
-    return "Filter: " + this.filterCommand;
-  }
+  public abstract String toString();
 }

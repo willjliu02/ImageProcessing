@@ -13,6 +13,7 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.function.Function;
 
+import model.Blur;
 import model.Brighten;
 import model.ColorTransformation;
 import model.Filter;
@@ -25,9 +26,12 @@ import model.FocusLuma;
 import model.FocusRed;
 import model.FocusValue;
 import model.Greyscale;
+import model.HorizontalFlip;
 import model.IImageProcessor;
 import model.ImageCommand;
 import model.Sepia;
+import model.Sharpen;
+import model.VerticalFlip;
 import view.IView;
 
 /**
@@ -58,16 +62,16 @@ public class ImageProcessorController implements IController {
 
     this.commands = new HashMap<String, Function<String, ImageCommand>>();
     this.commands.put("brighten", inc -> new Brighten(inc));
-    this.commands.put("horizontal-flip", flip -> new FlipImage("horizontal-flip"));
-    this.commands.put("vertical-flip", flip -> new FlipImage("vertical-flip"));
+    this.commands.put("horizontal-flip", flip -> new HorizontalFlip());
+    this.commands.put("vertical-flip", flip -> new VerticalFlip());
     this.commands.put("luma-component", comp -> new FocusLuma());
     this.commands.put("intensity-component", comp -> new FocusIntensity());
     this.commands.put("red-component", comp -> new FocusRed());
     this.commands.put("green-component", comp -> new FocusGreen());
     this.commands.put("value-component", comp -> new FocusValue());
     this.commands.put("blue-component", comp -> new FocusBlue());
-    this.commands.put("blur", filter -> new Filter("blur"));
-    this.commands.put("sharpen", filter -> new Filter("sharpen"));
+    this.commands.put("blur", filter -> new Blur());
+    this.commands.put("sharpen", filter -> new Sharpen());
     this.commands.put("greyscale", transform -> new Greyscale());
     this.commands.put("sepia", transform -> new Sepia());
   }

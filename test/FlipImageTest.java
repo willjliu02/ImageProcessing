@@ -6,6 +6,8 @@ import imageinfo.Pixel;
 import org.junit.Test;
 
 import model.FlipImage;
+import model.HorizontalFlip;
+import model.VerticalFlip;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,11 +15,6 @@ import static org.junit.Assert.assertEquals;
  * Tests for flipping an image horizontally and vertically.
  */
 public class FlipImageTest {
-
-  @Test(expected = IllegalArgumentException.class)
-  public void testConstructorException() {
-    new FlipImage("anything");
-  }
 
   @Test
   public void testCorrectHorizontalApply() {
@@ -32,7 +29,7 @@ public class FlipImageTest {
     IImage starterImage = new BasicImage(5, 5, 5, pixels);
     IImage expectedImage = new BasicImage(5, 5, 5, expectedPixels);
 
-    IImage resultImage = (new FlipImage("horizontal-flip")).apply(starterImage);
+    IImage resultImage = (new HorizontalFlip()).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());
@@ -53,7 +50,7 @@ public class FlipImageTest {
     IImage starterImage = new BasicImage(5, 5, 5, pixels);
     IImage expectedImage = new BasicImage(5, 5, 5, expectedPixels);
 
-    IImage resultImage = (new FlipImage("vertical-flip")).apply(starterImage);
+    IImage resultImage = (new VerticalFlip()).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());

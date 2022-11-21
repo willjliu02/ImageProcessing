@@ -8,23 +8,7 @@ import imageinfo.Pixel;
 /**
  * Represents a command to flip the desired image across the axis.
  */
-public class FlipImage implements ImageCommand {
-
-  private final String flip;
-
-  /**
-   * Constructs a command to flip an IImage.
-   *
-   * @param flip the direction to flip it.
-   */
-  public FlipImage(String flip) {
-    if (!flip.equalsIgnoreCase("horizontal-flip")
-            && !flip.equalsIgnoreCase("vertical-flip")) {
-      throw new IllegalArgumentException("This is not a valid flip option.");
-    }
-
-    this.flip = flip;
-  }
+public abstract class FlipImage implements ImageCommand {
 
   @Override
   public IImage apply(IImage image) {
@@ -42,24 +26,10 @@ public class FlipImage implements ImageCommand {
     return new BasicImage(width, height, maxVal, newPixels);
   }
 
-  private int getFlippedRow(int row, int height) {
-    if (this.flip.equalsIgnoreCase("horizontal-flip")) {
-      return row;
-    } else {
-      return height - 1 - row;
-    }
-  }
+  protected abstract int getFlippedRow(int row, int height);
 
-  private int getFlippedCol(int col, int width) {
-    if (this.flip.equalsIgnoreCase("vertical-flip")) {
-      return col;
-    } else {
-      return width - 1 - col;
-    }
-  }
+  protected abstract int getFlippedCol(int col, int width);
 
   @Override
-  public String toString() {
-    return "Flip Image: " + this.flip;
-  }
+  public abstract String toString();
 }

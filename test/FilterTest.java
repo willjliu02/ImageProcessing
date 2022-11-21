@@ -5,7 +5,9 @@ import imageinfo.Pixel;
 
 import org.junit.Test;
 
+import model.Blur;
 import model.Filter;
+import model.Sharpen;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,10 +15,6 @@ import static org.junit.Assert.assertEquals;
  * Tests the types of Filters.
  */
 public class FilterTest {
-  @Test(expected = IllegalArgumentException.class)
-  public void testConstructorException() {
-    new Filter("not a command");
-  }
 
   @Test
   public void testBlur() {
@@ -44,7 +42,7 @@ public class FilterTest {
     IImage starterImage = new BasicImage(3, 3, 255, pixels);
     IImage expectedImage = new BasicImage(3, 3, 255, expected);
 
-    IImage resultImage = (new Filter("blur")).apply(starterImage);
+    IImage resultImage = (new Blur()).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());
@@ -96,7 +94,7 @@ public class FilterTest {
     IImage starterImage = new BasicImage(5, 5, 255, pixels);
     IImage expectedImage = new BasicImage(5, 5, 255, expected);
 
-    IImage resultImage = (new Filter("sharpen")).apply(starterImage);
+    IImage resultImage = (new Sharpen()).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());
