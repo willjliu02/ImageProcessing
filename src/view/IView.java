@@ -18,10 +18,4 @@ public interface IView {
    */
   void renderMessage(String message) throws IOException;
 
-  /**
-   * Adds a listener to the view to be notified of changes.
-   * @param listener a listener for ViewEvents.
-   */
-  void addListener(ViewListener listener);
-
 }

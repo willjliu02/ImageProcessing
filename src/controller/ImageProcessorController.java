@@ -104,7 +104,6 @@ public class ImageProcessorController implements IController {
     }
   }
 
-  @Override
   public void processImage() throws IllegalStateException {
     this.printWelcomeMessage();
     while (scan.hasNext()) {
