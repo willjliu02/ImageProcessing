@@ -142,10 +142,10 @@ public class ImageProcessorController implements IController {
                   processImage.getMaxValue(),
                   processImage.getPixels());
           this.model.loadImage(image, line[2]);
-          continue;
+          break;
         case "save":
           this.model.saveImage(line[1], line[2]);
-          continue;
+          break;
         default:
           try {
             this.applyCommand(line);
