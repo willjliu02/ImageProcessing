@@ -5,7 +5,13 @@ import imageinfo.Pixel;
 
 import org.junit.Test;
 
+import model.FocusBlue;
 import model.FocusComponent;
+import model.FocusGreen;
+import model.FocusIntensity;
+import model.FocusLuma;
+import model.FocusRed;
+import model.FocusValue;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,10 +19,6 @@ import static org.junit.Assert.assertEquals;
  * Tests the process of creating a greyscale with a specific image component.
  */
 public class FocusComponentTest {
-  @Test(expected = IllegalArgumentException.class)
-  public void testConstructorException() {
-    new FocusComponent("not valid");
-  }
 
   @Test
   public void testFocusRed() {
@@ -31,7 +33,7 @@ public class FocusComponentTest {
     IImage starterImage = new BasicImage(5, 5, 4, pixels);
     IImage expectedImage = new BasicImage(5, 5, 4, expectedPixels);
 
-    IImage resultImage = (new FocusComponent("red-component")).apply(starterImage);
+    IImage resultImage = (new FocusRed()).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());
@@ -52,7 +54,7 @@ public class FocusComponentTest {
     IImage starterImage = new BasicImage(5, 5, 8, pixels);
     IImage expectedImage = new BasicImage(5, 5, 4, expectedPixels);
 
-    IImage resultImage = (new FocusComponent("green-component")).apply(starterImage);
+    IImage resultImage = (new FocusGreen()).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());
@@ -73,7 +75,7 @@ public class FocusComponentTest {
     IImage starterImage = new BasicImage(5, 5, 8, pixels);
     IImage expectedImage = new BasicImage(5, 5, 8, expectedPixels);
 
-    IImage resultImage = (new FocusComponent("blue-component")).apply(starterImage);
+    IImage resultImage = (new FocusBlue()).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());
@@ -95,7 +97,7 @@ public class FocusComponentTest {
     IImage starterImage = new BasicImage(5, 5, 8, pixels);
     IImage expectedImage = new BasicImage(5, 5, 5, expectedPixels);
 
-    IImage resultImage = (new FocusComponent("intensity-component")).apply(starterImage);
+    IImage resultImage = (new FocusIntensity()).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());
@@ -116,7 +118,7 @@ public class FocusComponentTest {
     IImage starterImage = new BasicImage(5, 5, 8, pixels);
     IImage expectedImage = new BasicImage(5, 5, 8, expectedPixels);
 
-    IImage resultImage = (new FocusComponent("value-component")).apply(starterImage);
+    IImage resultImage = (new FocusValue()).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());
@@ -138,7 +140,7 @@ public class FocusComponentTest {
     IImage starterImage = new BasicImage(5, 5, 8, pixels);
     IImage expectedImage = new BasicImage(5, 5, 6, expectedPixels);
 
-    IImage resultImage = (new FocusComponent("luma-component")).apply(starterImage);
+    IImage resultImage = (new FocusLuma()).apply(starterImage);
 
     assertEquals(expectedImage.getHeight(), resultImage.getHeight());
     assertEquals(expectedImage.getWidth(), resultImage.getWidth());

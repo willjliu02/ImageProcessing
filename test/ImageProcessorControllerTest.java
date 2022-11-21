@@ -63,7 +63,7 @@ public class ImageProcessorControllerTest {
     this.initCond("load res/koala.ppm koala");
     this.controller.processImage();
     String expected = "Loading; "
-            + "Image Details: Width: 1024; Height: 768; Max Value: 255; "
+            + "Image Details: Width: 1200; Height: 650; Max Value: 255; "
             + "ImageName: koala\n";
     String result = this.modelLog.toString();
 
