@@ -2,6 +2,8 @@ package model;
 
 import imageinfo.IImage;
 
+import java.util.function.Function;
+
 /**
  * Represents an ImageProcessor.
  */
@@ -17,6 +19,15 @@ public interface IImageProcessor {
    */
   void applyCommand(String imageName, ImageCommand command, String newImageName)
           throws IllegalArgumentException;
+
+  /**
+   * Accepts the application of a command onto it.
+   * @param imageName the name of the image to be applied to.
+   * @param func an action that will be applied on said image.
+   * @return Some desired output.
+   * @param <T> Any type
+   */
+  <T> T accept(String imageName, Function<IImage, T> func);
 
   /**
    * Retrieves the image with that desires name from the processor.

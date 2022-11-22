@@ -1,34 +1,20 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 public class ButtonPanel extends JPanel {
 
   private JTextArea gameInfo;
-  private JButton load;
-  private JButton save;
+  private JButton load, save, focus, brighten, greyscale, sepia, blur, sharpen, horizFlip, vertFlip;
 
   private JPanel optionPanel;
-  private JTextField component;
-  private JButton focus;
-  private JTextField number;
-  private JButton brighten;
-  private JButton greyscale;
-  private JButton sepia;
-  private JButton blur;
-  private JButton sharpen;
-  private JButton horizFlip;
-  private JButton vertFlip;
-
-
-  private IGUIView view;
-
+  private JTextField component, number;
   private Color purple;
 
-  public ButtonPanel(IGUIView view) {
-    this.view = view;
+  public ButtonPanel(ActionListener view) {
     this.setPreferredSize(new Dimension(1200, 80));
     this.setLayout(new GridLayout(1, 8));
     purple = new Color(245, 225, 253);
@@ -43,12 +29,16 @@ public class ButtonPanel extends JPanel {
     load = new JButton("load");
     loadPanel.add(load);
     this.add(loadPanel);
+    load.addActionListener(view);
+    load.setActionCommand("load");
 
     JPanel savePanel = new JPanel();
     savePanel.setBackground(purple);
     save = new JButton("save");
     savePanel.add(save);
     this.add(savePanel);
+    save.addActionListener(view);
+    save.setActionCommand("save");
 
     JPanel optionPanel = new JPanel();
     optionPanel.setBackground(purple);
@@ -57,6 +47,8 @@ public class ButtonPanel extends JPanel {
     focus = new JButton("focus");
     optionPanel.add(focus);
     this.add(optionPanel);
+    focus.addActionListener(view);
+    focus.setActionCommand("focus");
 
     JPanel brightenPanel = new JPanel();
     brightenPanel.setBackground(purple);
@@ -65,6 +57,8 @@ public class ButtonPanel extends JPanel {
     brighten = new JButton("brighten");
     brightenPanel.add(brighten);
     this.add(brightenPanel);
+    brighten.addActionListener(view);
+    brighten.setActionCommand("brighten");
 
     JPanel col1 = new JPanel();
     col1.setBackground(purple);
@@ -73,6 +67,10 @@ public class ButtonPanel extends JPanel {
     sepia = new JButton("sepia");
     col1.add(sepia);
     this.add(col1);
+    greyscale.addActionListener(view);
+    greyscale.setActionCommand("greyscale");
+    sepia.addActionListener(view);
+    sepia.setActionCommand("sepia");
 
     JPanel col2 = new JPanel();
     col2.setBackground(purple);
@@ -81,6 +79,10 @@ public class ButtonPanel extends JPanel {
     sharpen = new JButton("sharpen");
     col2.add(sharpen);
     this.add(col2);
+    blur.addActionListener(view);
+    blur.setActionCommand("blur");
+    sharpen.addActionListener(view);
+    sharpen.setActionCommand("sharpen");
 
     JPanel col3 = new JPanel();
     col3.setBackground(purple);
@@ -89,5 +91,17 @@ public class ButtonPanel extends JPanel {
     vertFlip = new JButton("vertical flip");
     col3.add(vertFlip);
     this.add(col3);
+    horizFlip.addActionListener(view);
+    horizFlip.setActionCommand("horizontal-flip");
+    vertFlip.addActionListener(view);
+    vertFlip.setActionCommand("vertical-flip");
+  }
+
+  public String getComponent() {
+    return this.component.getText();
+  }
+
+  public String getBrightAmt() {
+    return this.number.getText();
   }
 }

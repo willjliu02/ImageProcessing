@@ -5,6 +5,7 @@ import imageinfo.IPixel;
 import imageinfo.Pixel;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -14,7 +15,7 @@ import javax.swing.*;
 import model.ImageCommand;
 
 public class ImageInfoPanel extends JPanel {
-  IGUIView view;
+  private ActionListener view;
 
   private JPanel imagePan;
   private JPanel histPan;
@@ -27,7 +28,7 @@ public class ImageInfoPanel extends JPanel {
 
   private Color purpleDark;
   private Color pink;
-  public ImageInfoPanel(IGUIView view) {
+  public ImageInfoPanel(ActionListener view) {
     this.view = view;
     this.setLayout(new GridLayout(1, 2));
     this.setBackground(purpleDark);

@@ -4,6 +4,7 @@ import imageinfo.IImage;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 /**
  * Represents an Image Processor.
@@ -31,6 +32,17 @@ public class ImageProcessorModel implements IImageProcessor {
 
     this.images.put(newImageName,
             command.apply(this.images.get(imageName)));
+  }
+
+  @Override
+  public <T> T accept(String imageName, Function<IImage, T> func) {
+    if (!this.images.containsKey(imageName)) {
+      throw new IllegalArgumentException(imageName + " has not been loaded.");
+    } else if (func == null) {
+      throw new IllegalArgumentException("There must be a command");
+    }
+
+    return func.apply(this.images.get(imageName));
   }
 
   @Override

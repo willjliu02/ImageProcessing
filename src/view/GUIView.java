@@ -1,10 +1,15 @@
 package view;
 
+import imageinfo.IImage;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.swing.*;
@@ -14,14 +19,17 @@ import controller.ViewListener;
 /**
  * A Graphical User Interface view for the ImageProcessor.
  */
-public class GUIView extends JFrame implements IGUIView {
+public class GUIView extends JFrame implements IGUIView, ActionListener {
 
-  private Set<ViewListener> listeners;
+  private final Set<ViewListener> listeners;
+
+  private final Map<String, ViewEvent> actions;
   private ButtonPanel bP;
   private ImageInfoPanel iIP;
 
   private MessagePanel mP;
-  //private final String displayedImage;
+
+  private String displayedImage;
 
   /**
    * Constructs a GUIView.
@@ -45,14 +53,27 @@ public class GUIView extends JFrame implements IGUIView {
     this.add(mP, BorderLayout.NORTH);
     this.add(iIP, BorderLayout.CENTER);
 
-    this.setVisible(true);
-    // own method??
+    this.displayedImage = "";
+
+    this.actions = new HashMap<String, ViewEvent>();
+    this.actions.put("load", ViewEvent.LOAD);
+    this.actions.put("save", ViewEvent.SAVE);
+    this.actions.put("focus", ViewEvent.FOCUS);
+    this.actions.put("brighten", ViewEvent.BRIGHTEN);
+    this.actions.put("greyscale", ViewEvent.GREYSCALE);
+    this.actions.put("sepia", ViewEvent.SEPIA);
+    this.actions.put("blur", ViewEvent.BLUR);
+    this.actions.put("sharpen", ViewEvent.SHARPEN);
+    this.actions.put("horizontal-flip", ViewEvent.HORIZONTALFLIP);
+    this.actions.put("vertical-flip", ViewEvent.VERTICALFLIP);
   }
 
   @Override
   public void renderMessage(String message) throws IOException {
 
   }
+
+
 
   private void notifyListeners(ViewEvent e) {
     for (ViewListener listener : this.listeners) {
@@ -68,6 +89,19 @@ public class GUIView extends JFrame implements IGUIView {
   @Override
   public void makeVisible() {
     this.setVisible(true);
+  }
+
+  @Override
+  public void refresh(IImage image, List<List<Integer>> histograms) {
+    List<Integer> redHist = histograms.get(0);
+    List<Integer> blueHist = histograms.get(1);
+    List<Integer> greenHist = histograms.get(2);
+    List<Integer> valueHist = histograms.get(3);
+  }
+
+  @Override
+  public void updateDisplayedImage(String newImageName) {
+    this.displayedImage = newImageName;
   }
 
   private String resetTextField(JTextField field) {
@@ -91,12 +125,27 @@ public class GUIView extends JFrame implements IGUIView {
   @Override
   public String getBrightenAmt() {
     //return resetTextField(this.brightenAmt);
-    return null;
+    return this.bP.getBrightAmt();
+  }
+
+  @Override
+  public String getFocusComp() {
+    return this.bP.getComponent();
   }
 
   @Override
   public String getDisplayedImage() {
-    //return this.displayedImage;
-    return null;
+    return this.displayedImage;
+  }
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    ViewEvent event = this.actions.getOrDefault(e.getActionCommand(), null);
+
+    if (event == null) {
+      throw new IllegalStateException("An unknown action has been performed");
+    }
+
+    this.notifyListeners(event);
   }
 }

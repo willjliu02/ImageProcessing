@@ -1,5 +1,9 @@
 package view;
 
+import imageinfo.IImage;
+
+import java.util.List;
+
 import controller.ViewListener;
 
 public interface IGUIView extends IView {
@@ -22,6 +26,12 @@ public interface IGUIView extends IView {
   String getBrightenAmt();
 
   /**
+   * Gets which component is to be focused.
+   * @return String the component to be focused.
+   */
+  String getFocusComp();
+
+  /**
    * Gets the name of the displaying IImage.
    * @return String the name of the displaying Image.
    */
@@ -37,4 +47,16 @@ public interface IGUIView extends IView {
    * Makes the window visible.
    */
   void makeVisible();
+
+  /**
+   * Refresh the view with the new Image.
+   * @param image the IImage that will be displayed.
+   */
+  void refresh(IImage image, List<List<Integer>> histograms);
+
+  /**
+   * Update the name of the currently displayed Image.
+   * @param newImageName the new name from the view of the currently displayed image.
+   */
+  void updateDisplayedImage(String newImageName);
 }

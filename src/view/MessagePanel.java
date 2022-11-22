@@ -1,14 +1,15 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 public class MessagePanel extends JPanel {
-  IGUIView view;
-  Color purple;
+  private ActionListener view;
+  private Color purple;
 
-  public MessagePanel(IGUIView view) {
+  public MessagePanel(ActionListener view) {
     this.view = view;
     this.setPreferredSize(new Dimension(1200, 50));
     purple = new Color(245, 225, 253);
