@@ -4,18 +4,12 @@ import imageinfo.BasicImage;
 import imageinfo.IImage;
 import imageinfo.ImageUtil;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Scanner;
 import java.util.function.Function;
-
-import javax.swing.text.View;
 
 import model.BlueHistogram;
 import model.Blur;
@@ -52,7 +46,7 @@ public class GUIController implements IController, ViewListener {
       this.model = Objects.requireNonNull(model);
       this.view = Objects.requireNonNull(view);
     } catch (NullPointerException e)  {
-      throw new IllegalStateException("Unable to print to the file.");
+      throw new IllegalArgumentException("Unable to print to the file.");
     }
 
     this.commands = new HashMap<ViewEvent, Function<Void, ImageCommand>>();
@@ -69,7 +63,6 @@ public class GUIController implements IController, ViewListener {
     this.commands.put(ViewEvent.SHARPEN, (Void v) -> new Sharpen());
     this.commands.put(ViewEvent.GREYSCALE, (Void v) -> new Greyscale());
     this.commands.put(ViewEvent.SEPIA, (Void v) -> new Sepia());
-    this.commands.put(ViewEvent.FOCUS, (Void v) -> this.getFocusCommand());
 
     this.focusEvent = new HashMap<String, ViewEvent>();
     this.focusEvent.put("blue", ViewEvent.FOCUSBLUE);
@@ -91,15 +84,20 @@ public class GUIController implements IController, ViewListener {
     String currentImage = this.view.getDisplayedImage();
     String newImage;
 
+    if (e == ViewEvent.FOCUS) {
+      e = this.getFocusCommand();
+    }
+
     switch (e) {
       case LOAD:
         String path = this.view.getLoadPath();
 
         int lastPeriod = path.lastIndexOf(".");
+        int lastSlash = path.lastIndexOf("/");
         if (lastPeriod == -1) {
           throw new IllegalArgumentException("Illegal Path.");
         }
-        newImage = path.substring(0, lastPeriod);
+        newImage = path.substring(lastSlash + 1, lastPeriod);
 
         ImageUtil processImage = new ImageUtil(path);
         IImage image = new BasicImage(processImage.getWidth(),
@@ -126,19 +124,19 @@ public class GUIController implements IController, ViewListener {
   private List<List<Integer>> grabHistograms(String imageName) {
     List<List<Integer>> histograms = new ArrayList<List<Integer>>();
     histograms.add(this.model.accept(imageName, new RedHistogram()));
-    histograms.add(this.model.accept(imageName, new BlueHistogram()));
     histograms.add(this.model.accept(imageName, new GreenHistogram()));
+    histograms.add(this.model.accept(imageName, new BlueHistogram()));
     histograms.add(this.model.accept(imageName, new ValueHistogram()));
 
     return histograms;
   }
 
-  private ImageCommand getFocusCommand() {
+  private ViewEvent getFocusCommand() {
     String comp = this.view.getFocusComp().toLowerCase();
     if (!this.focusEvent.containsKey(comp)) {
       throw new IllegalArgumentException("This command does not exist");
     }
-    return this.commands.get(this.focusEvent.get(comp)).apply(null);
+    return this.focusEvent.get(comp);
   }
 
   private String getNewImageName(String currentImage, ViewEvent e) {

@@ -10,4 +10,9 @@ public class ValueHistogram extends GrabHistogram {
   protected int getHistIndex(IPixel pixel) {
     return pixel.getValue();
   }
+
+  @Override
+  public String toString() {
+    return "Histogram: Value";
+  }
 }

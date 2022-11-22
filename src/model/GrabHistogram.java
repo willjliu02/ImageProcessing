@@ -28,4 +28,6 @@ public abstract class GrabHistogram implements Function<IImage, List<Integer>> {
   }
 
   protected abstract int getHistIndex(IPixel pixel);
+
+  public abstract String toString();
 }

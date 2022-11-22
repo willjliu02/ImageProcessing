@@ -39,6 +39,16 @@ public class MockImageProcessor implements IImageProcessor {
 
   @Override
   public <T> T accept(String imageName, Function<IImage, T> func) {
+    try {
+      this.log.append("ImageName: ");
+      this.log.append(imageName);
+      this.log.append("; Command: ");
+      this.log.append(func.toString());
+      this.log.append("\n");
+    } catch (IOException e) {
+      throw new IllegalStateException("Unable to append to the file.");
+    }
+
     return null;
   }
 

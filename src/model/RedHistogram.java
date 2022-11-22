@@ -10,4 +10,9 @@ public class RedHistogram extends GrabHistogram {
   protected int getHistIndex(IPixel pixel) {
     return pixel.getR();
   }
+
+  @Override
+  public String toString() {
+    return "Histogram: Red";
+  }
 }
