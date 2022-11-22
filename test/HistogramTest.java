@@ -13,11 +13,15 @@ public class HistogramTest {
 
   private void initCond() {
     IPixel[][] pixels = new Pixel[10][10];
+
     for (int r = 0; r < 10; r++) {
       for (int c = 0; c < 10; c++) {
-        pixels[r][c] = new Pixel(r, c, r+c);
+        pixels[r][c] = new Pixel(r * 25, c  * 20, r*c * 2);
       }
     }
 
+    this.image = new BasicImage(10, 10, 256, pixels);
   }
+
+  @Test
 }
