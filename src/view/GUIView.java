@@ -14,35 +14,39 @@ import controller.ViewListener;
 /**
  * A Graphical User Interface view for the ImageProcessor.
  */
-public class GUIView extends JFrame implements ActionListener, IGUIView {
+public class GUIView extends JFrame implements IGUIView {
 
-  private final Set<ViewListener> listeners;
-  private final String displayedImage;
+  private Set<ViewListener> listeners;
+  private ButtonPanel bP;
+  private ImageInfoPanel iIP;
 
-  private final JTextField loadPath, savePath, brightenAmt;
-  private final JList<String> focusList;
+  private MessagePanel mP;
+  //private final String displayedImage;
 
   /**
    * Constructs a GUIView.
    */
   public GUIView() {
-    this.listeners = new HashSet<ViewListener>();
-    this.displayedImage = "";
-
+    super();
+    this.setTitle("Image Processor!");
+    this.setSize( 1200, 700);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setLocation(0,0);
+    this.setResizable(false);
+
+    this.listeners = new HashSet<ViewListener>();
+    bP = new ButtonPanel(this);
+    iIP = new ImageInfoPanel(this);
+    mP = new MessagePanel(this);
+    //needs this?
 
     this.setLayout(new BorderLayout());
+    this.add(bP, BorderLayout.SOUTH);
+    this.add(mP, BorderLayout.NORTH);
+    this.add(iIP, BorderLayout.CENTER);
 
-    this.loadPath = new JTextField(40);
-    this.savePath = new JTextField(40);
-    this.brightenAmt = new JTextField(40);
-
-    this.focusList = new JList<String>();
-  }
-
-  @Override
-  public void actionPerformed(ActionEvent e) {
-
+    this.setVisible(true);
+    // own method??
   }
 
   @Override
@@ -74,21 +78,25 @@ public class GUIView extends JFrame implements ActionListener, IGUIView {
 
   @Override
   public String getLoadPath() {
-    return resetTextField(this.loadPath);
+    //return resetTextField(this.loadPath);
+    return null;
   }
 
   @Override
   public String getSavePath() {
-    return resetTextField(this.savePath);
+   //return resetTextField(this.savePath);
+    return null;
   }
 
   @Override
   public String getBrightenAmt() {
-    return resetTextField(this.brightenAmt);
+    //return resetTextField(this.brightenAmt);
+    return null;
   }
 
   @Override
   public String getDisplayedImage() {
-    return this.displayedImage;
+    //return this.displayedImage;
+    return null;
   }
 }

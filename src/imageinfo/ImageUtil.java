@@ -27,7 +27,7 @@ public class ImageUtil {
     try {
       fileExtension = fileName.substring(fileName.lastIndexOf("."));
     } catch (StringIndexOutOfBoundsException e) {
-      System.out.println("Unsupported file extension.");
+      throw new IllegalArgumentException("Unsupported file extension.");
     }
     if (fileExtension.equals(".ppm")) {
       readPPM(fileName);

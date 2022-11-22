@@ -5,26 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Saving now works">
+      <change afterPath="$PROJECT_DIR$/src/view/ButtonPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/ImageInfoPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/MessagePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_3_22,_1_36_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_3_22,_5_15_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_3_22,_5_53_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_3_22,_6_22_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_3_22__1_36_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_3_22__5_15_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_3_22__5_53_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_3_22__6_22_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageinfo/BasicImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/BasicImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/imageinfo/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/ImageUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ColorTransformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ColorTransformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Filter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/IImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessorModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SaveImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SaveImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SaveImageMock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SaveImageMock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/BasicImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BasicImageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/BrightenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BrightenTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ColorTransformationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ColorTransformationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FilterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FlipImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FlipImageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FocusComponentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FocusComponentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessorControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessorControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessorModelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUIView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/PixelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/PixelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/SaveImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/SaveImageTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,27 +52,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "/Users/pooja/Desktop/NEU/OOD/Workspace/ImageProcessing/src",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/pooja/Desktop/NEU/OOD/Workspace/ImageProcessing/src&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
@@ -173,6 +170,10 @@
       <workItem from="1667785512861" duration="598000" />
       <workItem from="1667866590194" duration="16360000" />
       <workItem from="1668071013976" duration="7344000" />
+      <workItem from="1668205522824" duration="46000" />
+      <workItem from="1668528840256" duration="7000" />
+      <workItem from="1668795395102" duration="597000" />
+      <workItem from="1669078182845" duration="14110000" />
     </task>
     <task id="LOCAL-00001" summary="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.">
       <created>1667369821089</created>
@@ -335,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668119948433</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Saving now works">
+      <created>1668121150177</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1668121150177</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,9 +1,12 @@
 import java.io.InputStreamReader;
 
+import controller.GUIController;
 import controller.IController;
 import controller.ImageProcessorController;
 import model.IImageProcessor;
 import model.ImageProcessorModel;
+import view.GUIView;
+import view.IGUIView;
 import view.IView;
 import view.TextImageView;
 
@@ -19,9 +22,11 @@ public class Main {
    */
   public static void main(String[] args) {
     IImageProcessor model = new ImageProcessorModel();
-    IView view = new TextImageView(model);
+    //IView view = new TextImageView(model);
+    IGUIView view = new GUIView();
     Readable input = new InputStreamReader(System.in);
-    IController controller = new ImageProcessorController(model, view, input);
+    //IController controller = new ImageProcessorController(model, view, input);
+    IController controller = new GUIController(model, view);
     controller.processImage();
   }
 }

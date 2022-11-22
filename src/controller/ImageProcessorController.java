@@ -104,6 +104,7 @@ public class ImageProcessorController implements IController {
     }
   }
 
+  @Override
   public void processImage() throws IllegalStateException {
     this.printWelcomeMessage();
     while (scan.hasNext()) {
@@ -141,10 +142,10 @@ public class ImageProcessorController implements IController {
                   processImage.getMaxValue(),
                   processImage.getPixels());
           this.model.loadImage(image, line[2]);
-          break;
+          continue;
         case "save":
           this.model.saveImage(line[1], line[2]);
-          break;
+          continue;
         default:
           try {
             this.applyCommand(line);

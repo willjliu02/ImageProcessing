@@ -4,8 +4,7 @@ import imageinfo.Pixel;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Test that the Pixel class saves data correctly.
@@ -88,7 +87,7 @@ public class PixelTest {
     IPixel pix1 = new Pixel(1, 2, 3);
     IPixel pix2 = new Pixel(1, 2, 3);
 
-    assertTrue(pix1.equals(pix2));
+    assertEquals(pix1, pix2);
   }
 
   @Test
@@ -96,7 +95,7 @@ public class PixelTest {
     IPixel pix1 = new Pixel(1, 2, 3);
     IPixel pix2 = new Pixel(1, 2, 3);
 
-    assertTrue(pix2.equals(pix1));
+    assertEquals(pix2, pix1);
   }
 
   @Test
@@ -104,7 +103,7 @@ public class PixelTest {
     IPixel pix1 = new Pixel(1, 2, 3);
     IPixel pix2 = pix1;
 
-    assertTrue(pix1.equals(pix2));
+    assertEquals(pix1, pix2);
   }
 
   @Test
@@ -112,7 +111,7 @@ public class PixelTest {
     IPixel pix1 = new Pixel(1, 2, 2);
     IPixel pix2 = new Pixel(1, 2, 3);
 
-    assertFalse(pix1.equals(pix2));
+    assertNotEquals(pix1, pix2);
   }
 
   @Test
@@ -120,7 +119,7 @@ public class PixelTest {
     IPixel pix1 = new Pixel(1, 3, 3);
     IPixel pix2 = new Pixel(1, 2, 3);
 
-    assertFalse(pix1.equals(pix2));
+    assertNotEquals(pix1, pix2);
   }
 
   @Test
@@ -128,7 +127,7 @@ public class PixelTest {
     IPixel pix1 = new Pixel(2, 2, 3);
     IPixel pix2 = new Pixel(1, 2, 3);
 
-    assertFalse(pix1.equals(pix2));
+    assertNotEquals(pix1, pix2);
   }
 
   @Test
@@ -137,8 +136,8 @@ public class PixelTest {
     IPixel pix2 = new Pixel(1, 2, 3);
     IPixel pix3 = new Pixel(1, 2, 3);
 
-    assertTrue(pix1.equals(pix2));
-    assertTrue(pix2.equals(pix3));
-    assertTrue(pix1.equals(pix3));
+    assertEquals(pix1, pix2);
+    assertEquals(pix2, pix3);
+    assertEquals(pix1, pix3);
   }
 }
