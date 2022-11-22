@@ -3,6 +3,7 @@ package model;
 import imageinfo.IImage;
 
 import java.io.IOException;
+import java.util.function.Function;
 
 /**
  * Represents a tester ImageProcessor ot test the inputs from the controller.
@@ -34,6 +35,11 @@ public class MockImageProcessor implements IImageProcessor {
     } catch (IOException e) {
       throw new IllegalStateException("Unable to append to the file.");
     }
+  }
+
+  @Override
+  public <T> T accept(String imageName, Function<IImage, T> func) {
+    return null;
   }
 
   @Override

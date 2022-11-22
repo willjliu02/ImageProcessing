@@ -1,10 +1,13 @@
 package view;
 
+import imageinfo.BasicImage;
 import imageinfo.IImage;
+import imageinfo.ImageUtil;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,6 +16,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controller.ViewListener;
 
@@ -30,6 +34,10 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
   private MessagePanel mP;
 
   private String displayedImage;
+
+  private String loadPath;
+
+  private String savePath;
 
   /**
    * Constructs a GUIView.
@@ -66,13 +74,17 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
     this.actions.put("sharpen", ViewEvent.SHARPEN);
     this.actions.put("horizontal-flip", ViewEvent.HORIZONTALFLIP);
     this.actions.put("vertical-flip", ViewEvent.VERTICALFLIP);
+
+    loadPath = "";
+    savePath = "";
   }
 
   @Override
   public void renderMessage(String message) throws IOException {
+    this.mP.refreshMessage(message);
 
+    // set a jlabel to have certain text
   }
-
 
 
   private void notifyListeners(ViewEvent e) {
@@ -97,6 +109,7 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
     List<Integer> blueHist = histograms.get(1);
     List<Integer> greenHist = histograms.get(2);
     List<Integer> valueHist = histograms.get(3);
+    //send to the correct panel
   }
 
   @Override
@@ -112,14 +125,13 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
 
   @Override
   public String getLoadPath() {
-    //return resetTextField(this.loadPath);
-    return null;
+    System.out.println(loadPath);
+    return this.loadPath;
   }
 
   @Override
   public String getSavePath() {
-   //return resetTextField(this.savePath);
-    return null;
+    return this.savePath;
   }
 
   @Override
@@ -141,6 +153,30 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
     ViewEvent event = this.actions.getOrDefault(e.getActionCommand(), null);
+
+      if(event.equals(ViewEvent.LOAD)) {
+        System.out.println("here");
+        final JFileChooser fileChooser = new JFileChooser(".");
+        FileNameExtensionFilter imageTypes = new FileNameExtensionFilter(
+                "JPG, PNG, BMP, & PPM Images", "ppm", "bmp", "png", "jpg");
+        fileChooser.setFileFilter(imageTypes);
+        int file = fileChooser.showOpenDialog(this);
+        if (file == JFileChooser.APPROVE_OPTION) {
+          File fileSave = fileChooser.getSelectedFile();
+          this.loadPath = fileSave.getAbsolutePath();
+        }
+      }
+      else if(event.equals(ViewEvent.SAVE)) {
+        final JFileChooser fileChooser = new JFileChooser(".");
+        FileNameExtensionFilter imageTypes = new FileNameExtensionFilter(
+                "JPG, PNG, BMP, & PPM Images", "ppm", "bmp", "png", "jpg");
+        fileChooser.setFileFilter(imageTypes);
+        int file = fileChooser.showOpenDialog(this);
+        if (file == JFileChooser.APPROVE_OPTION) {
+          File fileSave = fileChooser.getSelectedFile();
+          this.savePath = fileSave.getAbsolutePath();
+        }
+      }
 
     if (event == null) {
       throw new IllegalStateException("An unknown action has been performed");
