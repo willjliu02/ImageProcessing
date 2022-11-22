@@ -110,8 +110,7 @@ public class GUIController implements IController, ViewListener {
         break;
       case SAVE:
         this.model.saveImage(this.view.getSavePath(), currentImage);
-        newImage = currentImage;
-        break;
+        return;
       default:
         newImage = this.getNewImageName(currentImage, e);
         this.model.applyCommand(currentImage,
@@ -120,10 +119,8 @@ public class GUIController implements IController, ViewListener {
         break;
     }
 
-    if (e != ViewEvent.SAVE) {
-      this.view.updateDisplayedImage(newImage);
-      this.view.refresh(this.model.getImage(newImage), this.grabHistograms(newImage));
-    }
+    this.view.updateDisplayedImage(newImage);
+    this.view.refresh(this.model.getImage(newImage), this.grabHistograms(newImage));
   }
 
   private List<List<Integer>> grabHistograms(String imageName) {
