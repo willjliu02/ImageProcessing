@@ -134,19 +134,19 @@ public class ImageInfoPanel extends JPanel implements ChangeListener {
       IPixel[][] pixels = image.getPixels();
 
       int height = this.getHeight();
-      int yDist = (int) (height / 100.0);
+      int yDist = (int) (pixels.length / 100.0);
       int yEnd = height + yStart;
-      if(yEnd + (sliderYValue * yDist) < pixels.length) {
+      if(height + (sliderYValue * yDist) < pixels.length) {
         yStart = sliderYValue * yDist;
         yEnd = height + yStart;
       }
 
       int width = this.getWidth();
-      int xDist = (int) (width / 100.0);
-      int xEnd = height + yStart;
-      if(xEnd + (sliderXValue * xDist) < pixels[0].length) {
-        xStart = sliderXValue * yDist;
-        xEnd = height + xStart;
+      int xDist = (int) (pixels[0].length / 100.0);
+      int xEnd = width + xStart;
+      if(width + (sliderXValue * xDist) < pixels[0].length) {
+        xStart = sliderXValue * xDist;
+        xEnd = width + xStart;
       }
 
       for (int i = yStart; i < yEnd ; i++) {

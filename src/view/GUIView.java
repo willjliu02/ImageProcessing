@@ -170,7 +170,8 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
                       "sharpen to sharpen an image.\n" +
                       "greyscale to greyscale an image.\n" +
                       "sepia to add a sepia filter.\n" +
-                      "save to save the image to a desired location.\n" +
+                      "save to save the image to a desired location. Remember to add the\n" +
+                      "image extension you want to your save name. \n" +
                       "brighten will brighten the image by an increment, which you\n" +
                       "type in the textbox above the image. A negative increment.\n" +
                       "will darken.\n" +
