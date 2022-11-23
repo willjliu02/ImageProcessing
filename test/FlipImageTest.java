@@ -5,7 +5,6 @@ import imageinfo.Pixel;
 
 import org.junit.Test;
 
-import model.FlipImage;
 import model.HorizontalFlip;
 import model.VerticalFlip;
 

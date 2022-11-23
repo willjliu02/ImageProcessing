@@ -1,6 +1,7 @@
 package imageinfo;
 
-import java.awt.*;
+
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,6 +23,10 @@ public class ImageUtil {
   private static int maxValue;
   private static IPixel[][] imagePixels;
 
+  /**
+   * Creates an ImageUtil object.
+   * @param fileName file to read
+   */
   public ImageUtil(String fileName) {
     String fileExtension = "";
     try {

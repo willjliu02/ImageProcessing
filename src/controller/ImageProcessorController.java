@@ -15,11 +15,7 @@ import java.util.function.Function;
 
 import model.Blur;
 import model.Brighten;
-import model.ColorTransformation;
-import model.Filter;
-import model.FlipImage;
 import model.FocusBlue;
-import model.FocusComponent;
 import model.FocusGreen;
 import model.FocusIntensity;
 import model.FocusLuma;

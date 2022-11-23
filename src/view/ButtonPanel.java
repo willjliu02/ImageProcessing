@@ -10,17 +10,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
 
 /**
  * Represents the part of the screen with all the components the user can interact with to edit the
- * image
+ * image.
  */
 public class ButtonPanel extends JPanel {
-
-  //private JTextArea gameInfo;
-  //private JButton load, save, focus, brighten, greyscale, sepia, blur, sharpen, horizFlip, vertFlip;
-
   private final JTextField component;
   private final JTextField number;
   //private Color purple;
@@ -131,7 +126,7 @@ public class ButtonPanel extends JPanel {
   }
 
   /**
-   * Returns the brighten amount/
+   * Returns the brighten amount.
    *
    * @return amt to brighten by
    */

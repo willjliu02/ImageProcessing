@@ -5,7 +5,6 @@ import imageinfo.Pixel;
 
 import org.junit.Test;
 
-import model.ColorTransformation;
 import model.Greyscale;
 import model.Sepia;
 

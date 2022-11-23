@@ -1,7 +1,7 @@
 package view;
 
 /**
- * Represents a ViewEvent
+ * Represents a ViewEvent.
  */
 public enum ViewEvent {
   BLUR, BRIGHTEN, FOCUSBLUE, FOCUSGREEN, FOCUSINTENSITY, FOCUSLUMA, FOCUSRED, FOCUSVALUE,

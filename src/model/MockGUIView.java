@@ -8,10 +8,25 @@ import java.util.List;
 import controller.ViewListener;
 import view.IGUIView;
 
+/**
+ * Mock GUI view for testing.
+ */
 public class MockGUIView implements IGUIView {
 
-  private String loadPath,  savePath, brightAmt, focusComp, displayingImage;
+  private final String loadPath;
+  private final String savePath;
+  private final String brightAmt;
+  private final String focusComp;
+  private String displayingImage;
 
+  /**
+   * Creates the mock GUI view.
+   * @param loadPath path to load from
+   * @param savePath path to save to
+   * @param brightenAmt amt to brighten by
+   * @param focusComp component to make greyscale from
+   * @param displayingImage image displaying
+   */
   public MockGUIView(String loadPath, String savePath, String brightenAmt,
                      String focusComp, String displayingImage) {
     this.loadPath = loadPath;
@@ -48,17 +63,17 @@ public class MockGUIView implements IGUIView {
 
   @Override
   public void addListener(ViewListener listener) {
-
+    return;
   }
 
   @Override
   public void makeVisible() {
-
+    return;
   }
 
   @Override
   public void refresh(IImage image, List<List<Integer>> histograms) {
-
+    return;
   }
 
   @Override
@@ -68,6 +83,6 @@ public class MockGUIView implements IGUIView {
 
   @Override
   public void renderMessage(String message) throws IOException {
-
+    return;
   }
 }

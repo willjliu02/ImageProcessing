@@ -3,7 +3,7 @@ package model;
 import imageinfo.IImage;
 import imageinfo.IPixel;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,6 +18,10 @@ public class SaveImage implements ImageCommand {
   private final String imagePath;
   private final String imageExtension;
 
+  /**
+   * Creates a Save image object.
+   * @param imagePath path to save to
+   */
   public SaveImage(String imagePath) {
     int lastPeriod = imagePath.lastIndexOf(".");
     if (lastPeriod == -1) {

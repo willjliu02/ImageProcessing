@@ -160,7 +160,7 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
 
-    if(e.getActionCommand().equals("instructions")) {
+    if (e.getActionCommand().equals("instructions")) {
       JOptionPane.showMessageDialog(this,
               "Welcome to Image Processor! Current accepted commands are:\n" +
                       "load to load an image from a desired location.\n" +

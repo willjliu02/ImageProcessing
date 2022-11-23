@@ -1,14 +1,16 @@
 USING THE GUI:
   NOTE - ALL IMAGE COMMANDS WILL BE EXPLAINED UNDER THIS SECTION.
 - If confused about how to use the image processor, start with clicking the 
-- instructions button, which will show a pop up displaying instructions. 
+  instructions button, which will show a pop up displaying instructions.
 - Start with loading an image to edit. An image must be loaded before using
   editing features. Press the load button, which will show a pop up allowing 
   the user to choose a file to edit. The file must be of a supported image
-  type. 
+  type.
 - Loading the image will cause it to pop up on the left side of the center 
   portion of the screen. Appropriate histograms for red, green, blue, and value 
-  components will show on the right. 
+  components will show on the right.
+- ![](IMAGELOADED.png)
+- The user can scroll the image left to right and up to down if it doesn't fit in the window.
 - Image updates will show on the top of the screen. For example, after successfully uploading
   an image, the text on the top of the screen will update to "Request processed!"
 - Any button for image editing can be chosen now. The user can pick from horizontal flip,
@@ -19,7 +21,7 @@ USING THE GUI:
   brighten by. For example, entering 10 and then pressing brighten will brighten the image
   by an increment of 10. 
 - After editing the image to their liking, the user can press the save button. This will show a 
-  pop up allowing the user to choose where they want to save their image. 
+  pop up allowing the user to choose where they want to save their image.
 - At any point, the user can load a new image and start working with that one instead.
 
 COMMANDS:

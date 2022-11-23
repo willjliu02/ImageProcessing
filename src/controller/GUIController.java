@@ -32,9 +32,11 @@ import model.Sharpen;
 import model.ValueHistogram;
 import model.VerticalFlip;
 import view.IGUIView;
-import view.IView;
 import view.ViewEvent;
 
+/**
+ * Controller for a user interface image processor.
+ */
 public class GUIController implements IController, ViewListener {
   private final IGUIView view;
   private final IImageProcessor model;
@@ -44,8 +46,9 @@ public class GUIController implements IController, ViewListener {
 
   /**
    * Constructs a controller for a user interface processor.
+   *
    * @param model model that represents the processor
-   * @param view view that represents the processor
+   * @param view  view that represents the processor
    */
   public GUIController(IImageProcessor model, IGUIView view) {
     try {
@@ -86,6 +89,7 @@ public class GUIController implements IController, ViewListener {
 
   /**
    * Sets up the user interface.
+   *
    * @throws IllegalStateException if this isn't possible
    */
   @Override
@@ -96,6 +100,7 @@ public class GUIController implements IController, ViewListener {
 
   /**
    * Listens to commands and updates the processor info and view accordingly.
+   *
    * @param e image edit that is being tried
    */
   @Override

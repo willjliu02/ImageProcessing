@@ -6,7 +6,6 @@ import imageinfo.Pixel;
 import org.junit.Test;
 
 import model.Blur;
-import model.Filter;
 import model.Sharpen;
 
 import static org.junit.Assert.assertEquals;

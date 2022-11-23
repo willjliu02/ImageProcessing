@@ -13,7 +13,7 @@ public abstract class ColorTransformation implements ImageCommand {
 
   /**
    * Constructs a ColorTranformation to an IImage.
-   * @param transform
+   * @param transform transform filter
    */
   public ColorTransformation(double[][] transform) {
     this.transform = transform;
@@ -32,7 +32,8 @@ public abstract class ColorTransformation implements ImageCommand {
         colorValues = new double[]{currentPixels[i][j].getR(), currentPixels[i][j].getG(),
                 currentPixels[i][j].getB()};
         resultColor = this.getColor(colorValues);
-        newPixels[i][j] = new Pixel(this.checkVal((int) (resultColor[0]), currentImage.getMaxValue()),
+        newPixels[i][j] = new Pixel(this.checkVal((int) (resultColor[0]),
+                currentImage.getMaxValue()),
                 this.checkVal((int) (resultColor[1]), currentImage.getMaxValue()),
                 this.checkVal((int) (resultColor[2]), currentImage.getMaxValue()));
 

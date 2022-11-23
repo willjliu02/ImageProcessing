@@ -3,12 +3,16 @@ package view;
 import imageinfo.IImage;
 import imageinfo.IPixel;
 
-import java.awt.*;
-
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import java.util.List;
 
@@ -22,7 +26,7 @@ public class ImageInfoPanel extends JPanel implements ChangeListener {
   private JPanel histPan;
 
   private List<Integer> red;
- private List<Integer> green;
+  private List<Integer> green;
   private List<Integer> blue;
   private List<Integer> value;
 
@@ -94,14 +98,15 @@ public class ImageInfoPanel extends JPanel implements ChangeListener {
   }
 
   /**
-   * Refreshes the histograms on the screen
+   * Refreshes the histograms on the screen.
    *
    * @param red   red histogram
    * @param green green histogram
    * @param blue  blue histogram
    * @param value value histogram
    */
-  public void refreshHistograms(List<Integer> red, List<Integer> green, List<Integer> blue, List<Integer> value) {
+  public void refreshHistograms(List<Integer> red, List<Integer> green, List<Integer> blue,
+                                List<Integer> value) {
     this.red = red;
     this.green = green;
     this.blue = blue;
@@ -134,19 +139,31 @@ public class ImageInfoPanel extends JPanel implements ChangeListener {
       IPixel[][] pixels = image.getPixels();
 
       int height = this.getHeight();
-      int yDist = (int) (pixels.length / 100.0);
-      int yEnd = height + yStart;
-      if(height + (sliderYValue * yDist) < pixels.length) {
-        yStart = sliderYValue * yDist;
+      int yEnd = pixels.length;
+      if (height < pixels.length) {
+        int yDist = (int) (pixels.length / 100.0);
         yEnd = height + yStart;
+        if (height + (sliderYValue * yDist) < pixels.length) {
+          yStart = sliderYValue * yDist;
+          yEnd = height + yStart;
+        }
+      }
+      else {
+        yStart = 0;
       }
 
       int width = this.getWidth();
-      int xDist = (int) (pixels[0].length / 100.0);
-      int xEnd = width + xStart;
-      if(width + (sliderXValue * xDist) < pixels[0].length) {
-        xStart = sliderXValue * xDist;
+      int xEnd = pixels[0].length;
+      if (width < pixels[0].length) {
+        int xDist = (int) (pixels[0].length / 100.0);
         xEnd = width + xStart;
+        if (width + (sliderXValue * xDist) < pixels[0].length) {
+          xStart = sliderXValue * xDist;
+          xEnd = width + xStart;
+        }
+      }
+      else {
+        xStart = 0;
       }
 
       for (int i = yStart; i < yEnd ; i++) {

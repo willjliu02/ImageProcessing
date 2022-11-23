@@ -32,6 +32,7 @@ public class GUIControllerTest {
     this.controller = new GUIController(model, view);
     ((ViewListener)this.controller).listenTo(command);
   }
+
   private void initCond(String focusComp) {
     this.modelLog = new StringBuilder();
     IImageProcessor model = new MockImageProcessor(modelLog);

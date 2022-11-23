@@ -6,7 +6,6 @@ import imageinfo.Pixel;
 import org.junit.Test;
 
 import model.FocusBlue;
-import model.FocusComponent;
 import model.FocusGreen;
 import model.FocusIntensity;
 import model.FocusLuma;

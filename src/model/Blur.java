@@ -9,10 +9,7 @@ public class Blur extends Filter {
    * Constructs a Blur Filter for an IImage.
    */
   public Blur() {
-    super(new double[][]
-            {{0.0625, 0.125, 0.0625},
-                    {0.125, 0.25, 0.125},
-                    {0.0625, 0.125, 0.0625}});
+    super(new double[][] {{0.0625, 0.125, 0.0625}, {0.125, 0.25, 0.125}, {0.0625, 0.125, 0.0625}});
   }
 
   @Override

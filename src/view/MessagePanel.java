@@ -7,7 +7,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 /**
- * Displays messages that update as the user interacts with the processor
+ * Displays messages that update as the user interacts with the processor.
  */
 public class MessagePanel extends JPanel {
 
