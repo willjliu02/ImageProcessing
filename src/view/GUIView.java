@@ -1,13 +1,10 @@
 package view;
 
-import imageinfo.BasicImage;
 import imageinfo.IImage;
-import imageinfo.ImageUtil;
 
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,8 +12,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JOptionPane;
 
 import controller.ViewListener;
 
@@ -28,10 +28,10 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
   private final Set<ViewListener> listeners;
 
   private final Map<String, ViewEvent> actions;
-  private ButtonPanel bP;
-  private ImageInfoPanel iIP;
+  private final ButtonPanel bP;
+  private final ImageInfoPanel iIP;
 
-  private MessagePanel mP;
+  private final MessagePanel mP;
 
   private String displayedImage;
 
@@ -45,15 +45,15 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
   public GUIView() {
     super();
     this.setTitle("Image Processor!");
-    this.setSize( 1200, 700);
+    this.setSize(1200, 700);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setLocation(0,0);
+    this.setLocation(0, 0);
     this.setResizable(false);
 
     this.listeners = new HashSet<ViewListener>();
     bP = new ButtonPanel(this);
-    iIP = new ImageInfoPanel(this);
-    mP = new MessagePanel(this);
+    iIP = new ImageInfoPanel();
+    mP = new MessagePanel();
     //needs this?
 
     this.setLayout(new BorderLayout());
@@ -87,6 +87,11 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
   }
 
 
+  /**
+   * Calls to execute the command.
+   *
+   * @param e event chosen
+   */
   private void notifyListeners(ViewEvent e) {
     for (ViewListener listener : this.listeners) {
       listener.listenTo(e);
@@ -109,6 +114,8 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
     List<Integer> blueHist = histograms.get(1);
     List<Integer> greenHist = histograms.get(2);
     List<Integer> valueHist = histograms.get(3);
+    this.iIP.refreshImage(image);
+    this.iIP.refreshHistograms(redHist, blueHist, greenHist, valueHist);
     //send to the correct panel
   }
 
@@ -152,31 +159,51 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
+
+    if(e.getActionCommand().equals("instructions")) {
+      JOptionPane.showMessageDialog(this,
+              "Welcome to Image Processor! Current accepted commands are:\n" +
+                      "load to load an image from a desired location.\n" +
+                      "horizontalFlip to flip an image horizontally.\n" +
+                      "verticalFlip to flip an image vertically.\n" +
+                      "blur to blur an image.\n" +
+                      "sharpen to sharpen an image.\n" +
+                      "greyscale to greyscale an image.\n" +
+                      "sepia to add a sepia filter.\n" +
+                      "save to save the image to a desired location.\n" +
+                      "brighten will brighten the image by an increment, which you\n" +
+                      "type in the textbox above the image. A negative increment.\n" +
+                      "will darken.\n" +
+                      "focus will make a greyscale based off the component you\n" +
+                      "specify in the box above it. Type red, green, blue, value\n" +
+                      "luma, or intensity.\n" +
+                      "NOTE: make sure to load an image before trying to edit it!\n" +
+                      "NOTE 2: The histograms will show you graphs of components of\n" +
+                      "your image for editing information.");
+      return;
+    }
+
     ViewEvent event = this.actions.getOrDefault(e.getActionCommand(), null);
 
-      if(event.equals(ViewEvent.LOAD)) {
-        System.out.println("here");
-        final JFileChooser fileChooser = new JFileChooser(".");
-        FileNameExtensionFilter imageTypes = new FileNameExtensionFilter(
-                "JPG, PNG, BMP, & PPM Images", "ppm", "bmp", "png", "jpg");
-        fileChooser.setFileFilter(imageTypes);
-        int file = fileChooser.showOpenDialog(this);
-        if (file == JFileChooser.APPROVE_OPTION) {
-          File fileSave = fileChooser.getSelectedFile();
-          this.loadPath = fileSave.getAbsolutePath();
-        }
+    if (event.equals(ViewEvent.LOAD)) {
+      final JFileChooser fileChooser = new JFileChooser(".");
+      FileNameExtensionFilter imageTypes = new FileNameExtensionFilter(
+              "JPG, PNG, BMP, & PPM Images", "ppm", "bmp", "png", "jpg");
+      fileChooser.setFileFilter(imageTypes);
+      int file = fileChooser.showOpenDialog(this);
+      if (file == JFileChooser.APPROVE_OPTION) {
+        this.loadPath = fileChooser.getSelectedFile().getAbsolutePath();
       }
-      else if(event.equals(ViewEvent.SAVE)) {
-        final JFileChooser fileChooser = new JFileChooser(".");
-        FileNameExtensionFilter imageTypes = new FileNameExtensionFilter(
-                "JPG, PNG, BMP, & PPM Images", "ppm", "bmp", "png", "jpg");
-        fileChooser.setFileFilter(imageTypes);
-        int file = fileChooser.showOpenDialog(this);
-        if (file == JFileChooser.APPROVE_OPTION) {
-          File fileSave = fileChooser.getSelectedFile();
-          this.savePath = fileSave.getAbsolutePath();
-        }
+    } else if (event.equals(ViewEvent.SAVE)) {
+      final JFileChooser fileChooser = new JFileChooser(".");
+      FileNameExtensionFilter imageTypes = new FileNameExtensionFilter(
+              "JPG, PNG, BMP, & PPM Images", "ppm", "bmp", "png", "jpg");
+      fileChooser.setFileFilter(imageTypes);
+      int file = fileChooser.showSaveDialog(this);
+      if (file == JFileChooser.APPROVE_OPTION) {
+        this.savePath = fileChooser.getSelectedFile().getAbsolutePath();
       }
+    }
 
     if (event == null) {
       throw new IllegalStateException("An unknown action has been performed");

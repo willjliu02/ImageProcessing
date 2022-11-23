@@ -22,6 +22,4 @@ public class HistogramTest {
 
     this.image = new BasicImage(10, 10, 256, pixels);
   }
-
-  @Test
 }

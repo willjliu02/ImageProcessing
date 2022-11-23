@@ -4,6 +4,7 @@ import imageinfo.BasicImage;
 import imageinfo.IImage;
 import imageinfo.ImageUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,16 +42,26 @@ public class GUIController implements IController, ViewListener {
 
   private final Map<String, ViewEvent> focusEvent;
 
+  /**
+   * Constructs a controller for a user interface processor.
+   * @param model model that represents the processor
+   * @param view view that represents the processor
+   */
   public GUIController(IImageProcessor model, IGUIView view) {
-    try  {
+    try {
       this.model = Objects.requireNonNull(model);
       this.view = Objects.requireNonNull(view);
-    } catch (NullPointerException e)  {
-      throw new IllegalArgumentException("Unable to print to the file.");
+    } catch (NullPointerException e) {
+      //throw new IllegalArgumentException("Unable to print to the file.");
+      throw new IllegalArgumentException("Error in accepting elements.");
     }
 
     this.commands = new HashMap<ViewEvent, Function<Void, ImageCommand>>();
-    this.commands.put(ViewEvent.BRIGHTEN, (Void v) -> new Brighten(this.view.getBrightenAmt()));
+    try {
+      this.commands.put(ViewEvent.BRIGHTEN, (Void v) -> new Brighten(this.view.getBrightenAmt()));
+    } catch (NumberFormatException e) {
+      writeMessage("This is not a valid brighten increment. Please try again.");
+    }
     this.commands.put(ViewEvent.HORIZONTALFLIP, (Void v) -> new HorizontalFlip());
     this.commands.put(ViewEvent.VERTICALFLIP, (Void v) -> new VerticalFlip());
     this.commands.put(ViewEvent.FOCUSLUMA, (Void v) -> new FocusLuma());
@@ -73,12 +84,20 @@ public class GUIController implements IController, ViewListener {
     this.focusEvent.put("value", ViewEvent.FOCUSVALUE);
   }
 
+  /**
+   * Sets up the user interface.
+   * @throws IllegalStateException if this isn't possible
+   */
   @Override
   public void processImage() throws IllegalStateException {
     this.view.makeVisible();
     this.view.addListener(this);
   }
 
+  /**
+   * Listens to commands and updates the processor info and view accordingly.
+   * @param e image edit that is being tried
+   */
   @Override
   public void listenTo(ViewEvent e) {
     String currentImage = this.view.getDisplayedImage();
@@ -111,14 +130,19 @@ public class GUIController implements IController, ViewListener {
         return;
       default:
         newImage = this.getNewImageName(currentImage, e);
-        this.model.applyCommand(currentImage,
-                this.commands.get(e).apply(null),
-                newImage);
+        try {
+          this.model.applyCommand(currentImage,
+                  this.commands.get(e).apply(null),
+                  newImage);
+        } catch (IllegalArgumentException ex) {
+          writeMessage("Error in editing.");
+        }
         break;
     }
 
     this.view.updateDisplayedImage(newImage);
     this.view.refresh(this.model.getImage(newImage), this.grabHistograms(newImage));
+    writeMessage("Request processed!");
   }
 
   private List<List<Integer>> grabHistograms(String imageName) {
@@ -134,13 +158,22 @@ public class GUIController implements IController, ViewListener {
   private ViewEvent getFocusCommand() {
     String comp = this.view.getFocusComp().toLowerCase();
     if (!this.focusEvent.containsKey(comp)) {
-      throw new IllegalArgumentException("This command does not exist");
+      //throw new IllegalArgumentException("This command does not exist");
+      writeMessage("This is not a viable command. Please try again. ");
     }
     return this.focusEvent.get(comp);
   }
 
   private String getNewImageName(String currentImage, ViewEvent e) {
     return currentImage + "-" + e.toString().toLowerCase();
+  }
+
+  private void writeMessage(String message) {
+    try {
+      this.view.renderMessage(message);
+    } catch (IOException e) {
+      throw new IllegalStateException("Unable to write message to the view.");
+    }
   }
 
 }

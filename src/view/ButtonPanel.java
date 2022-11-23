@@ -1,32 +1,53 @@
 package view;
 
-import java.awt.*;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import java.awt.GridLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+
+/**
+ * Represents the part of the screen with all the components the user can interact with to edit the
+ * image
+ */
 public class ButtonPanel extends JPanel {
 
-  private JTextArea gameInfo;
-  private JButton load, save, focus, brighten, greyscale, sepia, blur, sharpen, horizFlip, vertFlip;
+  //private JTextArea gameInfo;
+  //private JButton load, save, focus, brighten, greyscale, sepia, blur, sharpen, horizFlip, vertFlip;
 
-  private JPanel optionPanel;
-  private JTextField component, number;
-  private Color purple;
+  private final JTextField component;
+  private final JTextField number;
+  //private Color purple;
 
+  /**
+   * Creates the Button Panel.
+   *
+   * @param view to add listener
+   */
   public ButtonPanel(ActionListener view) {
     this.setPreferredSize(new Dimension(1200, 80));
     this.setLayout(new GridLayout(1, 8));
-    purple = new Color(245, 225, 253);
+    Color purple = new Color(245, 225, 253);
     this.setBackground(purple);
 
-    gameInfo = new JTextArea("Set game instructions");
-    gameInfo.setEditable(false);
-    this.add(gameInfo);
+    JPanel infoPanel = new JPanel();
+    infoPanel.setBackground(purple);
+    JLabel gameInfo = new JLabel("  Click for instructions!");
+    infoPanel.add(gameInfo);
+    JButton instructions = new JButton("instructions");
+    instructions.addActionListener(view);
+    infoPanel.add(instructions);
+    this.add(infoPanel);
 
     JPanel loadPanel = new JPanel();
     loadPanel.setBackground(purple);
-    load = new JButton("load");
+    JButton load = new JButton("load");
     loadPanel.add(load);
     this.add(loadPanel);
     load.addActionListener(view);
@@ -34,7 +55,7 @@ public class ButtonPanel extends JPanel {
 
     JPanel savePanel = new JPanel();
     savePanel.setBackground(purple);
-    save = new JButton("save");
+    JButton save = new JButton("save");
     savePanel.add(save);
     this.add(savePanel);
     save.addActionListener(view);
@@ -44,7 +65,7 @@ public class ButtonPanel extends JPanel {
     optionPanel.setBackground(purple);
     component = new JTextField(5);
     optionPanel.add(component);
-    focus = new JButton("focus");
+    JButton focus = new JButton("focus");
     optionPanel.add(focus);
     this.add(optionPanel);
     focus.addActionListener(view);
@@ -54,7 +75,7 @@ public class ButtonPanel extends JPanel {
     brightenPanel.setBackground(purple);
     number = new JTextField(5);
     brightenPanel.add(number);
-    brighten = new JButton("brighten");
+    JButton brighten = new JButton("brighten");
     brightenPanel.add(brighten);
     this.add(brightenPanel);
     brighten.addActionListener(view);
@@ -62,9 +83,9 @@ public class ButtonPanel extends JPanel {
 
     JPanel col1 = new JPanel();
     col1.setBackground(purple);
-    greyscale = new JButton("greyscale");
+    JButton greyscale = new JButton("greyscale");
     col1.add(greyscale);
-    sepia = new JButton("sepia");
+    JButton sepia = new JButton("sepia");
     col1.add(sepia);
     this.add(col1);
     greyscale.addActionListener(view);
@@ -74,9 +95,9 @@ public class ButtonPanel extends JPanel {
 
     JPanel col2 = new JPanel();
     col2.setBackground(purple);
-    blur = new JButton("blur");
+    JButton blur = new JButton("blur");
     col2.add(blur);
-    sharpen = new JButton("sharpen");
+    JButton sharpen = new JButton("sharpen");
     col2.add(sharpen);
     this.add(col2);
     blur.addActionListener(view);
@@ -86,9 +107,9 @@ public class ButtonPanel extends JPanel {
 
     JPanel col3 = new JPanel();
     col3.setBackground(purple);
-    horizFlip = new JButton("horizontal flip");
+    JButton horizFlip = new JButton("horizontal flip");
     col3.add(horizFlip);
-    vertFlip = new JButton("vertical flip");
+    JButton vertFlip = new JButton("vertical flip");
     col3.add(vertFlip);
     this.add(col3);
     horizFlip.addActionListener(view);
@@ -97,11 +118,27 @@ public class ButtonPanel extends JPanel {
     vertFlip.setActionCommand("vertical-flip");
   }
 
+  /**
+   * Returns the component for the focus command.
+   *
+   * @return String of what component is being focused on
+   */
   public String getComponent() {
-    return this.component.getText();
+    String text = this.component.getText();
+    this.component.setText("");
+    this.repaint();
+    return text;
   }
 
+  /**
+   * Returns the brighten amount/
+   *
+   * @return amt to brighten by
+   */
   public String getBrightAmt() {
-    return this.number.getText();
+    String amt = this.number.getText();
+    this.number.setText("");
+    this.repaint();
+    return amt;
   }
 }

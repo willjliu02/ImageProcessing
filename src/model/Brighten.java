@@ -21,9 +21,8 @@ public class Brighten implements ImageCommand {
     try {
       this.increment = Integer.parseInt(increment);
     } catch (NumberFormatException e) {
-      throw new IllegalArgumentException("");
+      throw new IllegalArgumentException("Invalid increment.");
     }
-
   }
 
   @Override

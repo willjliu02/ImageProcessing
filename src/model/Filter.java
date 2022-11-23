@@ -5,10 +5,17 @@ import imageinfo.IImage;
 import imageinfo.IPixel;
 import imageinfo.Pixel;
 
+/**
+ * Represents a filter.
+ */
 public abstract class Filter implements ImageCommand {
 
   private final double[][] filter;
 
+  /**
+   * Adds a filter on to an image.
+   * @param filter filter to apply
+   */
   public Filter(double[][] filter) {
     this.filter = filter;
   }

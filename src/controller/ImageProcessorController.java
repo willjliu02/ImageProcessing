@@ -181,7 +181,6 @@ public class ImageProcessorController implements IController {
   /**
    * Prints the welcome message when the user starts the processor.
    */
-  // MOVE TO INTERFACE ?
   private void printWelcomeMessage() {
     this.writeMessage("Welcome to Image Processor! Current accepted commands are:\n" +
             "load filePath fileName\n" +
