@@ -18,6 +18,9 @@ import javax.swing.JLabel;
 public class ButtonPanel extends JPanel {
   private final JTextField component;
   private final JTextField number;
+
+  private final JTextField width;
+  private final JTextField height;
   //private Color purple;
 
   /**
@@ -26,7 +29,7 @@ public class ButtonPanel extends JPanel {
    * @param view to add listener
    */
   public ButtonPanel(ActionListener view) {
-    this.setPreferredSize(new Dimension(1200, 80));
+    this.setPreferredSize(new Dimension(1200, 100));
     this.setLayout(new GridLayout(1, 8));
     Color purple = new Color(245, 225, 253);
     this.setBackground(purple);
@@ -111,6 +114,18 @@ public class ButtonPanel extends JPanel {
     horizFlip.setActionCommand("horizontal-flip");
     vertFlip.addActionListener(view);
     vertFlip.setActionCommand("vertical-flip");
+
+    JPanel col4 = new JPanel();
+    col4.setBackground(purple);
+    width = new JTextField(5);
+    col4.add(width);
+    height = new JTextField(5);
+    col4.add(height);
+    JButton downscale = new JButton("downscale");
+    col4.add(downscale);
+    this.add(col4);
+    downscale.addActionListener(view);
+    brighten.setActionCommand("downscale");
   }
 
   /**
@@ -133,6 +148,30 @@ public class ButtonPanel extends JPanel {
   public String getBrightAmt() {
     String amt = this.number.getText();
     this.number.setText("");
+    this.repaint();
+    return amt;
+  }
+
+  /**
+   * Returns the width.
+   *
+   * @return width.
+   */
+  public String getWidthAmt() {
+    String amt = this.width.getText();
+    this.width.setText("");
+    this.repaint();
+    return amt;
+  }
+
+  /**
+   * Returns the height.
+   *
+   * @return height.
+   */
+  public String getHeightAmt() {
+    String amt = this.height.getText();
+    this.height.setText("");
     this.repaint();
     return amt;
   }

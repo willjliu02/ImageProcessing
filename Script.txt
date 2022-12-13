@@ -4,9 +4,11 @@ horizontal-flip bostonBright bostonHFlip
 vertical-flip bostonHFlip bostonVFlip
 red-component bostonVFlip bostonRedComp
 blur bostonRedComp bostonBlur
-save res/bostonSuperEdited.jpg bostonBlur
 sharpen boston bostonSharp
 greyscale bostonSharp bostonGrey
-save res/bostonSharpAndGrey.jpg bostonGrey
 sepia boston bostonSepia
-save res/bostonSepia.jpg bostonSepia
+load res/boston.jpg boston2
+downscale 500x500 boston2 boston2Small
+save res/bostonSmall.jpg boston2Small
+downscale 100x300 boston2Small boston2Smaller
+save res/boston2Smaller.jpg boston2Smaller

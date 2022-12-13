@@ -26,31 +26,31 @@ We have a class diagram saved as "class diagram.png" to visualize all the classe
   - FlipImage: Represents a command to either vertically or horizontally flip an image. 
     - UPDATE: We changed this to an abstract class so more flips could be added without code 
     - repetition.
-  - Horizontal Flip: NEW, class that extends FlipImage and horizontally flips the image. 
-  - Vertical Flip: NEW, class that extends FlipImage and vertically flips the image. 
+  - Horizontal Flip: Class that extends FlipImage and horizontally flips the image. 
+  - Vertical Flip: Class that extends FlipImage and vertically flips the image. 
   - FocusComponent: Creates a grayscale image based off the specified component. 
     - UPDATE: This is now an abstract class to avoid code duplication.
-  - FocusRed: NEW, Class that extends FocusComponent and creates a greyscale with the red component
-  - FocusGreen: NEW, Class that extends FocusComponent and creates a greyscale with the
+  - FocusRed: Class that extends FocusComponent and creates a greyscale with the red component
+  - FocusGreen: Class that extends FocusComponent and creates a greyscale with the
     green component
-  - FocusBlue: NEW, Class that extends FocusComponent and creates a greyscale with the blue 
+  - FocusBlue: Class that extends FocusComponent and creates a greyscale with the blue 
     component
-  - FocusValue: NEW, Class that extends FocusComponent and creates a greyscale 
+  - FocusValue: Class that extends FocusComponent and creates a greyscale 
     with the value component
   - FocusIntensity: NEW, Class that extends FocusComponent and creates a greyscale with the 
     intensity component
-  - FocusLuma: NEW, Class that extends FocusComponent and creates a greyscale with the
+  - FocusLuma: Class that extends FocusComponent and creates a greyscale with the
     luma component
   - Color Transformation: Transforms the colors of the image, currently supporting making a
     greyscale one and applying a sepia filter. 
     - UPDATE: We changed this to an abstract class so that more color transformations plus  
     greyscale and sepia would be compatible without code repetition. 
-  - Greyscale: NEW, Class that extends Color Transformation and adds the greyscale filter. 
-  - Sepia: NEW, Class that extends Color Transformation and adds the sepia filter. 
+  - Greyscale: Class that extends Color Transformation and adds the greyscale filter. 
+  - Sepia: Class that extends Color Transformation and adds the sepia filter. 
   - Filter: Applies a filter on the image, currently supporting either blurring or sharpening. 
     - UPDATE: We changed this to an abstract class to avoid code repetition.
-  - Blur: NEW, Class that extends Filter and represents blurring an image.
-  - Sharpen: NEW, Class that extends Filter and represents sharpening an image. 
+  - Blur: Class that extends Filter and represents blurring an image.
+  - Sharpen: Class that extends Filter and represents sharpening an image. 
   - IImageProcessor: Allows different commands for editing to be placed on an image.
   - ImageCommand: Represents applying an edit on a given image.
   - ImageProcessorModel: Saves image references, while also performing image edits
@@ -58,13 +58,14 @@ We have a class diagram saved as "class diagram.png" to visualize all the classe
   - SaveImage: Saves an image to a specified location.
   - MockImageCommand: Mock to test image commands.
   - MockImageProcessor: Mock to test the image processor. 
-  - MockGUIView: NEW, mock to test the GUI view.
-  - GrabHistogram: NEW, abstract class for getting the histogram values for a specific component
+  - MockGUIView: mock to test the GUI view.
+  - GrabHistogram: abstract class for getting the histogram values for a specific component
     of an image
-  - RedHistogram: NEW, extends GrabHistogram and makes a histogram from the red component. 
-  - BlueHistogram: NEW, extends GrabHistogram and makes a histogram from the blue component.
-  - GreenHistogram: NEW, extends GrabHistogram and makes a histogram from the green component.
-  - ValueHistogram: NEW, extends GrabHistogram and makes a histogram from the value component.
+  - RedHistogram: Extends GrabHistogram and makes a histogram from the red component. 
+  - BlueHistogram: Extends GrabHistogram and makes a histogram from the blue component.
+  - GreenHistogram: Extends GrabHistogram and makes a histogram from the green component.
+  - ValueHistogram: Extends GrabHistogram and makes a histogram from the value component.
+  - DownSize: NEW, EC addition, downscales the image. 
 - VIEW FOLDER:
   - IView: Represents view functionality, which currently only consists of rendering messages 
     to update the command line.
@@ -103,3 +104,7 @@ JPG IMAGE EXAMPLE IS FROM:
 Rivera, Sofia. “The Best Views around Boston.” Boston Magazine, Boston Magazine, 1 Feb. 2021, 
 www.bostonmagazine.com/arts-entertainment/best-views-around-boston/. 
 
+EC ADDITION:
+Downscaling: We implemented this feature by adding a function object for downscaling. We slightly
+updated the view to be a little larger to account for these added components on our view. Example
+images are in our res folder. 

@@ -52,6 +52,16 @@ public class MockGUIView implements IGUIView {
   }
 
   @Override
+  public String getWidthAmt() {
+    return null;
+  }
+
+  @Override
+  public String getHeightAmt() {
+    return null;
+  }
+
+  @Override
   public String getFocusComp() {
     return this.focusComp;
   }

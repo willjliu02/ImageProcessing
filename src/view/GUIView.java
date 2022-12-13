@@ -45,7 +45,7 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
   public GUIView() {
     super();
     this.setTitle("Image Processor!");
-    this.setSize(1200, 700);
+    this.setSize(1300, 800);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLocation(0, 0);
     this.setResizable(false);
@@ -74,6 +74,7 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
     this.actions.put("sharpen", ViewEvent.SHARPEN);
     this.actions.put("horizontal-flip", ViewEvent.HORIZONTALFLIP);
     this.actions.put("vertical-flip", ViewEvent.VERTICALFLIP);
+    this.actions.put("downscale", ViewEvent.DOWNSCALE);
 
     loadPath = "";
     savePath = "";
@@ -82,8 +83,6 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
   @Override
   public void renderMessage(String message) throws IOException {
     this.mP.refreshMessage(message);
-
-    // set a jlabel to have certain text
   }
 
 
@@ -148,6 +147,18 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
   }
 
   @Override
+  public String getWidthAmt() {
+    //return resetTextField(this.brightenAmt);
+    return this.bP.getWidthAmt();
+  }
+
+  @Override
+  public String getHeightAmt() {
+    //return resetTextField(this.brightenAmt);
+    return this.bP.getHeightAmt();
+  }
+
+  @Override
   public String getFocusComp() {
     return this.bP.getComponent();
   }
@@ -178,6 +189,7 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
                       "focus will make a greyscale based off the component you\n" +
                       "specify in the box above it. Type red, green, blue, value\n" +
                       "luma, or intensity.\n" +
+                      "downscale downscales an image. \n" +
                       "NOTE: make sure to load an image before trying to edit it!\n" +
                       "NOTE 2: The histograms will show you graphs of components of\n" +
                       "your image for editing information.");
@@ -185,7 +197,7 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
     }
 
     ViewEvent event = this.actions.getOrDefault(e.getActionCommand(), null);
-
+    System.out.println(e.getActionCommand());
     if (event.equals(ViewEvent.LOAD)) {
       final JFileChooser fileChooser = new JFileChooser(".");
       FileNameExtensionFilter imageTypes = new FileNameExtensionFilter(

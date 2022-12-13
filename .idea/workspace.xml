@@ -5,32 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Saving now works">
-      <change afterPath="$PROJECT_DIR$/IMAGELOADED.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/DownScale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USEME.md" beforeDir="false" afterPath="$PROJECT_DIR$/USEME.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Script.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ViewListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ViewListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageinfo/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageinfo/ImageUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Blur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Blur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ColorTransformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ColorTransformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Greyscale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Greyscale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/MockGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockGUIView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SaveImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SaveImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Sepia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Sepia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Sharpen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Sharpen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ButtonPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ButtonPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUIView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ImageInfoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ImageInfoPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MessagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MessagePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IGUIView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ViewEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ViewEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ColorTransformationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ColorTransformationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FilterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FlipImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FlipImageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FocusComponentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FocusComponentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/GUIControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/GUIControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +204,16 @@
       <workItem from="1668528840256" duration="7000" />
       <workItem from="1668795395102" duration="597000" />
       <workItem from="1669078182845" duration="14110000" />
-      <workItem from="1669229361323" duration="2482000" />
+      <workItem from="1669229361323" duration="2935000" />
+      <workItem from="1669250855467" duration="44000" />
+      <workItem from="1669272221117" duration="7000" />
+      <workItem from="1669421924786" duration="989000" />
+      <workItem from="1669599022130" duration="258000" />
+      <workItem from="1670429496373" duration="1815000" />
+      <workItem from="1670441951463" duration="53000" />
+      <workItem from="1670466796174" duration="591000" />
+      <workItem from="1670918698673" duration="3347000" />
+      <workItem from="1670946063358" duration="8385000" />
     </task>
     <task id="LOCAL-00001" summary="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.">
       <created>1667369821089</created>
@@ -409,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669227887119</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Saving now works">
+      <created>1669247029374</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1669247029374</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

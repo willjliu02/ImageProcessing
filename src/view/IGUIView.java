@@ -32,6 +32,18 @@ public interface IGUIView extends IView {
   String getBrightenAmt();
 
   /**
+   * Gets width.
+   * @return width
+   */
+  String getWidthAmt();
+
+  /**
+   * Get height.
+   * @return height
+   */
+  String getHeightAmt();
+
+  /**
    * Gets which component is to be focused.
    *
    * @return String the component to be focused.

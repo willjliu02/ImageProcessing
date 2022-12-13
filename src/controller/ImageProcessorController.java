@@ -15,6 +15,7 @@ import java.util.function.Function;
 
 import model.Blur;
 import model.Brighten;
+import model.DownScale;
 import model.FocusBlue;
 import model.FocusGreen;
 import model.FocusIntensity;
@@ -70,6 +71,7 @@ public class ImageProcessorController implements IController {
     this.commands.put("sharpen", filter -> new Sharpen());
     this.commands.put("greyscale", transform -> new Greyscale());
     this.commands.put("sepia", transform -> new Sepia());
+    this.commands.put("downscale", inputs -> new DownScale(inputs));
   }
 
   private void writeMessage(String message) {
@@ -146,7 +148,6 @@ public class ImageProcessorController implements IController {
           try {
             this.applyCommand(line);
           } catch (IllegalArgumentException e) {
-            // okay to catch general exception??
             System.out.println("Error: " + e.getMessage());
             continue;
           }
@@ -188,6 +189,7 @@ public class ImageProcessorController implements IController {
             "sharpen fileName newFileName\n" +
             "greyscale fileName newFileName\n" +
             "sepia fileName newFileName\n" +
+            "downscale newWidth-newHeight fileName newFileName\n" +
             "save filePath fileName\n\n");
   }
 }

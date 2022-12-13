@@ -18,6 +18,9 @@ import view.TextImageView;
  */
 public class Main {
 
+  private static boolean fileRun = false;
+  private static boolean textRun = false;
+
   /**
    * Runs the program.
    *
@@ -39,17 +42,17 @@ public class Main {
           }
           IController controller = new ImageProcessorController(model, view, input);
           controller.processImage();
-        } else if (args[i].equals("-text")) {
-          System.out.println(args[i - 2]);
-          System.out.println(args[i - 1]);
+          fileRun = true;
+        }
+        else if (args[i].equals("-text")) {
           checkJar(args, i);
           IController controller = new ImageProcessorController(model, view, input);
           controller.processImage();
+          textRun = true;
         }
       }
-      checkJar(args, 3);
-      guiView();
-    } else {
+    }
+    if (args.length <= 0 || (fileRun == false && textRun == false)) {
       guiView();
     }
   }

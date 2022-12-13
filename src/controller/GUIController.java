@@ -15,6 +15,7 @@ import java.util.function.Function;
 import model.BlueHistogram;
 import model.Blur;
 import model.Brighten;
+import model.DownScale;
 import model.FocusBlue;
 import model.FocusGreen;
 import model.FocusIntensity;
@@ -64,6 +65,12 @@ public class GUIController implements IController, ViewListener {
       this.commands.put(ViewEvent.BRIGHTEN, (Void v) -> new Brighten(this.view.getBrightenAmt()));
     } catch (NumberFormatException e) {
       writeMessage("This is not a valid brighten increment. Please try again.");
+    }
+    try {
+      this.commands.put(ViewEvent.DOWNSCALE, (Void v) -> new DownScale(this.view.getWidthAmt() + "x"
+              + this.view.getHeightAmt()));
+    } catch (NumberFormatException e) {
+      writeMessage("This is not a valid downsize value. Please try again.");
     }
     this.commands.put(ViewEvent.HORIZONTALFLIP, (Void v) -> new HorizontalFlip());
     this.commands.put(ViewEvent.VERTICALFLIP, (Void v) -> new VerticalFlip());
