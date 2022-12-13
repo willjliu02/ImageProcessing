@@ -44,7 +44,7 @@ public class ImageProcessorModel implements IImageProcessor {
 
   private IImage applyMasks(IImage oldImage, String masks, IImageMaskCommand cm) {
     IImageMaskBuilder builder = oldImage.maskBuilder();
-    String[] grids = masks.split(";");
+    String[] grids = masks.split(";\\s+");
     for (String mask: grids) {
       String[] coords = masks.split(",\\s+");
 
