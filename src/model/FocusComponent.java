@@ -8,27 +8,31 @@ import imageinfo.Pixel;
 /**
  * Creates a greyscale image using one component of the image.
  */
-public abstract class FocusComponent implements ImageCommand {
+public abstract class FocusComponent extends AImageMaskCommand {
   @Override
   public IImage apply(IImage currentImage) {
     IPixel[][] oldPixels = currentImage.getPixels();
     IPixel[][] newPixels = new Pixel[currentImage.getHeight()][currentImage.getWidth()];
-    IImage newImage = new BasicImage(currentImage);
-    IPixel currentPixel = new Pixel(0, 0, 0);
+    IPixel currentPixel;
     int maxVal = currentImage.getMaxValue();
-    int currentVal;
+
 
     for (int i = 0; i < oldPixels.length; i++) {
       for (int j = 0; j < oldPixels[i].length; j++) {
         currentPixel = oldPixels[i][j];
-        currentVal = this.getGreyscale(currentPixel);
-        newPixels[i][j] = new Pixel(currentVal, currentVal, currentVal);
-        if (currentVal > maxVal) {
-          maxVal = currentVal;
+        IPixel newPixel;
+
+        if (isModifiable(i, j)) {
+          int currentVal = this.getGreyscale(currentPixel);
+          newPixel = new Pixel(currentVal, currentVal, currentVal);
+        } else {
+          newPixel = currentPixel;
         }
+
+        newPixels[i][j] = newPixel;
       }
     }
-    newImage = new BasicImage(currentImage.getWidth(),
+    IImage newImage = new BasicImage(currentImage.getWidth(),
             currentImage.getHeight(), maxVal, newPixels);
     return newImage;
   }

@@ -8,7 +8,7 @@ import imageinfo.Pixel;
 /**
  * Represents a Color Transformation.
  */
-public abstract class ColorTransformation implements ImageCommand {
+public abstract class ColorTransformation extends AImageMaskCommand {
   private final double[][] transform;
 
   /**
@@ -23,19 +23,26 @@ public abstract class ColorTransformation implements ImageCommand {
   public IImage apply(IImage currentImage) {
     IPixel[][] currentPixels = currentImage.getPixels();
     IPixel[][] newPixels = currentImage.getPixels();
-
-    double[] colorValues = new double[3];
-    double[] resultColor = new double[colorValues.length];
+    int imageMaxValue = currentImage.getMaxValue();
 
     for (int i = 0; i < currentPixels.length; i++) {
       for (int j = 0; j < currentPixels[i].length; j++) {
-        colorValues = new double[]{currentPixels[i][j].getR(), currentPixels[i][j].getG(),
-                currentPixels[i][j].getB()};
-        resultColor = this.getColor(colorValues);
-        newPixels[i][j] = new Pixel(this.checkVal((int) (resultColor[0]),
-                currentImage.getMaxValue()),
-                this.checkVal((int) (resultColor[1]), currentImage.getMaxValue()),
-                this.checkVal((int) (resultColor[2]), currentImage.getMaxValue()));
+
+        IPixel newPixel;
+        IPixel currentPixel = currentPixels[i][j];
+        if (isModifiable(i, j)) {
+          double[] colorValues = new double[]{currentPixel.getR(), currentPixel.getG(),
+                  currentPixel.getB()};
+          double[] resultColor = this.getColor(colorValues);
+          newPixel = new Pixel(this.checkVal((int) (resultColor[0]),
+                  imageMaxValue),
+                  this.checkVal((int) (resultColor[1]), imageMaxValue),
+                  this.checkVal((int) (resultColor[2]), imageMaxValue));
+        } else {
+          newPixel = currentPixel;
+        }
+
+        newPixels[i][j] = newPixel;
 
       }
     }

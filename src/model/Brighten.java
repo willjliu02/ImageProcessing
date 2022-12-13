@@ -8,7 +8,7 @@ import imageinfo.Pixel;
 /**
  * Process for brightening an image.
  */
-public class Brighten implements ImageCommand {
+public class Brighten extends AImageMaskCommand {
 
   private final int increment;
 
@@ -29,16 +29,23 @@ public class Brighten implements ImageCommand {
   public IImage apply(IImage currentImage) {
     IPixel[][] oldPixels = currentImage.getPixels();
     IPixel[][] newPixels = new Pixel[currentImage.getHeight()][currentImage.getWidth()];
-    IImage newImage = new BasicImage(currentImage);
-    IPixel currentPixel = new Pixel(0, 0, 0);
+    IImage newImage;
+    IPixel currentPixel;
     int maxVal = currentImage.getMaxValue();
 
     for (int i = 0; i < oldPixels.length; i++) {
       for (int j = 0; j < oldPixels[i].length; j++) {
         currentPixel = oldPixels[i][j];
-        newPixels[i][j] = new Pixel(this.getValue(currentPixel.getR(), maxVal),
-                this.getValue(currentPixel.getG(), maxVal),
-                this.getValue(currentPixel.getB(), maxVal));
+        IPixel newPixel;
+
+        if (isModifiable(i, j)) {
+          newPixel = new Pixel(this.getValue(currentPixel.getR(), maxVal),
+                  this.getValue(currentPixel.getG(), maxVal),
+                  this.getValue(currentPixel.getB(), maxVal));
+        } else {
+          newPixel = currentPixel;
+        }
+        newPixels[i][j] = newPixel;
       }
     }
     newImage = new BasicImage(currentImage.getWidth(),

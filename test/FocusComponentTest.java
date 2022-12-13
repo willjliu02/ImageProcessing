@@ -29,8 +29,8 @@ public class FocusComponentTest {
         expectedPixels[r][c] = new Pixel(r, r, r);
       }
     }
-    IImage starterImage = new BasicImage(5, 5, 4, pixels);
-    IImage expectedImage = new BasicImage(5, 5, 4, expectedPixels);
+    IImage starterImage = new BasicImage(5, 5, 256, pixels);
+    IImage expectedImage = new BasicImage(5, 5, 256, expectedPixels);
 
     IImage resultImage = (new FocusRed()).apply(starterImage);
 
@@ -50,8 +50,8 @@ public class FocusComponentTest {
         expectedPixels[r][c] = new Pixel(c, c, c);
       }
     }
-    IImage starterImage = new BasicImage(5, 5, 8, pixels);
-    IImage expectedImage = new BasicImage(5, 5, 4, expectedPixels);
+    IImage starterImage = new BasicImage(5, 5, 256, pixels);
+    IImage expectedImage = new BasicImage(5, 5, 256, expectedPixels);
 
     IImage resultImage = (new FocusGreen()).apply(starterImage);
 
@@ -71,8 +71,8 @@ public class FocusComponentTest {
         expectedPixels[r][c] = new Pixel(r + c, r + c, r + c);
       }
     }
-    IImage starterImage = new BasicImage(5, 5, 8, pixels);
-    IImage expectedImage = new BasicImage(5, 5, 8, expectedPixels);
+    IImage starterImage = new BasicImage(5, 5, 256, pixels);
+    IImage expectedImage = new BasicImage(5, 5, 256, expectedPixels);
 
     IImage resultImage = (new FocusBlue()).apply(starterImage);
 
@@ -93,8 +93,8 @@ public class FocusComponentTest {
         expectedPixels[r][c] = new Pixel(avg, avg, avg);
       }
     }
-    IImage starterImage = new BasicImage(5, 5, 8, pixels);
-    IImage expectedImage = new BasicImage(5, 5, 5, expectedPixels);
+    IImage starterImage = new BasicImage(5, 5, 256, pixels);
+    IImage expectedImage = new BasicImage(5, 5, 256, expectedPixels);
 
     IImage resultImage = (new FocusIntensity()).apply(starterImage);
 
@@ -114,8 +114,8 @@ public class FocusComponentTest {
         expectedPixels[r][c] = new Pixel(r + c, r + c, r + c);
       }
     }
-    IImage starterImage = new BasicImage(5, 5, 8, pixels);
-    IImage expectedImage = new BasicImage(5, 5, 8, expectedPixels);
+    IImage starterImage = new BasicImage(5, 5, 256, pixels);
+    IImage expectedImage = new BasicImage(5, 5, 256, expectedPixels);
 
     IImage resultImage = (new FocusValue()).apply(starterImage);
 
@@ -136,8 +136,8 @@ public class FocusComponentTest {
         expectedPixels[r][c] = new Pixel(luma, luma, luma);
       }
     }
-    IImage starterImage = new BasicImage(5, 5, 8, pixels);
-    IImage expectedImage = new BasicImage(5, 5, 6, expectedPixels);
+    IImage starterImage = new BasicImage(5, 5, 256, pixels);
+    IImage expectedImage = new BasicImage(5, 5, 256, expectedPixels);
 
     IImage resultImage = (new FocusLuma()).apply(starterImage);
 

@@ -25,8 +25,8 @@ public class BrightenTest {
         expectedPixels[r][c] = new Pixel(r + inc, c + inc, r + inc);
       }
     }
-    IImage starterImage = new BasicImage(5, 5, 5, pixels);
-    IImage expectedImage = new BasicImage(5, 5, 5 + inc, expectedPixels);
+    IImage starterImage = new BasicImage(5, 5, 256, pixels);
+    IImage expectedImage = new BasicImage(5, 5, 256, expectedPixels);
 
     IImage resultImage = (new Brighten("" + inc)).apply(starterImage);
 
@@ -47,8 +47,8 @@ public class BrightenTest {
         expectedPixels[r][c] = new Pixel(inc, inc, inc);
       }
     }
-    IImage starterImage = new BasicImage(5, 5, 5, pixels);
-    IImage expectedImage = new BasicImage(5, 5, 255, expectedPixels);
+    IImage starterImage = new BasicImage(5, 5, 256, pixels);
+    IImage expectedImage = new BasicImage(5, 5, 256, expectedPixels);
 
     IImage resultImage = (new Brighten("" + inc)).apply(starterImage);
 
@@ -69,8 +69,8 @@ public class BrightenTest {
         expectedPixels[r][c] = new Pixel(0, 0, 0);
       }
     }
-    IImage starterImage = new BasicImage(5, 5, 5, pixels);
-    IImage expectedImage = new BasicImage(5, 5, 0, expectedPixels);
+    IImage starterImage = new BasicImage(5, 5, 256, pixels);
+    IImage expectedImage = new BasicImage(5, 5, 256, expectedPixels);
 
     IImage resultImage = (new Brighten("" + inc)).apply(starterImage);
 

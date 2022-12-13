@@ -8,7 +8,7 @@ import imageinfo.Pixel;
 /**
  * Represents a command to flip the desired image across the axis.
  */
-public abstract class FlipImage implements ImageCommand {
+public abstract class FlipImage extends AImageMaskCommand {
 
   @Override
   public IImage apply(IImage image) {
@@ -19,7 +19,15 @@ public abstract class FlipImage implements ImageCommand {
     IPixel[][] oldPixels = image.getPixels();
     for (int r = 0; r < height; r++) {
       for (int c = 0; c < width; c++) {
-        newPixels[r][c] = oldPixels[this.getFlippedRow(r, height)][this.getFlippedCol(c, width)];
+        IPixel newPixel;
+
+        if (isModifiable(r, c)) {
+          newPixel = oldPixels[this.getFlippedRow(r, height)][this.getFlippedCol(c, width)];
+        } else {
+          newPixel = oldPixels[r][c];
+        }
+
+        newPixels[r][c] = newPixel;
       }
     }
 

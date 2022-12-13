@@ -8,7 +8,7 @@ import imageinfo.Pixel;
 /**
  * Represents a filter.
  */
-public abstract class Filter implements ImageCommand {
+public abstract class Filter extends AImageMaskCommand {
 
   private final double[][] filter;
 
@@ -25,9 +25,6 @@ public abstract class Filter implements ImageCommand {
     IPixel[][] currentPixels = currentImage.getPixels();
     IPixel[][] newPixels = currentImage.getPixels();
 
-    int newRed = 0;
-    int newGreen = 0;
-    int newBlue = 0;
 
     IImage newImage = new BasicImage(currentImage);
 
@@ -35,30 +32,40 @@ public abstract class Filter implements ImageCommand {
 
     for (int i = 0; i < currentPixels.length; i++) {
       for (int j = 0; j < currentPixels[i].length; j++) {
-        for (int k = -1 * halfLength; k < halfLength + 1; k++) {
-          for (int l = -1 * halfLength; l < halfLength + 1; l++) {
-            if (i + k >= 0 && i + k < currentPixels.length && j + l >= 0 &&
-                    j + l < currentPixels[i].length) {
-              int currentR = i + k;
-              int currentC = j + l;
-              int filterR = k + halfLength;
-              int filterC = l + halfLength;
-              newRed += (int) (currentPixels[currentR][currentC].getR()
-                      * filter[filterR][filterC]);
-              newGreen += (int) (currentPixels[currentR][currentC].getG()
-                      * filter[filterR][filterC]);
-              newBlue += (int) (currentPixels[currentR][currentC].getB()
-                      * filter[filterR][filterC]);
+        IPixel oldPixel = currentPixels[i][j];
+        IPixel newPixel;
+
+        if (isModifiable(i, j)) {
+          int newRed = 0;
+          int newGreen = 0;
+          int newBlue = 0;
+
+          for (int k = -1 * halfLength; k < halfLength + 1; k++) {
+            for (int l = -1 * halfLength; l < halfLength + 1; l++) {
+              if (i + k >= 0 && i + k < currentPixels.length && j + l >= 0 &&
+                      j + l < currentPixels[i].length) {
+                int currentR = i + k;
+                int currentC = j + l;
+                int filterR = k + halfLength;
+                int filterC = l + halfLength;
+                newRed += (int) (currentPixels[currentR][currentC].getR()
+                        * filter[filterR][filterC]);
+                newGreen += (int) (currentPixels[currentR][currentC].getG()
+                        * filter[filterR][filterC]);
+                newBlue += (int) (currentPixels[currentR][currentC].getB()
+                        * filter[filterR][filterC]);
+              }
             }
           }
+          newRed = this.checkVal(newRed, currentImage.getMaxValue());
+          newGreen = this.checkVal(newGreen, currentImage.getMaxValue());
+          newBlue = this.checkVal(newBlue, currentImage.getMaxValue());
+          newPixel = new Pixel(newRed, newGreen, newBlue);
+        } else {
+          newPixel = oldPixel;
         }
-        newRed = this.checkVal(newRed, currentImage.getMaxValue());
-        newGreen = this.checkVal(newGreen, currentImage.getMaxValue());
-        newBlue = this.checkVal(newBlue, currentImage.getMaxValue());
-        newPixels[i][j] = new Pixel(newRed, newGreen, newBlue);
-        newRed = 0;
-        newGreen = 0;
-        newBlue = 0;
+
+        newPixels[i][j] = newPixel;
       }
     }
 
