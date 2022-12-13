@@ -28,7 +28,7 @@ public class GUIControllerTest {
     this.modelLog = new StringBuilder();
     IImageProcessor model = new MockImageProcessor(modelLog);
     IGUIView view = new MockGUIView("res/boston.jpg", "images/koala-brighter.ppm",
-            "10", "red", "koala");
+            "10", "red", "koala", "3, 3, 3, 3");
     this.controller = new GUIController(model, view);
     ((ViewListener)this.controller).listenTo(command);
   }
@@ -37,7 +37,7 @@ public class GUIControllerTest {
     this.modelLog = new StringBuilder();
     IImageProcessor model = new MockImageProcessor(modelLog);
     IGUIView view = new MockGUIView("res/koala.ppm", "images/koala-brighter.ppm",
-            "10", focusComp, "koala");
+            "10", focusComp, "koala", "3, 3, 3, 3");
     this.controller = new GUIController(model, view);
     ((ViewListener)this.controller).listenTo(ViewEvent.FOCUS);
   }

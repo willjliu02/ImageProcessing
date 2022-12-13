@@ -24,11 +24,19 @@ public class MockImageProcessor implements IImageProcessor {
   @Override
   public void applyCommand(String imageName, ImageCommand command, String newImageName)
           throws IllegalArgumentException {
+    String mask = String.format("%d, %d, %d, %d", -1, -1 , Integer.MAX_VALUE, Integer.MAX_VALUE);
+    this.applyCommand(imageName, (IImageMaskCommand)command, mask, newImageName);
+  }
+
+  @Override
+  public void applyCommand(String imageName, IImageMaskCommand command, String masks, String newImageName) throws IllegalArgumentException {
     try {
       this.log.append("ImageName: ");
       this.log.append(imageName);
-      this.log.append("; Command: ");
+      this.log.append("; IImageMaskCommand: ");
       this.log.append(command.toString());
+      this.log.append("; Mask: ");
+      this.log.append(masks);
       this.log.append("; NewImageName: ");
       this.log.append(newImageName);
       this.log.append("\n");

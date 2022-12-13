@@ -19,6 +19,7 @@ public class MockGUIView implements IGUIView {
   private final String focusComp;
   private String displayingImage;
 
+  private String masks;
   /**
    * Creates the mock GUI view.
    * @param loadPath path to load from
@@ -28,12 +29,13 @@ public class MockGUIView implements IGUIView {
    * @param displayingImage image displaying
    */
   public MockGUIView(String loadPath, String savePath, String brightenAmt,
-                     String focusComp, String displayingImage) {
+                     String focusComp, String displayingImage, String masks) {
     this.loadPath = loadPath;
     this.savePath = savePath;
     this.brightAmt = brightenAmt;
     this.focusComp = focusComp;
     this.displayingImage = displayingImage;
+    this.masks = masks;
   }
 
   @Override
@@ -69,6 +71,11 @@ public class MockGUIView implements IGUIView {
   @Override
   public String getDisplayedImage() {
     return this.displayingImage;
+  }
+
+  @Override
+  public String getMaskGrids() {
+    return this.masks;
   }
 
   @Override

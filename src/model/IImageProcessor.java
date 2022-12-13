@@ -28,7 +28,7 @@ public interface IImageProcessor {
    * @param newImageName the newImageName
    * @throws IllegalArgumentException if imageName has not been loaded into the map
    */
-  void applyCommand(String imageName, ImageCommand command, String masks, String newImageName)
+  void applyCommand(String imageName, IImageMaskCommand command, String masks, String newImageName)
           throws IllegalArgumentException;
 
   /**

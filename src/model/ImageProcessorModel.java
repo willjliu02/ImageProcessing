@@ -1,6 +1,7 @@
 package model;
 
 import imageinfo.IImage;
+import imageinfo.IImageMaskBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +25,13 @@ public class ImageProcessorModel implements IImageProcessor {
   public void applyCommand(String imageName, ImageCommand command, String newImageName)
           throws IllegalArgumentException {
 
+    String mask = String.format("%d, %d, %d, %d", -1, -1 , Integer.MAX_VALUE, Integer.MAX_VALUE);
+    this.applyCommand(imageName, (IImageMaskCommand) command, mask, newImageName);
+  }
+
+  @Override
+  public void applyCommand(String imageName, IImageMaskCommand command, String masks, String newImageName)
+          throws IllegalArgumentException {
     if (!this.images.containsKey(imageName)) {
       throw new IllegalArgumentException(imageName + " has not been loaded.");
     } else if (command == null) {
@@ -31,13 +39,28 @@ public class ImageProcessorModel implements IImageProcessor {
     }
 
     this.images.put(newImageName,
-            command.apply(this.images.get(imageName)));
+            applyMasks(this.images.get(imageName), masks, command));
   }
 
-  @Override
-  public void applyCommand(String imageName, ImageCommand command, String masks, String newImageName)
-          throws IllegalArgumentException {
+  private IImage applyMasks(IImage oldImage, String masks, IImageMaskCommand cm) {
+    IImageMaskBuilder builder = oldImage.maskBuilder();
+    String[] grids = masks.split(";");
+    for (String mask: grids) {
+      String[] coords = masks.split(",");
 
+      if (coords.length < 4) {
+        continue;
+      }
+
+      int xLeft = Integer.parseInt(coords[0]);
+      int yTop = Integer.parseInt(coords[1]);
+      int xRight = Integer.parseInt(coords[2]);
+      int yBottom = Integer.parseInt(coords[3]);
+
+      builder.setModifiable(xLeft, yTop, xRight, yBottom);
+    }
+
+    return builder.build(cm);
   }
 
   @Override

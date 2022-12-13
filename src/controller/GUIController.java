@@ -25,6 +25,7 @@ import model.FocusValue;
 import model.GreenHistogram;
 import model.Greyscale;
 import model.HorizontalFlip;
+import model.IImageMaskCommand;
 import model.IImageProcessor;
 import model.ImageCommand;
 import model.RedHistogram;
@@ -144,14 +145,15 @@ public class GUIController implements IController, ViewListener {
         newImage = this.getNewImageName(currentImage, e);
         try {
           String masks = this.view.getMaskGrids();
+          IImageMaskCommand cm = (IImageMaskCommand)this.commands.get(e).apply(null);
 
           if (masks.length() == 0) {
             this.model.applyCommand(currentImage,
-                    this.commands.get(e).apply(null),
+                    cm,
                     newImage);
           } else {
             this.model.applyCommand(currentImage,
-                    this.commands.get(e).apply(null),
+                    cm,
                     masks,
                     newImage);
           }
@@ -166,18 +168,6 @@ public class GUIController implements IController, ViewListener {
     this.view.updateDisplayedImage(newImage);
     this.view.refresh(this.model.getImage(newImage), this.grabHistograms(newImage));
     writeMessage("Request processed!");
-  }
-
-  private void applyMasks(String masks, ImageCommand cm) {
-    if (masks.length() == 0) {
-      return;
-    }
-
-    String[] grids = masks.split(";");
-    for (String mask: grids) {
-      String[] coords = masks.split(",");
-
-    }
   }
 
   private List<List<Integer>> grabHistograms(String imageName) {
