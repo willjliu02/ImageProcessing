@@ -49,6 +49,11 @@ public class BasicImage implements IImage {
   }
 
   @Override
+  public IImageMaskBuilder maskBuilder() {
+    return new BasicImageMaskBuilder(this);
+  }
+
+  @Override
   public IPixel[][] getPixels() {
     IPixel[][] copy = new Pixel[this.height][this.width];
     for (int r = 0; r < this.height; r++) {
@@ -81,7 +86,7 @@ public class BasicImage implements IImage {
   /**
    * A builder to build a basic image
    */
-  public static class BasicImageMaskBuilder implements IImageMaskBuilder {
+  public class BasicImageMaskBuilder implements IImageMaskBuilder {
     private final boolean[][] mask;
     private final int maxValue;
     private final int width;

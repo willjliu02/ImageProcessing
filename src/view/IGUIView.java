@@ -58,6 +58,12 @@ public interface IGUIView extends IView {
   String getDisplayedImage();
 
   /**
+   * Gets the masks for the command.
+   * @return String returns the masks as a string of numbers.
+   */
+  String getMaskGrids();
+
+  /**
    * Adds a listener to the view to be notified of changes.
    *
    * @param listener a listener for ViewEvents.

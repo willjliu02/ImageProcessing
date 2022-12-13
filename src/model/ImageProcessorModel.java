@@ -35,6 +35,12 @@ public class ImageProcessorModel implements IImageProcessor {
   }
 
   @Override
+  public void applyCommand(String imageName, ImageCommand command, String masks, String newImageName)
+          throws IllegalArgumentException {
+
+  }
+
+  @Override
   public <T> T accept(String imageName, Function<IImage, T> func) {
     if (!this.images.containsKey(imageName)) {
       throw new IllegalArgumentException(imageName + " has not been loaded.");

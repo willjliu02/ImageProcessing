@@ -20,6 +20,17 @@ public interface IImageProcessor {
   void applyCommand(String imageName, ImageCommand command, String newImageName)
           throws IllegalArgumentException;
 
+  /** Applies the command onto the desired IImage and saves it under the newImageName in the map.
+   *
+   * @param imageName    the desired IImage nap
+   * @param command      the desired command
+   * @param masks        the masks for the image
+   * @param newImageName the newImageName
+   * @throws IllegalArgumentException if imageName has not been loaded into the map
+   */
+  void applyCommand(String imageName, ImageCommand command, String masks, String newImageName)
+          throws IllegalArgumentException;
+
   /**
    * Accepts the application of a command onto it.
    * @param imageName the name of the image to be applied to.

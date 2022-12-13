@@ -12,7 +12,7 @@ public abstract class AImageMaskCommand implements IImageMaskCommand {
   }
   @Override
   public void setMask(IImageMask mask) throws IllegalStateException {
-    if (this.mask == null) {
+    if (this.mask != null) {
       throw new IllegalStateException("You can only have 1 mask per command.");
     }
 

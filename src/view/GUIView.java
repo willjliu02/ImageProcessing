@@ -17,7 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JOptionPane;
-import javax.swing.text.View;
 
 import controller.ViewListener;
 
@@ -39,6 +38,8 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
   private String loadPath;
 
   private String savePath;
+
+  private String maskInfo;
 
   /**
    * Constructs a GUIView.
@@ -79,6 +80,7 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
 
     loadPath = "";
     savePath = "";
+    this.maskInfo = "";
   }
 
   @Override
@@ -170,6 +172,11 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
   }
 
   @Override
+  public String getMaskGrids() {
+    return this.maskInfo;
+  }
+
+  @Override
   public void actionPerformed(ActionEvent e) {
 
     if (e.getActionCommand().equals("instructions")) {
@@ -226,7 +233,7 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
 
     //!! use this data
     if(!(event.equals(ViewEvent.LOAD) || event.equals(ViewEvent.SAVE))) {
-      String maskInfo = JOptionPane.showInputDialog("Enter mask info!");
+      this.maskInfo = JOptionPane.showInputDialog("Enter mask info!");
     }
     this.notifyListeners(event);
   }

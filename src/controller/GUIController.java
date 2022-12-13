@@ -143,9 +143,19 @@ public class GUIController implements IController, ViewListener {
       default:
         newImage = this.getNewImageName(currentImage, e);
         try {
-          this.model.applyCommand(currentImage,
-                  this.commands.get(e).apply(null),
-                  newImage);
+          String masks = this.view.getMaskGrids();
+
+          if (masks.length() == 0) {
+            this.model.applyCommand(currentImage,
+                    this.commands.get(e).apply(null),
+                    newImage);
+          } else {
+            this.model.applyCommand(currentImage,
+                    this.commands.get(e).apply(null),
+                    masks,
+                    newImage);
+          }
+
         } catch (IllegalArgumentException ex) {
           writeMessage("Error in editing.");
           return;
@@ -156,6 +166,18 @@ public class GUIController implements IController, ViewListener {
     this.view.updateDisplayedImage(newImage);
     this.view.refresh(this.model.getImage(newImage), this.grabHistograms(newImage));
     writeMessage("Request processed!");
+  }
+
+  private void applyMasks(String masks, ImageCommand cm) {
+    if (masks.length() == 0) {
+      return;
+    }
+
+    String[] grids = masks.split(";");
+    for (String mask: grids) {
+      String[] coords = masks.split(",");
+
+    }
   }
 
   private List<List<Integer>> grabHistograms(String imageName) {
