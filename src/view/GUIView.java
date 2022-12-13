@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JOptionPane;
+import javax.swing.text.View;
 
 import controller.ViewListener;
 
@@ -197,7 +198,7 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
     }
 
     ViewEvent event = this.actions.getOrDefault(e.getActionCommand(), null);
-    System.out.println(e.getActionCommand());
+
     if (event.equals(ViewEvent.LOAD)) {
       final JFileChooser fileChooser = new JFileChooser(".");
       FileNameExtensionFilter imageTypes = new FileNameExtensionFilter(
@@ -207,7 +208,8 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
       if (file == JFileChooser.APPROVE_OPTION) {
         this.loadPath = fileChooser.getSelectedFile().getAbsolutePath();
       }
-    } else if (event.equals(ViewEvent.SAVE)) {
+    }
+    else if (event.equals(ViewEvent.SAVE)) {
       final JFileChooser fileChooser = new JFileChooser(".");
       FileNameExtensionFilter imageTypes = new FileNameExtensionFilter(
               "JPG, PNG, BMP, & PPM Images", "ppm", "bmp", "png", "jpg");
@@ -222,6 +224,10 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
       throw new IllegalStateException("An unknown action has been performed");
     }
 
+    //!! use this data
+    if(!(event.equals(ViewEvent.LOAD) || event.equals(ViewEvent.SAVE))) {
+      String maskInfo = JOptionPane.showInputDialog("Enter mask info!");
+    }
     this.notifyListeners(event);
   }
 }
