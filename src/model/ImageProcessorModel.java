@@ -25,7 +25,7 @@ public class ImageProcessorModel implements IImageProcessor {
   public void applyCommand(String imageName, ImageCommand command, String newImageName)
           throws IllegalArgumentException {
 
-    String mask = String.format("%d, %d, %d, %d", -1, -1 , Integer.MAX_VALUE, Integer.MAX_VALUE);
+    String mask = String.format("%d, %d, %d, %d", 0, 0, Integer.MAX_VALUE, Integer.MAX_VALUE);
     this.applyCommand(imageName, (IImageMaskCommand) command, mask, newImageName);
   }
 
@@ -46,7 +46,7 @@ public class ImageProcessorModel implements IImageProcessor {
     IImageMaskBuilder builder = oldImage.maskBuilder();
     String[] grids = masks.split(";");
     for (String mask: grids) {
-      String[] coords = masks.split(",");
+      String[] coords = masks.split(",\\s+");
 
       if (coords.length < 4) {
         continue;

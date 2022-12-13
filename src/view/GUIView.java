@@ -233,7 +233,12 @@ public class GUIView extends JFrame implements IGUIView, ActionListener {
 
     //!! use this data
     if(!(event.equals(ViewEvent.LOAD) || event.equals(ViewEvent.SAVE))) {
-      this.maskInfo = JOptionPane.showInputDialog("Enter mask info!");
+      String mask = JOptionPane.showInputDialog("Enter mask info!");
+      if (mask == null) {
+        this.maskInfo = "";
+      } else {
+        this.maskInfo = mask;
+      }
     }
     this.notifyListeners(event);
   }

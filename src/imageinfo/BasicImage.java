@@ -213,7 +213,7 @@ public class BasicImage implements IImage {
 
       @Override
       public boolean isModifiable(int c, int r) {
-        if (c < 0 || c > this.width || r < 0 || r > this.height) {
+        if (c < 0 || c >= this.width || r < 0 || r >= this.height) {
           throw new IllegalArgumentException("These are invalid points.");
         }
 
