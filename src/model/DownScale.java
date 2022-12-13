@@ -9,11 +9,12 @@ import imageinfo.Pixel;
  * Downscales the image size.
  */
 public class DownScale implements ImageCommand {
-  private int newWidth;
-  private int newHeight;
+  private final int newWidth;
+  private final int newHeight;
 
   /**
    * Downscales the image.
+   *
    * @param inputs inputs.
    */
   public DownScale(String inputs) {
@@ -28,6 +29,11 @@ public class DownScale implements ImageCommand {
   @Override
   public IImage apply(IImage currentImage) {
     IPixel[][] oldPixels = currentImage.getPixels();
+
+    if (newWidth > oldPixels[0].length || newHeight > oldPixels.length) {
+      throw new IllegalArgumentException("Only downscaling is supported.");
+    }
+
     IPixel[][] newPixels = new Pixel[this.newHeight][this.newWidth];
     IImage newImage = new BasicImage(currentImage);
     IPixel currentPixel = new Pixel(0, 0, 0);
@@ -42,12 +48,12 @@ public class DownScale implements ImageCommand {
     for (int i = 0; i < oldPixels.length; i++) {
       for (int j = 0; j < oldPixels[i].length; j++) {
         currentPixel = oldPixels[i][j];
-        xRatio =  ((double) (j + 1)) / oldPixels[i].length;
-        yRatio =  ((double) (i + 1)) / oldPixels.length;
+        xRatio = ((double) (j + 1)) / oldPixels[i].length;
+        yRatio = ((double) (i + 1)) / oldPixels.length;
         newX = xRatio * this.newWidth - 1;
         newY = yRatio * this.newHeight - 1;
         newPixels[(int) (newY)][(int) (newX)] = new Pixel(currentPixel.getR(), currentPixel.getG(),
-                  currentPixel.getB());
+                currentPixel.getB());
       }
     }
     newImage = new BasicImage(newWidth, newHeight, maxVal, newPixels);

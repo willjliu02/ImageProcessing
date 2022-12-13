@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="917f784c-d3d5-4a0c-b5c2-613eef66990b" name="Changes" comment="Saving now works">
-      <change afterPath="$PROJECT_DIR$/src/model/DownScale.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/DownScaleTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Script.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MockGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockGUIView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ButtonPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ButtonPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUIView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/IGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IGUIView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ViewEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ViewEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DownScale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DownScale.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +103,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DownScaleTest.testDownscale" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DownScaleTest" />
+      <option name="METHOD_NAME" value="testDownscale" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DownScaleTest.testUpscaleFail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageProcessing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DownScaleTest" />
+      <option name="METHOD_NAME" value="testUpscaleFail" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ImageProcessorModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
@@ -131,16 +142,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessorModelTest.testGetImage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ImageProcessing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessorModelTest" />
-      <option name="METHOD_NAME" value="testGetImage" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ImageProcessorModelTest.testSaveSuccessful" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageProcessing" />
       <option name="PACKAGE_NAME" value="" />
@@ -151,32 +152,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SaveImageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ImageProcessing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SaveImageTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.Basic" />
       <item itemvalue="Application.File" />
       <item itemvalue="Application.Text" />
+      <item itemvalue="JUnit.DownScaleTest.testDownscale" />
+      <item itemvalue="JUnit.DownScaleTest.testUpscaleFail" />
       <item itemvalue="JUnit.ImageProcessorModelTest" />
       <item itemvalue="JUnit.ImageProcessorModelTest.testApplyCommand" />
-      <item itemvalue="JUnit.ImageProcessorModelTest.testGetImage" />
       <item itemvalue="JUnit.ImageProcessorModelTest.testSaveSuccessful" />
-      <item itemvalue="JUnit.SaveImageTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DownScaleTest.testUpscaleFail" />
+        <item itemvalue="JUnit.DownScaleTest.testDownscale" />
         <item itemvalue="JUnit.ImageProcessorModelTest" />
         <item itemvalue="JUnit.ImageProcessorModelTest.testSaveSuccessful" />
         <item itemvalue="JUnit.ImageProcessorModelTest.testApplyCommand" />
-        <item itemvalue="JUnit.ImageProcessorModelTest.testGetImage" />
-        <item itemvalue="JUnit.SaveImageTest" />
       </list>
     </recent_temporary>
   </component>
@@ -213,7 +205,7 @@
       <workItem from="1670441951463" duration="53000" />
       <workItem from="1670466796174" duration="591000" />
       <workItem from="1670918698673" duration="3347000" />
-      <workItem from="1670946063358" duration="8385000" />
+      <workItem from="1670946063358" duration="9316000" />
     </task>
     <task id="LOCAL-00001" summary="Created Controller, Model, and View interfaces. Mainly focused on Model and setup. Tried to update ImageUtil starter code to save info from an image.">
       <created>1667369821089</created>
@@ -411,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669247029374</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Saving now works">
+      <created>1670958246172</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1670958246172</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
