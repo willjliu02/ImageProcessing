@@ -8,7 +8,7 @@ import imageinfo.Pixel;
 /**
  * Downscales the image size.
  */
-public class DownScale implements ImageCommand {
+public class DownScale extends AImageMaskCommand {
   private final int newWidth;
   private final int newHeight;
 
