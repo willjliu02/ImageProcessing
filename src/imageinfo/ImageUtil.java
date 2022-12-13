@@ -84,7 +84,7 @@ public class ImageUtil {
     ImageUtil.imagePixels = new Pixel[height][width];
     //System.out.println("Height of image: " + height);
     int maxValue = sc.nextInt();
-    ImageUtil.maxValue = maxValue;
+    ImageUtil.maxValue = maxValue + 1;
     //System.out.println("Maximum value of a color in this file (usually 255): " + maxValue);
 
     for (int i = 0; i < height; i++) {
@@ -110,7 +110,7 @@ public class ImageUtil {
       Color color = new Color(0, 0, 0);
       width = image.getWidth();
       height = image.getHeight();
-      maxValue = 255;
+      maxValue = 256;
       imagePixels = new IPixel[height][width];
       for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {

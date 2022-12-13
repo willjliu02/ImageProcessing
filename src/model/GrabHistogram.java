@@ -13,8 +13,9 @@ import java.util.function.Function;
 public abstract class GrabHistogram implements Function<IImage, List<Integer>> {
   @Override
   public List<Integer> apply(IImage image) {
-    List<Integer> histogram = new ArrayList<Integer>(256);
-    for (int i = 0; i < 256; i++) {
+    int max = image.getMaxValue();
+    List<Integer> histogram = new ArrayList<Integer>(max);
+    for (int i = 0; i < max; i++) {
       histogram.add(0);
     }
 

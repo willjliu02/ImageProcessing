@@ -73,8 +73,8 @@ public abstract class ColorTransformation implements ImageCommand {
   private int checkVal(int value, int maxVal) {
     if (value < 0) {
       value = 0;
-    } else if (value > maxVal) {
-      value = maxVal;
+    } else if (value >= maxVal) {
+      value = maxVal - 1;
     }
     return value;
   }

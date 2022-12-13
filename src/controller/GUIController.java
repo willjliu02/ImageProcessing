@@ -141,6 +141,7 @@ public class GUIController implements IController, ViewListener {
                   newImage);
         } catch (IllegalArgumentException ex) {
           writeMessage("Error in editing.");
+          return;
         }
         break;
     }

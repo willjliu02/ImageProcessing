@@ -15,8 +15,8 @@ public abstract class FocusComponent implements ImageCommand {
     IPixel[][] newPixels = new Pixel[currentImage.getHeight()][currentImage.getWidth()];
     IImage newImage = new BasicImage(currentImage);
     IPixel currentPixel = new Pixel(0, 0, 0);
-    int maxVal = -1;
-    int currentVal = -1;
+    int maxVal = currentImage.getMaxValue();
+    int currentVal;
 
     for (int i = 0; i < oldPixels.length; i++) {
       for (int j = 0; j < oldPixels[i].length; j++) {

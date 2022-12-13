@@ -36,9 +36,9 @@ public class Brighten implements ImageCommand {
     for (int i = 0; i < oldPixels.length; i++) {
       for (int j = 0; j < oldPixels[i].length; j++) {
         currentPixel = oldPixels[i][j];
-        newPixels[i][j] = new Pixel(this.getValue(currentPixel.getR()),
-                this.getValue(currentPixel.getG()), this.getValue(currentPixel.getB()));
-        maxVal = this.getValue(currentImage.getMaxValue());
+        newPixels[i][j] = new Pixel(this.getValue(currentPixel.getR(), maxVal),
+                this.getValue(currentPixel.getG(), maxVal),
+                this.getValue(currentPixel.getB(), maxVal));
       }
     }
     newImage = new BasicImage(currentImage.getWidth(),
@@ -52,10 +52,10 @@ public class Brighten implements ImageCommand {
    * @param value brightness value to update with
    * @return updated value
    */
-  protected int getValue(int value) {
+  protected int getValue(int value, int maxValue) {
     int newValue = value + this.increment;
-    if (newValue > 255) {
-      return 255;
+    if (newValue >= maxValue) {
+      return maxValue - 1;
     } else if (newValue < 0) {
       return 0;
     } else {
